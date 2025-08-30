@@ -1,0 +1,12 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#1a1a1a" stroke="#e51d3b" stroke-width="2"/>
+  <rect x="50" y="80" width="200" height="40" fill="#f0f0f0" rx="5"/>
+  <rect x="60" y="85" width="180" height="10" fill="#0d0d0d"/>
+  <rect x="60" y="100" width="180" height="10" fill="#0d0d0d"/>
+  <circle cx="80" cy="150" r="8" fill="#e51d3b"/>
+  <circle cx="120" cy="150" r="8" fill="#e51d3b"/>
+  <circle cx="160" cy="150" r="8" fill="#e51d3b"/>
+  <circle cx="200" cy="150" r="8" fill="#e51d3b"/>
+  <text x="150" y="40" text-anchor="middle" fill="#f0f0f0" font-family="Arial, sans-serif" font-size="16" font-weight="bold">FIRESTICK</text>
+  <text x="150" y="180" text-anchor="middle" fill="#e51d3b" font-family="Arial, sans-serif" font-size="12">LIBERATED</text>
+</svg>

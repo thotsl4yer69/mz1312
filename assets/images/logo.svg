@@ -1,0 +1,7 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#1a1a1a" stroke="#e51d3b" stroke-width="2"/>
+  <circle cx="150" cy="100" r="60" fill="#e51d3b" opacity="0.3"/>
+  <text x="150" y="85" text-anchor="middle" fill="#f0f0f0" font-family="Arial, sans-serif" font-size="14" font-weight="bold">MAZLABZ</text>
+  <text x="150" y="105" text-anchor="middle" fill="#f0f0f0" font-family="Arial, sans-serif" font-size="12">LOGO</text>
+  <text x="150" y="125" text-anchor="middle" fill="#e51d3b" font-family="Arial, sans-serif" font-size="10">FOR THE PEOPLE</text>
+</svg>
