@@ -209,6 +209,31 @@ html {
     animation: headerLineGlow 3s ease-in-out infinite alternate;
 }
 
+.dossier-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatingOrb 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes floatingOrb {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-30px) scale(1.2);
+        opacity: 0.6;
+    }
+}
+
 @keyframes headerLineGlow {
     0% { box-shadow: 0 0 5px var(--color-accent-pink); }
     100% { box-shadow: 0 0 20px var(--color-accent-red); }
@@ -227,6 +252,32 @@ html {
     letter-spacing: 0.1em;
     position: relative;
     animation: titleEntry 1s ease-out;
+}
+
+.main-title::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--color-accent-cyan);
+    border-right: none;
+    border-bottom: none;
+    opacity: 0.6;
+}
+
+.main-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--color-accent-purple);
+    border-left: none;
+    border-top: none;
+    opacity: 0.6;
 }
 
 @keyframes titleEntry {
@@ -703,14 +754,29 @@ html {
 .main-footer-bar::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(157, 78, 221, 0.03) 0%, transparent 50%);
-    pointer-events: none;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--color-accent-cyan);
+    opacity: 0.3;
+    animation: footerGeometry 6s linear infinite;
+}
+
+@keyframes footerGeometry {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: rotate(180deg) scale(0.8);
+        opacity: 0.6;
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 0.3;
+    }
 }
 
 .footer-content {
@@ -752,11 +818,32 @@ html {
     position: relative;
 }
 
+.btc-info::before {
+    content: '◆';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-accent-purple);
+    font-size: 0.6rem;
+    animation: diamondSpin 3s linear infinite;
+}
+
+@keyframes diamondSpin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
 .btc-info:hover {
     color: var(--color-accent-green);
     background: rgba(57, 255, 20, 0.1);
     text-shadow: 0 0 10px var(--color-accent-green);
     transform: scale(1.02);
+}
+
+.btc-info:hover::before {
+    color: var(--color-accent-green);
+    animation-duration: 0.5s;
 }
 
 /* RESPONSIVE DESIGN */
