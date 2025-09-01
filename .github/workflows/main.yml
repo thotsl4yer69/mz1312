@@ -103,7 +103,6 @@ jobs:
           temporaryPublicStorage: true
         continue-on-error: true  # Don't fail deployment if Lighthouse fails
 
----
 # Alternative deployment configurations:
 
 # NETLIFY DEPLOYMENT (Alternative)
