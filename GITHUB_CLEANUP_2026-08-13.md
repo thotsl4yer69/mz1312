@@ -76,6 +76,7 @@ Changes made across the account include:
 - clearer predecessor/successor links;
 - archive-candidate markers on empty/superseded shells;
 - a reusable evidence-first [`README_TEMPLATE.md`](README_TEMPLATE.md);
+- a prepared [`GITHUB_PROFILE_README.md`](GITHUB_PROFILE_README.md) for the future profile repository;
 - a settings-only follow-up manifest in [`GITHUB_SETTINGS_TODO.md`](GITHUB_SETTINGS_TODO.md).
 
 ## Security incidents found during cleanup
@@ -96,23 +97,35 @@ A base64-encoded debug signing keystore was found committed publicly and removed
 
 CI was changed so signing material comes from GitHub Actions Secrets rather than the repository. Public builds do not inject the optional backend bearer token.
 
+The repaired Android CI was verified after the change: unit tests passed, the debug APK assembled successfully, a verification artifact uploaded successfully, and the rolling release gate completed successfully while correctly skipping release publication because the replacement private signing secret is not yet configured.
+
 See the project's `SECURITY.md` for the exact current signing/credential model.
 
 ### Sentient Core — exposed/reused MQTT credential
 
 A literal MQTT password was found reused across active source/default configuration and older documentation.
 
-The current project tree was sanitized in one pass. The affected Python services now require `MQTT_PASS` from runtime environment configuration, and the sanitized service files were syntax-checked before the temporary sanitation workflow was removed.
+The current public project tree was sanitized in one pass. The affected Python services now require `MQTT_PASS` from runtime environment configuration, and all five affected Python services were syntax-checked successfully before the temporary sanitation workflow was removed.
 
 **Required external action:** rotate the MQTT credential at the actual broker on every Sentient node that used the historical value, provision the replacement privately at runtime, verify clients, then revoke the old broker credential.
 
 See `sentient-core/SECURITY.md` for the deployment-side rotation policy.
 
+### Private sentient_core predecessor — exposed OpenAI and ElevenLabs credentials
+
+A private predecessor repository contained real-looking OpenAI and ElevenLabs provider credentials directly in `companionscape/config.json`.
+
+Both values were removed from the current tree. The Companionscape integration already supports `OPENAI_API_KEY` and `ELEVENLABS_API_KEY` through runtime environment configuration, so the committed config now leaves those fields blank and falls back to private runtime configuration.
+
+The repository's `.gitignore` was hardened and a `SECURITY.md` record added.
+
+**Required external action:** revoke/rotate both historical provider credentials. Private repository visibility does not make a credential safe once it has been committed and retained in history.
+
 ## Secret-scan boundary
 
-A targeted high-signal current-tree scan was performed for common AWS, GitHub, OpenAI, Anthropic, Google, Slack and private-key patterns across the main public portfolio repositories. It uncovered the real issues described above and did not identify additional live credentials in the inspected current trees.
+A targeted high-signal current-tree scan was expanded beyond the flagships to the connected account for common AWS, GitHub, OpenAI, Anthropic, Google, Slack and private-key patterns. It uncovered the real issues described above. Other hits inspected during the pass were provider-key placeholders, GitHub Actions secret references, or documentation rather than additional live credentials.
 
-This should **not** be interpreted as proof that all Git history, releases, workflow artifacts, binary files, forks or every one of ~80 repositories has undergone a forensic secret scan. Historical exposed credentials remain compromised until revoked even if current files are clean.
+This should **not** be interpreted as proof that all Git history, releases, workflow artifacts, binary files, forks or every repository has undergone a forensic secret scan. Historical exposed credentials remain compromised until revoked even if current files are clean.
 
 A dedicated history scan with GitHub secret scanning and/or a local history-aware scanner is still worthwhile as a separate security exercise.
 
@@ -122,11 +135,22 @@ Normal repository file access cannot perform several account-level operations. T
 
 - archive dead/superseded repositories;
 - set the six portfolio pins;
-- create the profile README repository;
+- create the profile README repository and copy in `GITHUB_PROFILE_README.md`;
 - apply concise repository descriptions/topics;
 - set professional display name/bio/homepage;
 - normalise the old `sentient-core-v4` default branch;
 - configure new private Myceliyum signing secrets.
+
+## External credential actions still required
+
+Current source cleanup is complete, but four historical secret identities still require provider/device-side revocation or rotation:
+
+1. the exposed Myceliyum Google API key;
+2. the compromised Myceliyum Android debug signing identity;
+3. the historical Sentient MQTT broker credential;
+4. the private predecessor's OpenAI and ElevenLabs API credentials.
+
+Do not reuse any of those historical secret values merely because they have been removed from current files.
 
 ## Target public impression
 
