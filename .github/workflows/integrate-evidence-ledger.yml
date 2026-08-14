@@ -21,26 +21,17 @@ jobs:
           from pathlib import Path
           p = Path('src/app/page.tsx')
           s = p.read_text()
-
           import_anchor = "import { useMemo, useState } from 'react';\n"
           if "import EvidenceLedger" not in s:
               if import_anchor not in s:
                   raise SystemExit('React import anchor not found')
               s = s.replace(import_anchor, import_anchor + "import EvidenceLedger from './EvidenceLedger';\n", 1)
-
-          section_anchor = '''      </section>
-
-      <section id="lab"'''
-          replacement = '''      </section>
-
-      <EvidenceLedger />
-
-      <section id="lab"'''
+          section_anchor = "      </section>\n\n      <section id=\"lab\""
+          replacement = "      </section>\n\n      <EvidenceLedger />\n\n      <section id=\"lab\""
           if '<EvidenceLedger />' not in s:
               if section_anchor not in s:
                   raise SystemExit('Lab section anchor not found')
               s = s.replace(section_anchor, replacement, 1)
-
           p.write_text(s)
           PY
 
