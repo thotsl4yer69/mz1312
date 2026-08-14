@@ -1,0 +1,60 @@
+name: One-shot capability navigation integration v2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/wire-capabilities-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link capability proof map
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/app/page.tsx')
+          s = p.read_text()
+
+          proof_link = '<a href="./capabilities/">PROOF MAP</a>'
+          if proof_link not in s:
+              anchor = '<a href="#work">WORK</a>'
+              if anchor not in s:
+                  raise SystemExit('WORK nav link not found')
+              s = s.replace(anchor, anchor + '\n          ' + proof_link, 1)
+
+          footer_marker = '<div className="footer-links">'
+          footer_start = s.find(footer_marker)
+          if footer_start < 0:
+              raise SystemExit('footer links container not found')
+          footer_end = s.find('</div>', footer_start)
+          if footer_end < 0:
+              raise SystemExit('footer links container end not found')
+          footer = s[footer_start:footer_end]
+          if proof_link not in footer:
+              top_link = '<a href="#top">TOP ↑</a>'
+              if top_link not in footer:
+                  raise SystemExit('TOP footer link not found')
+              footer = footer.replace(top_link, top_link + proof_link, 1)
+              s = s[:footer_start] + footer + s[footer_end:]
+
+          p.write_text(s)
+          PY
+
+      - name: Verify links
+        run: |
+          test "$(grep -o 'href="./capabilities/">PROOF MAP' src/app/page.tsx | wc -l)" -ge 2
+
+      - name: Commit navigation integration
+        run: |
+          git config user.name "MAZLABZ portfolio bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/app/page.tsx
+          git commit -m "feat: surface capability proof map in navigation"
+          git push
