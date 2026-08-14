@@ -417,6 +417,7 @@ export default function Home() {
         </a>
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
           <a href="#work">WORK</a>
+          <a href="./capabilities/">PROOF MAP</a>
           <a href="#lab">LAB</a>
           <a href="#method">METHOD</a>
           <a href="#services">SERVICES</a>
@@ -638,7 +639,7 @@ export default function Home() {
       <footer className="site-footer section-wrap">
         <div className="brand-lockup"><span className="brand-mark">MZ</span><span><b>MAZLABZ</b><small>INDEPENDENT APPLIED TECHNOLOGY LAB</small></span></div>
         <p>Jack Mazzini · Victoria, Australia · Building across AI, software and physical hardware.</p>
-        <div className="footer-links"><a href="#top">TOP ↑</a><a href="./start/">START A BUILD →</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
+        <div className="footer-links"><a href="#top">TOP ↑</a><a href="./capabilities/">PROOF MAP</a><a href="./start/">START A BUILD →</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
       </footer>
     </main>
   );
