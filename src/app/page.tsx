@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable @next/next/no-img-element */
 
 import { useMemo, useState } from 'react';
 
@@ -245,18 +246,18 @@ function DrifterVisual() {
 function MyceliyumVisual() {
   return (
     <div className="demo-shell demo-moss">
-      <div className="demo-topline"><span>FIELD LOG // CENTRAL VICTORIA</span><span>OFFLINE-FIRST</span></div>
-      <div className="field-grid">
-        <div className="field-map">
-          <span className="map-road road-a" /><span className="map-road road-b" />
-          <span className="map-pin pin-a">01</span><span className="map-pin pin-b">02</span><span className="map-pin pin-c">03</span>
-          <div className="map-label">LOCAL OBSERVATIONS</div>
-        </div>
-        <div className="field-card">
-          <p className="eyebrow">FRUITING WINDOW</p>
-          <strong>High potential</strong>
-          <p>Recent moisture + cool overnight conditions improve the field-search window.</p>
-          <div className="field-metrics"><span>12°C NIGHT</span><span>78% RH</span><span>LOG SAVED</span></div>
+      <div className="demo-topline"><span>MYCELIYUM // PUBLISHED PROJECT VISUAL</span><span>REAL REPOSITORY ASSET</span></div>
+      <div className="relative min-h-[290px] overflow-hidden border border-[#263129] bg-[#0b100c]">
+        <img
+          src="https://raw.githubusercontent.com/thotsl4yer69/Myceliyum/main/docs/og-image.png"
+          alt="Myceliyum project visual from the public repository"
+          className="absolute inset-0 h-full w-full object-cover opacity-90"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071008] via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-3 p-4">
+          <div><p className="eyebrow">FIELD RESEARCH APP</p><strong className="mt-1 block text-lg text-[#d9f0c6]">Kotlin · Compose · Room · Maps</strong></div>
+          <span className="border border-[#6f8c5e] bg-[#081008]/80 px-2 py-1 font-mono text-[8px] text-[#b6cf9e]">SOURCE: PUBLIC REPO</span>
         </div>
       </div>
     </div>
@@ -298,19 +299,26 @@ function HexVisual() {
 }
 
 function AkariVisual() {
-  const bars = ['36%', '48%', '70%', '58%', '82%', '54%', '66%'];
+  const shots = [
+    ['11-firstrun-home.png', 'HOME'],
+    ['12-firstrun-trends.png', 'TRENDS'],
+    ['13-firstrun-history.png', 'HISTORY'],
+  ];
   return (
     <div className="demo-shell demo-yellow">
-      <div className="demo-topline"><span>AKARI // LOCAL ENERGY DIARY</span><span>PRIVATE BY DEFAULT</span></div>
-      <div className="akari-grid">
-        <div>
-          <p className="eyebrow">TODAY</p>
-          <div className="energy-score">6.4<span>/10</span></div>
-          <p className="text-sm text-slate-400">Stable morning · moderate capacity</p>
-        </div>
-        <div className="energy-chart">
-          {bars.map((height, i) => <i key={i} style={{ height }}><span>{['M','T','W','T','F','S','S'][i]}</span></i>)}
-        </div>
+      <div className="demo-topline"><span>AKARI // ACTUAL UI CAPTURES</span><span>PUBLIC REPOSITORY EVIDENCE</span></div>
+      <div className="grid min-h-[290px] grid-cols-3 gap-2 p-1">
+        {shots.map(([file, label]) => (
+          <figure key={file} className="group relative overflow-hidden border border-[#343022] bg-[#11100b]">
+            <img
+              src={`https://raw.githubusercontent.com/thotsl4yer69/akari-android/main/design/reference/${file}`}
+              alt={`Akari ${label.toLowerCase()} screen`}
+              className="h-full min-h-[280px] w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
+              loading="lazy"
+            />
+            <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent px-2 pb-2 pt-8 font-mono text-[7px] tracking-[0.12em] text-[#ffe36f]">{label} // REAL CAPTURE</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   );
@@ -372,7 +380,7 @@ export default function Home() {
 
         <div className="hero-console-wrap">
           <div className="hero-console">
-            <div className="console-head"><span className="lights"><i /><i /><i /></span><span>MZ_LAB://CURRENT_BUILD</span><span>12:00 AEST</span></div>
+            <div className="console-head"><span className="lights"><i /><i /><i /></span><span>MZ_LAB://CURRENT_BUILD</span><span>AEST // LAB NODE</span></div>
             <div className="console-body">
               <div className="console-watermark">MZ</div>
               <p><span className="prompt">jack@mazlabz:~$</span> ./what-do-you-build</p>
