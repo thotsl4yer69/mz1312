@@ -1,0 +1,47 @@
+name: One-shot case-study link integration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-case-studies.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link flagship case studies
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/app/page.tsx')
+          s = p.read_text()
+          s = s.replace("  repo?: string;\n  accent: string;", "  repo?: string;\n  caseStudy?: string;\n  accent: string;", 1)
+          s = s.replace("    repo: 'https://github.com/thotsl4yer69/sentient-core',\n    accent: 'cyan',", "    repo: 'https://github.com/thotsl4yer69/sentient-core',\n    caseStudy: './work/sentient-core/',\n    accent: 'cyan',", 1)
+          s = s.replace("    repo: 'https://github.com/thotsl4yer69/drifter',\n    accent: 'orange',", "    repo: 'https://github.com/thotsl4yer69/drifter',\n    caseStudy: './work/drifter/',\n    accent: 'orange',", 1)
+          old = "{active.repo ? <a href={active.repo} target=\"_blank\" rel=\"noreferrer\" className=\"project-link\">OPEN REPOSITORY ↗</a> : <span className=\"private-label\">PRIVATE R&D // PUBLIC CASE STUDY IN PREP</span>}"
+          new = "{active.repo ? <a href={active.repo} target=\"_blank\" rel=\"noreferrer\" className=\"project-link\">OPEN REPOSITORY ↗</a> : <span className=\"private-label\">PRIVATE R&D // PUBLIC CASE STUDY IN PREP</span>}\n              {active.caseStudy && <a href={active.caseStudy} className=\"project-link\">READ ENGINEERING CASE STUDY →</a>}"
+          if old not in s:
+              raise SystemExit('project-link anchor not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s)
+          PY
+
+      - name: Verify links
+        run: |
+          grep -q "caseStudy: './work/sentient-core/'" src/app/page.tsx
+          grep -q "caseStudy: './work/drifter/'" src/app/page.tsx
+          grep -q "READ ENGINEERING CASE STUDY" src/app/page.tsx
+
+      - name: Commit page integration
+        run: |
+          git config user.name "MAZLABZ portfolio bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/app/page.tsx
+          git commit -m "feat: link flagship engineering case studies"
+          git push
