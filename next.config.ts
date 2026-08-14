@@ -1,7 +1,19 @@
 import type { NextConfig } from "next";
 
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-const repoBasePath = isGithubActions ? "/mz1312" : "";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mazlabz.us.kg";
+const explicitBasePath = process.env.NEXT_PUBLIC_BASE_PATH;
+
+let inferredBasePath = "";
+try {
+  const parsed = new URL(siteUrl);
+  if (parsed.hostname.endsWith(".github.io")) {
+    inferredBasePath = parsed.pathname.replace(/\/$/, "");
+  }
+} catch {
+  inferredBasePath = "";
+}
+
+const basePath = explicitBasePath ?? inferredBasePath;
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -9,8 +21,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: repoBasePath,
-  assetPrefix: repoBasePath || undefined,
+  basePath,
+  assetPrefix: basePath || undefined,
 };
 
 export default nextConfig;
