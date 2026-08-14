@@ -194,3 +194,9 @@ button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html{scroll-behavior:auto}.signal-track,.console-nodes span,.signal-line span{animation:none!important}.primary-button:hover,.project-card:hover{transform:none}
 }
+
+/* Keyboard focus */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 3px;
+}

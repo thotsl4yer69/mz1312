@@ -437,6 +437,8 @@ export default function Home() {
               onClick={() => setActiveId(project.id)}
               className={activeId === project.id ? 'active' : ''}
               role="tab"
+              id={`project-tab-${project.id}`}
+              aria-controls={`project-panel-${project.id}`}
               aria-selected={activeId === project.id}
             >
               <span>{project.index}</span><b>{project.name}</b><small>{project.kicker}</small>
@@ -444,7 +446,13 @@ export default function Home() {
           ))}
         </div>
 
-        <article className={`feature-project accent-${active.accent}`}>
+        <article
+          className={`feature-project accent-${active.accent}`}
+          role="tabpanel"
+          id={`project-panel-${active.id}`}
+          aria-labelledby={`project-tab-${active.id}`}
+          aria-live="polite"
+        >
           <div className="feature-copy">
             <div className="flex flex-wrap items-center gap-3"><StatusPill project={active} /><span className="eyebrow">{active.kicker}</span></div>
             <h3>{active.headline}</h3>
