@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://thotsl4yer69.github.io/mz1312";
-const canonicalUrl = siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`;
+import { SITE_ROOT } from "./site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(canonicalUrl),
+  metadataBase: new URL(SITE_ROOT),
   title: {
     default: "Jack Mazzini — MAZLABZ Applied Technology Lab",
     template: "%s — MAZLABZ",
@@ -25,13 +23,13 @@ export const metadata: Metadata = {
   authors: [{ name: "Jack Mazzini" }],
   creator: "Jack Mazzini",
   alternates: {
-    canonical: canonicalUrl,
+    canonical: SITE_ROOT,
   },
   openGraph: {
     title: "Jack Mazzini — MAZLABZ Applied Technology Lab",
     description: "AI-native systems integration across software, edge compute and physical hardware.",
     type: "website",
-    url: canonicalUrl,
+    url: SITE_ROOT,
     siteName: "MAZLABZ Applied Technology Lab",
   },
   twitter: {
@@ -52,7 +50,7 @@ const structuredData = {
     {
       "@type": "Person",
       name: "Jack Mazzini",
-      url: canonicalUrl,
+      url: SITE_ROOT,
       sameAs: ["https://github.com/thotsl4yer69"],
       jobTitle: "AI-Native Systems Integrator & Technical Prototyper",
       knowsAbout: [
@@ -68,7 +66,7 @@ const structuredData = {
     {
       "@type": "WebSite",
       name: "MAZLABZ Applied Technology Lab",
-      url: canonicalUrl,
+      url: SITE_ROOT,
       description:
         "Applied technology portfolio covering edge AI, embedded systems, mobile applications, automation and physical computing.",
       author: { "@type": "Person", name: "Jack Mazzini" },
