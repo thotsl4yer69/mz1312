@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/start/',
+    '/capabilities/',
     '/work/sentient-core/',
     '/work/drifter/',
     '/work/myceliyum/',
@@ -20,6 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: index === 0 ? 'weekly' : 'monthly',
-    priority: index === 0 ? 1 : route === '/start/' ? 0.9 : 0.8,
+    priority: index === 0 ? 1 : route === '/start/' ? 0.9 : route === '/capabilities/' ? 0.9 : 0.8,
   }));
 }
