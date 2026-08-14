@@ -58,9 +58,14 @@ export default function EvidenceLedger() {
             WHAT IS REAL, AND WHAT THE DEMO IS DOING.
           </h2>
         </div>
-        <p className="max-w-xl text-sm leading-7 text-slate-400">
-          The presentation can be cinematic. The maturity labels cannot. This ledger keeps the distinction between a real implementation, a hardware validation state and an illustrative browser view explicit.
-        </p>
+        <div>
+          <p className="max-w-xl text-sm leading-7 text-slate-400">
+            The presentation can be cinematic. The maturity labels cannot. This ledger keeps the distinction between a real implementation, a hardware validation state and an illustrative browser view explicit.
+          </p>
+          <a href="./capabilities/" className="mt-5 inline-flex border border-lime-300/30 bg-lime-300/[.04] px-4 py-3 font-mono text-[9px] font-bold tracking-[.12em] text-lime-200 transition hover:border-lime-200/60 hover:bg-lime-300/[.08]">
+            OPEN CAPABILITIES / PROOF MAP →
+          </a>
+        </div>
       </div>
 
       <div className="border-x border-white/10">
