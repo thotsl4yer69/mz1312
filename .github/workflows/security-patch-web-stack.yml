@@ -1,0 +1,42 @@
+name: One-shot web dependency security patch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/security-patch-web-stack.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Upgrade within existing maintenance lines
+        run: npm install --save-exact next@15.5.22 eslint-config-next@15.5.22 react@19.1.9 react-dom@19.1.9
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build static portfolio
+        run: npm run build
+
+      - name: Report production dependency audit
+        run: npm audit --omit=dev || true
+
+      - name: Commit verified dependency patch
+        run: |
+          git config user.name "MAZLABZ portfolio bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: patch Next and React security releases"
+          git push
