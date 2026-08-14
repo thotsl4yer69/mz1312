@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 
 type Entry = {
   kind: 'input' | 'output' | 'system' | 'accent';
@@ -70,7 +70,7 @@ export default function GhostTerminalClient() {
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const uptime = useMemo(() => Math.max(1, Math.floor((Date.now() - bootedAt) / 1000)), [bootedAt, entries]);
+  const uptime = Math.max(1, Math.floor((Date.now() - bootedAt) / 1000));
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -310,7 +310,7 @@ export default function GhostTerminalClient() {
 
           <aside className="border border-[#54da47]/25 bg-[#050a05]/85 p-4 font-mono text-[9px] uppercase leading-5 tracking-[.12em] text-[#4f8d4b]">
             <div className="mb-5 border-b border-[#54da47]/15 pb-4">
-              <p className="text-[#ffc15a]">// MEMORY MAP</p>
+              <p className="text-[#ffc15a]">{'// MEMORY MAP'}</p>
               <p className="mt-2 text-[#8ddd82]">ORIGIN</p>
               <p>MZ1312 TERMINAL UI</p>
               <p className="mt-2 text-[#8ddd82]">STATE</p>
