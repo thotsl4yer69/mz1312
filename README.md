@@ -1,203 +1,131 @@
-# MAZLABZ.AI Website
+# MAZLABZ — Jack Mazzini / Applied Technology Portfolio
 
-**FOR THE PEOPLE. NOT THE PIGEONS.**
+> **Status: Active portfolio site**  
+> Canonical public presentation layer for Jack Mazzini / MAZLABZ technical work across edge AI, embedded Linux, native Android, connected hardware and AI-assisted systems integration.
 
-The official website for MAZLABZ.AI - a digital collective focused on open-source solutions and anti-authoritarian sentiment. This website serves as an e-commerce platform and brand hub for de-googled, freedom-focused technology solutions.
+The repository began as an MZ1312 / Pigeonhole storefront experiment. It has now been deliberately repurposed as the public portfolio rather than preserving an obsolete commerce concept as the main website.
 
-## 🚀 Live Website
+## What the site is trying to prove
 
-Visit the deployed website at: [https://thotsl4yer69.github.io/mz1312/](https://thotsl4yer69.github.io/mz1312/)
+Not “I have lots of repositories.”
 
-## 📋 Project Overview
+It should demonstrate that one independent builder can repeatedly take unconventional ideas across boundaries — hardware, software, AI models, APIs, sensors, operating systems and physical interfaces — and turn them into testable systems.
 
-### Brand Identity
-- **Company:** MAZLABZ.AI
-- **URL:** mz1312.xx.kg (redirects to GitHub Pages)
-- **Tagline:** "FOR THE PEOPLE. NOT THE PIGEONS."
-- **Team:** Maz, Nova, and Marcus Chen
-- **Philosophy:** Anti-authoritarianism, open-source advocacy, digital freedom
+## Public routes
 
-### Design Philosophy
-- **Theme:** Dark, minimalist, brutalist-inspired design
-- **Colors:** 
-  - Background: `#0d0d0d` (dark black/gray)
-  - Text: `#f0f0f0` (soft white)
-  - Accent: `#e51d3b` (rebellious red)
-  - Secondary: `#1a1a1a` (card backgrounds)
+- `/` — primary portfolio, flagship selector, evidence ledger, Lab, method and services.
+- `/capabilities/` — interactive capability/proof map connecting marketable skills to project evidence.
+- `/start/` — local-only project brief builder and engagement route.
+- `/work/sentient-core/` — edge-AI systems case study.
+- `/work/drifter/` — Raspberry Pi / vehicle telemetry case study.
+- `/work/myceliyum/` — offline-first Android field-app case study.
+- `/work/benchforge/` — private AI/electronics tooling case study.
+- `/work/hexplayer/` — NFC physical-interface case study.
+- `/work/akari/` — privacy-first Android case study.
 
-## 🏗️ Website Structure
+The `/start/` route does **not** post form data to a server. It builds a structured brief in the browser and only opens the visitor's local mail client when they explicitly choose to send it.
 
-### Sections
-1. **Header** - Logo, tagline, navigation
-2. **Hero** - Main call-to-action and brand messaging
-3. **Products** - Three main products:
-   - The Liberated Firestick (AUD $99.00)
-   - The Pious Raspberry Pi (AUD $159.00)
-   - The Bootleg Cube (AUD $129.00)
-4. **About** - Team information and podcast promotion
-5. **Contact** - Contact form with validation
-6. **Footer** - Copyright and 1312 branding
+The `/capabilities/` route is deliberately evidence-first. It groups work into commercially legible capabilities — systems integration, edge AI, native Android, embedded/IoT, Linux infrastructure, automotive data, AI agents/tooling and technical product design — and links each capability back to projects that demonstrate it. Capability levels are descriptive working-range labels, not formal accreditation.
 
-### Technical Stack
-- **HTML5** - Semantic markup with accessibility features
-- **CSS3** - Custom properties, responsive grid, dark theme
-- **Vanilla JavaScript** - Form handling, smooth scrolling, interactions
-- **SVG Graphics** - Custom-created product and brand imagery
+## Flagship case studies
 
-## 🚀 Deployment
+The home page currently centres six builds:
 
-### Automatic Deployment (GitHub Actions)
+1. **Sentient Core** — deployed Jetson edge-AI prototype.
+2. **DRIFTER** — Raspberry Pi vehicle-intelligence / OBD-II / CAN prototype.
+3. **Myceliyum** — offline-first native Android field-research app.
+4. **BenchForge** — private electronics-inventory-to-project R&D system.
+5. **HexPlayer** — NFC-driven physical music interface.
+6. **Akari** — privacy-first local Android energy diary.
 
-The website automatically deploys to GitHub Pages when changes are pushed to the `main` branch.
+Secondary Lab material includes HomeHub, Mixdown, Eyepatch, the browser game, MAZ AI Orchestrator, MURMUR and Ghost Fusion.
 
-#### Setup Instructions:
+## Demonstration policy
 
-1. **Enable GitHub Pages:**
-   - Go to repository Settings → Pages
-   - Select "GitHub Actions" as the source
-   - The workflow will automatically deploy on the next push to main
+The website uses stylised interactive representations of systems to make the work understandable without exposing private deployments or pretending that a visitor is looking at live hardware.
 
-2. **Custom Domain (Optional):**
-   - Add a `CNAME` file with your custom domain
-   - Configure DNS to point to `thotsl4yer69.github.io`
+Where telemetry, terminals, maps or device interfaces are illustrative, the UI explicitly labels them as **representative / not live data**. Real application captures and public repository assets are labelled as such.
 
-### Alternative Deployment Options
+BenchForge and HexPlayer now include small browser interactions rather than static diagrams: BenchForge cycles representative component-constrained build concepts, and HexPlayer advances through the physical interaction state from NFC tile detection to playback handoff. These remain illustrative demos of the product logic, not live hardware sessions.
 
-#### Netlify Deployment
-1. Connect your GitHub repository to Netlify
-2. Set environment variables:
-   - `NETLIFY_AUTH_TOKEN`: Your Netlify API token
-   - `NETLIFY_SITE_ID`: Your Netlify site ID
-3. Uncomment the Netlify deployment section in `.github/workflows/main.yml`
+Public flagship entries in the Evidence Ledger link directly to their current `PROJECT_STATUS.md` where available.
 
-#### Cloudflare Pages Deployment
-1. Create a Cloudflare Pages project
-2. Set environment variables:
-   - `CLOUDFLARE_API_TOKEN`: Your Cloudflare API token
-   - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID
-3. Uncomment the Cloudflare deployment section in `.github/workflows/main.yml`
+Project maturity vocabulary follows [`REPOSITORY_POLICY.md`](REPOSITORY_POLICY.md) and the canonical account classification lives in [`PORTFOLIO_INDEX.md`](PORTFOLIO_INDEX.md).
 
-## 🛠️ Local Development
+## Stack
 
-### Prerequisites
-- Modern web browser
-- Local web server (optional, for testing)
+- Next.js 15 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Static export for low-complexity hosting
+- Custom responsive design system
+- GitHub Actions lint/build verification
+- Sitemap, robots metadata and schema.org structured profile data
 
-### Running Locally
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/thotsl4yer69/mz1312.git
-   cd mz1312
-   ```
+## Development
 
-2. Serve the files using a local web server:
-   ```bash
-   # Using Python 3
-   python -m http.server 8000
-   
-   # Using Node.js (if you have http-server installed)
-   npx http-server .
-   
-   # Using PHP
-   php -S localhost:8000
-   ```
-
-3. Open your browser to `http://localhost:8000`
-
-### File Structure
-```
-mz1312/
-├── index.html              # Main HTML file
-├── style.css              # Comprehensive CSS styles
-├── script.js              # JavaScript functionality
-├── assets/
-│   └── images/            # SVG graphics and logos
-│       ├── logo.svg
-│       ├── pigeon-hero.svg
-│       ├── firestick.svg
-│       ├── rasp-pi.svg
-│       ├── bootleg-cube.svg
-│       └── podcast.svg
-├── .github/
-│   └── workflows/
-│       └── main.yml       # GitHub Actions deployment
-├── .lighthouserc.json     # Lighthouse CI configuration
-├── .gitignore            # Git ignore rules
-└── README.md             # This file
+```bash
+npm ci
+npm run dev
 ```
 
-## ✨ Features
+Open `http://localhost:3000`.
 
-### Functionality
-- **Responsive Design** - Works on all device sizes
-- **Accessibility** - WCAG compliant with ARIA labels and semantic HTML
-- **Form Validation** - Real-time client-side validation
-- **Smooth Scrolling** - Enhanced navigation experience
-- **Performance Optimized** - Lighthouse CI monitoring
-- **SEO Ready** - Proper meta tags and semantic structure
+Verification:
 
-### Interactive Elements
-- Product purchase simulation
-- Contact form with validation feedback
-- Smooth navigation between sections
-- Hover effects and micro-interactions
-- Keyboard navigation support
-
-## 🧪 Testing
-
-### Automated Testing
-- **Lighthouse CI** - Performance, accessibility, and SEO monitoring
-- **GitHub Actions** - Automated deployment and testing
-
-### Manual Testing Checklist
-- [ ] All navigation links work correctly
-- [ ] Contact form validates input properly
-- [ ] Product buttons show purchase simulation
-- [ ] Website is responsive on all screen sizes
-- [ ] Images load correctly with proper alt text
-- [ ] Smooth scrolling works between sections
-
-## 🎨 Customization
-
-### Color Scheme
-Update CSS custom properties in `style.css`:
-```css
-:root {
-    --color-bg-primary: #0d0d0d;
-    --color-bg-secondary: #1a1a1a;
-    --color-text-primary: #f0f0f0;
-    --color-accent: #e51d3b;
-}
+```bash
+npm run lint
+npm run build
 ```
 
-### Content Updates
-- **Products**: Edit the product cards in `index.html`
-- **Pricing**: Update prices in the product sections
-- **Images**: Replace SVG files in `assets/images/`
-- **Text**: Modify content directly in `index.html`
+The build is configured as a static export and produces `out/`. The repository includes:
 
-## 🤝 Contributing
+- `.github/workflows/site-ci.yml` — read-only lint/build verification.
+- `.github/workflows/deploy-pages.yml` — read-only static bundle build, route/base-path assertions and artifact upload.
 
-This is a demonstration project, but if you'd like to contribute:
+Both permanent workflows use Node 22.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## Deployment
 
-## 📄 License
+The default canonical fallback is:
 
-This project is created as a demonstration. All rights reserved to MAZLABZ.AI.
+```text
+https://thotsl4yer69.github.io/mz1312
+```
 
-## 🐦 The Pigeon Philosophy
+For another host or a custom domain, set:
 
-*"The pigeons represent the surveillance apparatus, the corporate overlords, the digital authoritarians who seek to control and monitor our every digital breath. We stand against the pigeons. We code for freedom. We build for the people."*
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
 
-**1312** - A symbol of resistance against digital authoritarianism.
+before the production build so canonical metadata, `robots.txt` and `sitemap.xml` point at the real public origin.
+
+GitHub Pages still needs to be enabled at repository/account settings level before the default Pages URL will serve the static bundle.
+
+## Content principles
+
+- **Proof over buzzwords.** Show architecture, interfaces, tests, hardware and trade-offs.
+- **Embellish presentation, not evidence.** Cinematic demo UI is fine; invented customers, revenue, field deployments or validation are not.
+- **State maturity explicitly.** Concept, software prototype, bench validated, hardware-integrated prototype, deployed prototype, production or archived.
+- **Credit upstream work.** Forks, templates and upstream research remain clearly distinguished from authored builds.
+- **Disclose AI-native workflow.** Coding agents are implementation/research/testing tools; architecture, integration, hardware decisions and validation remain owner responsibilities.
+- **No dead-end portfolio paths.** Flagships and service CTAs should lead either to deeper evidence or to `/start/`.
+- **Make skills auditable.** Capabilities should point to projects that prove them rather than relying on a technology keyword cloud.
+
+## Release gate
+
+Use [`PORTFOLIO_RELEASE_CHECKLIST.md`](PORTFOLIO_RELEASE_CHECKLIST.md) before treating a change as publishable. It covers build integrity, conversion links, evidence boundaries, accessibility, metadata, CI permissions and deployment.
+
+## Portfolio source-of-truth
+
+- [`PORTFOLIO_INDEX.md`](PORTFOLIO_INDEX.md) — account/project map
+- [`REPOSITORY_POLICY.md`](REPOSITORY_POLICY.md) — maturity/provenance/AI-assistance rules
+- [`PORTFOLIO_RELEASE_CHECKLIST.md`](PORTFOLIO_RELEASE_CHECKLIST.md) — website release gate
+- [`GITHUB_CLEANUP_2026-08-13.md`](GITHUB_CLEANUP_2026-08-13.md) — repository cleanup audit
+- [`GITHUB_PROFILE_README.md`](GITHUB_PROFILE_README.md) — aligned GitHub profile copy
 
 ---
 
-**FOR THE PEOPLE. NOT THE PIGEONS.**
-
-© 2025 MAZLABZ.AI. All Rights Reserved.
+**Positioning:** AI-native systems integrator & technical prototyper · Edge AI · Embedded Linux · Android · Connected Hardware · Automation

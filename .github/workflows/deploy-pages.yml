@@ -1,0 +1,66 @@
+name: Prepare portfolio static bundle
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: portfolio-static-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static portfolio
+        run: npm run build
+
+      - name: Verify static portfolio surface
+        run: |
+          test -f out/index.html
+          test -d out/_next
+          test -f out/start/index.html
+          test -f out/capabilities/index.html
+          test -f out/work/sentient-core/index.html
+          test -f out/work/drifter/index.html
+          test -f out/work/myceliyum/index.html
+          test -f out/work/benchforge/index.html
+          test -f out/work/hexplayer/index.html
+          test -f out/work/akari/index.html
+          test -f out/404.html
+          test -f out/sitemap.xml
+          test -f out/robots.txt
+          test -f out/icon.svg
+          grep -q 'START A BUILD' out/index.html
+          grep -q 'PROJECT BRIEF' out/start/index.html
+          grep -q 'CAPABILITIES / PROOF MAP' out/index.html
+          grep -q 'SYSTEMS INTEGRATION' out/capabilities/index.html
+          grep -q '/mz1312/start/' out/work/sentient-core/index.html
+          grep -q 'https://thotsl4yer69.github.io/mz1312/' out/index.html
+          grep -q 'https://thotsl4yer69.github.io/mz1312/capabilities/' out/sitemap.xml
+          grep -q 'https://thotsl4yer69.github.io/mz1312/sitemap.xml' out/robots.txt
+          echo "Static portfolio routes, proof map, conversion path, base path and search metadata verified."
+
+      - name: Upload deployable site bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: mazlabz-portfolio-static
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
