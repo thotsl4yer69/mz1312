@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useMemo, useState } from 'react';
+import EvidenceLedger from './EvidenceLedger';
 
 type ProjectId = 'sentient' | 'drifter' | 'myceliyum' | 'bench' | 'hexplayer' | 'akari';
 
@@ -471,6 +472,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <EvidenceLedger />
 
       <section id="lab" className="section-wrap py-24 md:py-32">
         <div className="section-heading">
