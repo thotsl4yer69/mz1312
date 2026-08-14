@@ -46,6 +46,7 @@ jobs:
           test -d out/_next
           test -f out/start/index.html
           test -f out/capabilities/index.html
+          test -f out/ghost/index.html
           test -f out/work/sentient-core/index.html
           test -f out/work/drifter/index.html
           test -f out/work/myceliyum/index.html
@@ -60,11 +61,14 @@ jobs:
           grep -q 'PROJECT BRIEF' out/start/index.html
           grep -q 'CAPABILITIES / PROOF MAP' out/index.html
           grep -q 'SYSTEMS INTEGRATION' out/capabilities/index.html
+          grep -q 'MZ1312 GHOST SHELL' out/ghost/index.html
+          grep -q 'noindex' out/ghost/index.html
+          ! grep -q '/ghost/' out/sitemap.xml
           grep -q 'https://mazlabz.us.kg/' out/index.html
           grep -q 'https://mazlabz.us.kg/capabilities/' out/sitemap.xml
           grep -q 'https://mazlabz.us.kg/sitemap.xml' out/robots.txt
           ! grep -q '"/mz1312/_next/' out/index.html
-          echo "MAZLABZ production routes and custom-domain asset paths verified."
+          echo "MAZLABZ production routes, hidden ghost shell and custom-domain asset paths verified."
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
