@@ -1,4 +1,4 @@
-name: Deploy portfolio to GitHub Pages
+name: Prepare portfolio static bundle
 
 on:
   push:
@@ -7,15 +7,9 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  build:
+  build-static:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,29 +21,22 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static site
+      - name: Build static portfolio
         run: npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
+      - name: Verify static export
+        run: |
+          test -f out/index.html
+          test -d out/_next
+          echo "Static portfolio bundle verified."
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Upload deployable site bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: mazlabz-portfolio-static
+          path: out/
+          if-no-files-found: error
+          retention-days: 14
