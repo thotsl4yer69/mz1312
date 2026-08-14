@@ -1,0 +1,9 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#1a1a1a" stroke="#e51d3b" stroke-width="2"/>
+  <rect x="75" y="50" width="150" height="100" fill="#f0f0f0" rx="5"/>
+  <rect x="85" y="60" width="130" height="80" fill="#0d0d0d"/>
+  <circle cx="150" cy="100" r="25" fill="#e51d3b" opacity="0.5"/>
+  <polygon points="150,85 165,110 135,110" fill="#f0f0f0"/>
+  <text x="150" y="40" text-anchor="middle" fill="#f0f0f0" font-family="Arial, sans-serif" font-size="14" font-weight="bold">BOOTLEG CUBE</text>
+  <text x="150" y="180" text-anchor="middle" fill="#e51d3b" font-family="Arial, sans-serif" font-size="12">MEDIA HUB</text>
+</svg>
