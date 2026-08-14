@@ -27,11 +27,23 @@ jobs:
       - name: Build static portfolio
         run: npm run build
 
-      - name: Verify static export
+      - name: Verify static portfolio surface
         run: |
           test -f out/index.html
           test -d out/_next
-          echo "Static portfolio bundle verified."
+          test -f out/start/index.html
+          test -f out/work/sentient-core/index.html
+          test -f out/work/drifter/index.html
+          test -f out/work/myceliyum/index.html
+          test -f out/work/benchforge/index.html
+          test -f out/work/hexplayer/index.html
+          test -f out/work/akari/index.html
+          test -f out/404.html
+          test -f out/sitemap.xml
+          test -f out/robots.txt
+          grep -q 'START A BUILD' out/index.html
+          grep -q 'PROJECT BRIEF' out/start/index.html
+          echo "Static portfolio routes, conversion path and search metadata verified."
 
       - name: Upload deployable site bundle
         uses: actions/upload-artifact@v4
