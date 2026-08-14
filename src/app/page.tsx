@@ -154,6 +154,13 @@ const labProjects = [
     repo: 'https://github.com/thotsl4yer69/maz-ai-orchestrator',
   },
   {
+    name: 'MURMUR',
+    type: 'WEARABLE / PRIVACY TECH',
+    copy: 'Wearable-electronics R&D combining garment integration, sensing, haptics, shielding concepts and privacy-first product architecture.',
+    detail: 'Pico-class MCU · sensing · haptics · conductive textiles',
+    repo: 'https://github.com/thotsl4yer69/murmur',
+  },
+  {
     name: 'Ghost Fusion',
     type: 'SENSOR FUSION',
     copy: 'Private defensive sensor-fusion research with explicit freshness rules, deterministic simulation and fail-safe UNKNOWN states.',
