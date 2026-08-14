@@ -18,6 +18,7 @@ type Project = {
   proof: string[];
   stack: string[];
   repo?: string;
+  caseStudy?: string;
   accent: string;
 };
 
@@ -35,6 +36,7 @@ const projects: Project[] = [
     proof: ['NVIDIA Jetson target', 'Local LLM + memory services', 'MQTT / Redis service spine', 'Linux systemd deployment'],
     stack: ['Python', 'FastAPI', 'MQTT', 'Redis', 'Ollama', 'Jetson'],
     repo: 'https://github.com/thotsl4yer69/sentient-core',
+    caseStudy: './work/sentient-core/',
     accent: 'cyan',
   },
   {
@@ -50,6 +52,7 @@ const projects: Project[] = [
     proof: ['Raspberry Pi target', 'OBD-II / CAN ingest', 'MQTT telemetry bus', 'Vehicle-aware diagnostics'],
     stack: ['Python', 'SocketCAN', 'OBD-II', 'MQTT', 'SQLite', 'Linux'],
     repo: 'https://github.com/thotsl4yer69/drifter',
+    caseStudy: './work/drifter/',
     accent: 'orange',
   },
   {
@@ -441,6 +444,7 @@ export default function Home() {
             <div className="stack-row">{active.stack.map((item) => <span key={item}>{item}</span>)}</div>
             <div className="mt-8 flex flex-wrap gap-3">
               {active.repo ? <a href={active.repo} target="_blank" rel="noreferrer" className="project-link">OPEN REPOSITORY ↗</a> : <span className="private-label">PRIVATE R&D // PUBLIC CASE STUDY IN PREP</span>}
+              {active.caseStudy && <a href={active.caseStudy} className="project-link">READ ENGINEERING CASE STUDY →</a>}
             </div>
           </div>
           <div className="feature-demo">
