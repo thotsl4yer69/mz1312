@@ -1,0 +1,39 @@
+name: One-shot MURMUR portfolio integration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-murmur-lab-card.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add MURMUR lab card
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/app/page.tsx')
+          s = p.read_text()
+          anchor = "  {\n    name: 'Ghost Fusion',\n    type: 'SENSOR FUSION',"
+          block = "  {\n    name: 'MURMUR',\n    type: 'WEARABLE / PRIVACY TECH',\n    copy: 'Wearable-electronics R&D combining garment integration, sensing, haptics, shielding concepts and privacy-first product architecture.',\n    detail: 'Pico-class MCU · sensing · haptics · conductive textiles',\n    repo: 'https://github.com/thotsl4yer69/murmur',\n  },\n"
+          if "name: 'MURMUR'" not in s:
+              if anchor not in s:
+                  raise SystemExit('Ghost Fusion anchor not found')
+              s = s.replace(anchor, block + anchor, 1)
+          p.write_text(s)
+          PY
+      - name: Verify addition
+        run: grep -q "name: 'MURMUR'" src/app/page.tsx
+      - name: Commit page integration
+        run: |
+          git config user.name "MAZLABZ portfolio bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/app/page.tsx
+          git commit -m "feat: add MURMUR wearable R&D to lab"
+          git push
