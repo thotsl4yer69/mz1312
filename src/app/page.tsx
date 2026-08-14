@@ -329,7 +329,7 @@ function AkariVisual() {
               className="h-full min-h-[280px] w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
               loading="lazy"
             />
-            <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent px-2 pb-2 pt-8 font-mono text-[7px] tracking-[0.12em] text-[#ffe36f]">{label} // REAL CAPTURE</figcaption>
+            <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent px-2 pb-2 pt-8 font-mono text-[7px] tracking-[0.12em] text-[#ffe36f]">{label} {'// REAL CAPTURE'}</figcaption>
           </figure>
         ))}
       </div>
