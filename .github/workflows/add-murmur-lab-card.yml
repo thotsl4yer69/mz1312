@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Add MURMUR lab card
         run: |
           python - <<'PY'
@@ -28,8 +29,11 @@ jobs:
               s = s.replace(anchor, block + anchor, 1)
           p.write_text(s)
           PY
+
       - name: Verify addition
-        run: grep -q "name: 'MURMUR'" src/app/page.tsx
+        run: |
+          grep -q "name: 'MURMUR'" src/app/page.tsx
+
       - name: Commit page integration
         run: |
           git config user.name "MAZLABZ portfolio bot"
