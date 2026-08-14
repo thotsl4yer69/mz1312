@@ -280,10 +280,32 @@ function MyceliyumVisual() {
 }
 
 function BenchVisual() {
+  const builds = [
+    {
+      name: 'POCKET ENVIRONMENT LOGGER',
+      parts: 'ESP32-S3 + BME680 + OLED',
+      check: 'POWER + I2C PLAN VALID',
+      output: 'sensor logger / local display / serial export',
+    },
+    {
+      name: 'NFC MEDIA DOCK',
+      parts: 'ESP32-S3 + PN532 + OLED',
+      check: 'BUS + PIN ROUTE CHECKED',
+      output: 'tag → URI → playback control',
+    },
+    {
+      name: 'MOTION-AWARE FIELD NODE',
+      parts: 'ESP32-S3 + LIS3DH + GPS',
+      check: '3.3V BUS PLAN VALID',
+      output: 'movement-gated location / event logger',
+    },
+  ];
+  const [buildIndex, setBuildIndex] = useState(0);
+  const build = builds[buildIndex];
   const stages = ['INVENTORY', 'CONCEPT', 'POWER', 'PINS', 'NETLIST', 'FIRMWARE'];
   return (
     <div className="demo-shell demo-violet">
-      <div className="demo-topline"><span>BENCHFORGE // BUILD PIPELINE</span><span>PRIVATE R&D</span></div>
+      <div className="demo-topline"><span>BENCHFORGE // REPRESENTATIVE LOGIC DEMO</span><span>PRIVATE R&D</span></div>
       <div className="pipeline">
         {stages.map((stage, index) => (
           <div key={stage} className="pipeline-stage">
@@ -291,23 +313,51 @@ function BenchVisual() {
           </div>
         ))}
       </div>
-      <div className="mt-4 grid gap-2 sm:grid-cols-3">
-        <div className="spec-chip"><span>MCU</span><b>ESP32-S3</b></div>
-        <div className="spec-chip"><span>POWER</span><b>5V / 3.3V checked</b></div>
-        <div className="spec-chip"><span>STATUS</span><b>netlist valid</b></div>
+      <div className="mt-4 grid gap-2 sm:grid-cols-3" aria-live="polite">
+        <div className="spec-chip"><span>PARTS</span><b>{build.parts}</b></div>
+        <div className="spec-chip"><span>CHECK</span><b>{build.check}</b></div>
+        <div className="spec-chip"><span>OUTPUT</span><b>{build.output}</b></div>
+      </div>
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4">
+        <div><span className="eyebrow">GENERATED CONCEPT</span><strong className="mt-1 block text-sm text-violet-100">{build.name}</strong></div>
+        <button
+          type="button"
+          className="border border-violet-300/30 px-3 py-2 font-mono text-[8px] font-bold tracking-[.1em] text-violet-200 hover:border-violet-200/60"
+          onClick={() => setBuildIndex((value) => (value + 1) % builds.length)}
+        >
+          CYCLE INVENTORY DEMO →
+        </button>
       </div>
     </div>
   );
 }
 
 function HexVisual() {
+  const states = [
+    ['READY FOR TILE', 'reader idle', '—'],
+    ['TAG DETECTED', 'NFC UID read', '04:A7:••:••'],
+    ['URI RESOLVED', 'mapping found', 'spotify:album:••••••'],
+    ['PLAY COMMAND', 'handoff complete', 'player → playback'],
+  ];
+  const [step, setStep] = useState(0);
+  const [state, detail, payload] = states[step];
   return (
     <div className="demo-shell demo-pink">
-      <div className="demo-topline"><span>HEXPLAYER // PHYSICAL INTERFACE</span><span>NFC → URI → PLAY</span></div>
-      <div className="hex-stage">
-        <div className="hex-tile"><span>04</span><b>ALBUM TILE</b></div>
+      <div className="demo-topline"><span>HEXPLAYER // INTERACTION DEMO</span><span>NFC → URI → PLAY</span></div>
+      <div className="hex-stage" aria-live="polite">
+        <button
+          type="button"
+          className="hex-tile cursor-pointer"
+          onClick={() => setStep((value) => (value + 1) % states.length)}
+          aria-label="Advance the representative HexPlayer NFC interaction"
+        >
+          <span>04</span><b>ALBUM TILE</b><small className="mt-2 block font-mono text-[7px] opacity-60">TAP TO ADVANCE</small>
+        </button>
         <div className="signal-line"><span /><span /><span /></div>
-        <div className="player-unit"><span>PN532</span><b>TAG DETECTED</b><small>spotify:album:••••••</small></div>
+        <div className="player-unit"><span>{detail}</span><b>{state}</b><small>{payload}</small></div>
+      </div>
+      <div className="mt-4 grid grid-cols-4 gap-1" aria-hidden="true">
+        {states.map((item, index) => <span key={item[0]} className={`h-1 ${index <= step ? 'bg-pink-300' : 'bg-white/10'}`} />)}
       </div>
     </div>
   );
