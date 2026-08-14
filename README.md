@@ -14,6 +14,7 @@ It should demonstrate that one independent builder can repeatedly take unconvent
 ## Public routes
 
 - `/` — primary portfolio, flagship selector, evidence ledger, Lab, method and services.
+- `/capabilities/` — interactive capability/proof map connecting marketable skills to project evidence.
 - `/start/` — local-only project brief builder and engagement route.
 - `/work/sentient-core/` — edge-AI systems case study.
 - `/work/drifter/` — Raspberry Pi / vehicle telemetry case study.
@@ -23,6 +24,8 @@ It should demonstrate that one independent builder can repeatedly take unconvent
 - `/work/akari/` — privacy-first Android case study.
 
 The `/start/` route does **not** post form data to a server. It builds a structured brief in the browser and only opens the visitor's local mail client when they explicitly choose to send it.
+
+The `/capabilities/` route is deliberately evidence-first. It groups work into commercially legible capabilities — systems integration, edge AI, native Android, embedded/IoT, Linux infrastructure, automotive data, AI agents/tooling and technical product design — and links each capability back to projects that demonstrate it. Capability levels are descriptive working-range labels, not formal accreditation.
 
 ## Flagship case studies
 
@@ -42,6 +45,10 @@ Secondary Lab material includes HomeHub, Mixdown, Eyepatch, the browser game, MA
 The website uses stylised interactive representations of systems to make the work understandable without exposing private deployments or pretending that a visitor is looking at live hardware.
 
 Where telemetry, terminals, maps or device interfaces are illustrative, the UI explicitly labels them as **representative / not live data**. Real application captures and public repository assets are labelled as such.
+
+BenchForge and HexPlayer now include small browser interactions rather than static diagrams: BenchForge cycles representative component-constrained build concepts, and HexPlayer advances through the physical interaction state from NFC tile detection to playback handoff. These remain illustrative demos of the product logic, not live hardware sessions.
+
+Public flagship entries in the Evidence Ledger link directly to their current `PROJECT_STATUS.md` where available.
 
 Project maturity vocabulary follows [`REPOSITORY_POLICY.md`](REPOSITORY_POLICY.md) and the canonical account classification lives in [`PORTFOLIO_INDEX.md`](PORTFOLIO_INDEX.md).
 
@@ -75,7 +82,7 @@ npm run build
 The build is configured as a static export and produces `out/`. The repository includes:
 
 - `.github/workflows/site-ci.yml` — read-only lint/build verification.
-- `.github/workflows/deploy-pages.yml` — read-only static bundle build and artifact upload.
+- `.github/workflows/deploy-pages.yml` — read-only static bundle build, route/base-path assertions and artifact upload.
 
 Both permanent workflows use Node 22.
 
@@ -105,6 +112,7 @@ GitHub Pages still needs to be enabled at repository/account settings level befo
 - **Credit upstream work.** Forks, templates and upstream research remain clearly distinguished from authored builds.
 - **Disclose AI-native workflow.** Coding agents are implementation/research/testing tools; architecture, integration, hardware decisions and validation remain owner responsibilities.
 - **No dead-end portfolio paths.** Flagships and service CTAs should lead either to deeper evidence or to `/start/`.
+- **Make skills auditable.** Capabilities should point to projects that prove them rather than relying on a technology keyword cloud.
 
 ## Release gate
 
