@@ -1,0 +1,58 @@
+name: One-shot conversion path integration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/wire-start-build.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wire Start a Build across portfolio
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          home = Path('src/app/page.tsx')
+          s = home.read_text()
+          replacements = [
+              ('<a className="nav-cta" href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a>', '<a className="nav-cta" href="./start/">START A BUILD →</a>'),
+              ('<a href="#services" className="ghost-button">BUILD SOMETHING WITH ME</a>', '<a href="./start/" className="ghost-button">BUILD SOMETHING WITH ME</a>'),
+              ('<a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">START WITH THE WORK ↗</a>', '<a href="./start/">SEND A PROJECT BRIEF →</a>'),
+              ('<div className="footer-links"><a href="#top">TOP ↑</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>', '<div className="footer-links"><a href="#top">TOP ↑</a><a href="./start/">START A BUILD →</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>'),
+          ]
+          for old, new in replacements:
+              if old not in s:
+                  raise SystemExit(f'Homepage anchor not found: {old[:70]}')
+              s = s.replace(old, new, 1)
+          home.write_text(s)
+
+          case = Path('src/app/work/CaseStudy.tsx')
+          c = case.read_text()
+          old = '<Link href="/" className="font-mono text-[9px] font-bold tracking-[.14em] text-lime-200">← BACK TO ALL BUILDS</Link>\n          <a href={data.repo} target="_blank" rel="noreferrer" className="font-mono text-[9px] font-bold tracking-[.14em] text-slate-300">READ THE SOURCE / STATUS ↗</a>'
+          new = '<Link href="/" className="font-mono text-[9px] font-bold tracking-[.14em] text-lime-200">← BACK TO ALL BUILDS</Link>\n          <div className="flex flex-wrap items-center gap-5">\n            <Link href="/start/" className="font-mono text-[9px] font-bold tracking-[.14em] text-lime-200">START A BUILD →</Link>\n            <a href={data.repo} target="_blank" rel="noreferrer" className="font-mono text-[9px] font-bold tracking-[.14em] text-slate-300">READ THE SOURCE / STATUS ↗</a>\n          </div>'
+          if old not in c:
+              raise SystemExit('Case study footer anchor not found')
+          case.write_text(c.replace(old, new, 1))
+          PY
+
+      - name: Verify conversion links
+        run: |
+          grep -q 'href="./start/">START A BUILD' src/app/page.tsx
+          grep -q 'SEND A PROJECT BRIEF' src/app/page.tsx
+          grep -q 'href="/start/"' src/app/work/CaseStudy.tsx
+
+      - name: Commit integration
+        run: |
+          git config user.name "MAZLABZ portfolio bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/app/page.tsx src/app/work/CaseStudy.tsx
+          git commit -m "feat: wire project brief conversion path"
+          git push
