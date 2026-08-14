@@ -154,7 +154,10 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
       <footer className="border-t border-white/10">
         <div className="mx-auto flex min-h-28 w-[min(1180px,calc(100%-32px))] flex-wrap items-center justify-between gap-5">
           <Link href="/" className="font-mono text-[9px] font-bold tracking-[.14em] text-lime-200">← BACK TO ALL BUILDS</Link>
-          <a href={data.repo} target="_blank" rel="noreferrer" className="font-mono text-[9px] font-bold tracking-[.14em] text-slate-300">READ THE SOURCE / STATUS ↗</a>
+          <div className="flex flex-wrap items-center gap-5">
+            <Link href="/start/" className="font-mono text-[9px] font-bold tracking-[.14em] text-lime-200">START A BUILD →</Link>
+            <a href={data.repo} target="_blank" rel="noreferrer" className="font-mono text-[9px] font-bold tracking-[.14em] text-slate-300">READ THE SOURCE / STATUS ↗</a>
+          </div>
         </div>
       </footer>
     </main>

@@ -371,7 +371,7 @@ export default function Home() {
           <a href="#method">METHOD</a>
           <a href="#services">SERVICES</a>
         </nav>
-        <a className="nav-cta" href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a>
+        <a className="nav-cta" href="./start/">START A BUILD →</a>
       </header>
 
       <section id="top" className="hero-section section-wrap">
@@ -384,7 +384,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a href="#work" className="primary-button">VIEW THE BUILDS <span>↓</span></a>
-            <a href="#services" className="ghost-button">BUILD SOMETHING WITH ME</a>
+            <a href="./start/" className="ghost-button">BUILD SOMETHING WITH ME</a>
           </div>
           <div className="hero-facts">
             <div><span>FOCUS</span><b>SYSTEMS INTEGRATION</b></div>
@@ -572,7 +572,7 @@ export default function Home() {
           </div>
           <div className="contact-rail">
             <div><span className="status-light" /> CURRENTLY BUILDING // OPEN TO THE RIGHT PROBLEM</div>
-            <a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">START WITH THE WORK ↗</a>
+            <a href="./start/">SEND A PROJECT BRIEF →</a>
           </div>
         </div>
       </section>
@@ -580,7 +580,7 @@ export default function Home() {
       <footer className="site-footer section-wrap">
         <div className="brand-lockup"><span className="brand-mark">MZ</span><span><b>MAZLABZ</b><small>INDEPENDENT APPLIED TECHNOLOGY LAB</small></span></div>
         <p>Jack Mazzini · Victoria, Australia · Building across AI, software and physical hardware.</p>
-        <div className="footer-links"><a href="#top">TOP ↑</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
+        <div className="footer-links"><a href="#top">TOP ↑</a><a href="./start/">START A BUILD →</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
       </footer>
     </main>
   );
