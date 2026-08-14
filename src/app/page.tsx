@@ -83,6 +83,7 @@ const projects: Project[] = [
       'An electronics invention workbench that turns a component inventory into project concepts, pin plans, power checks, netlists, firmware guidance and verification steps.',
     proof: ['Component inventory model', 'Pin + power planning', 'Netlist validation', 'Build-guidance pipeline'],
     stack: ['TypeScript', 'Web Serial', 'AI tooling', 'Electronics', 'Firmware', 'Validation'],
+    caseStudy: './work/benchforge/',
     accent: 'violet',
   },
   {
@@ -98,6 +99,7 @@ const projects: Project[] = [
     proof: ['Raspberry Pi target', 'NFC / SPI interface', 'URI mapping', 'Physical interaction design'],
     stack: ['Python', 'Raspberry Pi', 'NFC', 'SPI', 'Spotify', 'systemd'],
     repo: 'https://github.com/thotsl4yer69/Hexplayer',
+    caseStudy: './work/hexplayer/',
     accent: 'pink',
   },
   {
