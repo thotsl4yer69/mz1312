@@ -1,65 +1,79 @@
-# MZ1312 — Historical MAZLABZ Storefront Prototype
+# MAZLABZ — Jack Mazzini / Applied Technology Portfolio
 
-> **Status: Archived product-generation prototype**  
-> This repository is retained as evidence of early full-stack/product work. It is **not** the canonical MAZLABZ technical portfolio and should not be read as a current production storefront.
+> **Status: Active portfolio site**  
+> Canonical public presentation layer for Jack Mazzini / MAZLABZ technical work across edge AI, embedded Linux, native Android, connected hardware and AI-assisted systems integration.
 
-For the account-wide technical portfolio and repository classification, see **[PORTFOLIO_INDEX.md](PORTFOLIO_INDEX.md)**. For how project maturity, AI assistance and upstream provenance are represented, see **[REPOSITORY_POLICY.md](REPOSITORY_POLICY.md)**.
+The repository began as an MZ1312 / Pigeonhole storefront experiment. It has now been deliberately repurposed as the public portfolio rather than preserving an obsolete commerce concept as the main website.
 
-## What this project was
+## What the site is trying to prove
 
-A Next.js/TypeScript/Tailwind storefront concept for the MZ1312 / Pigeonhole product line, built around the earlier “Neon Pigeon” brand direction. It explored product presentation, responsive web design, deployment and payment-flow concepts.
+Not “I have lots of repositories.”
 
-## Implemented / explored
+It should demonstrate that one independent builder can repeatedly take unconventional ideas across boundaries — hardware, software, AI models, APIs, sensors, operating systems and physical interfaces — and turn them into testable systems.
 
-- Next.js App Router
+## Flagship case studies
+
+The home page currently centres six builds:
+
+1. **Sentient Core** — deployed Jetson edge-AI prototype.
+2. **DRIFTER** — Raspberry Pi vehicle-intelligence / OBD-II / CAN prototype.
+3. **Myceliyum** — offline-first native Android field-research app.
+4. **BenchForge** — private electronics-inventory-to-project R&D system.
+5. **HexPlayer** — NFC-driven physical music interface.
+6. **Akari** — privacy-first local Android energy diary.
+
+Secondary Lab material includes HomeHub, Mixdown, Eyepatch, the browser game, MAZ AI Orchestrator and Ghost Fusion.
+
+## Demonstration policy
+
+The website uses stylised interactive representations of systems to make the work understandable without exposing private deployments or pretending that a visitor is looking at live hardware.
+
+Where telemetry, terminals, maps or device interfaces are illustrative, the UI explicitly labels them as **representative / not live data**.
+
+Project maturity vocabulary follows [`REPOSITORY_POLICY.md`](REPOSITORY_POLICY.md) and the canonical account classification lives in [`PORTFOLIO_INDEX.md`](PORTFOLIO_INDEX.md).
+
+## Stack
+
+- Next.js 15 App Router
+- React 19
 - TypeScript
-- Tailwind CSS
-- Responsive product presentation
-- Bitcoin payment-modal concept
-- Podcast/external-content integration
-- Vercel-oriented deployment structure
-- ESLint/type-safety tooling
+- Tailwind CSS 4
+- Custom responsive design system
+- GitHub Actions lint/build verification
 
-## Evidence boundary
-
-The repository contains a functioning web prototype, but earlier README language overstated its maturity. Card checkout, order management, user accounts and a complete commerce backend were not finished here, so this repository is now labelled as a **historical prototype**, not “production ready.”
-
-## Local development
+## Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Then open `http://localhost:3000`.
+Open `http://localhost:3000`.
 
-Build check:
+Verification:
 
 ```bash
+npm run lint
 npm run build
 ```
 
-## Historical project structure
+The repository includes `.github/workflows/site-ci.yml` so the same checks run on GitHub for every push and pull request.
 
-```text
-src/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-public/
-├── images/
-└── videos/
-```
+## Content principles
 
-## Superseded roadmap
+- **Proof over buzzwords.** Show architecture, interfaces, tests, hardware and trade-offs.
+- **Embellish presentation, not evidence.** Cinematic demo UI is fine; invented customers, revenue, field deployments or validation are not.
+- **State maturity explicitly.** Concept, software prototype, bench validated, hardware-integrated prototype, deployed prototype, production or archived.
+- **Credit upstream work.** Forks, templates and upstream research remain clearly distinguished from authored builds.
+- **Disclose AI-native workflow.** Coding agents are implementation/research/testing tools; architecture, integration, hardware decisions and validation remain owner responsibilities.
 
-The original prototype anticipated Stripe checkout, higher-resolution product photography, shopping-cart logic, user accounts/order tracking and additional editorial content. Those items are historical roadmap notes rather than claims about the current repository.
+## Portfolio source-of-truth
 
-## Provenance
-
-This is an authored MAZLABZ project developed with AI-assisted engineering workflows. AI assistance should not be interpreted as independent validation of deployment, security, payment handling or commercial readiness.
+- [`PORTFOLIO_INDEX.md`](PORTFOLIO_INDEX.md) — account/project map
+- [`REPOSITORY_POLICY.md`](REPOSITORY_POLICY.md) — maturity/provenance/AI-assistance rules
+- [`GITHUB_CLEANUP_2026-08-13.md`](GITHUB_CLEANUP_2026-08-13.md) — repository cleanup audit
+- [`GITHUB_PROFILE_README.md`](GITHUB_PROFILE_README.md) — aligned GitHub profile copy
 
 ---
 
-**Portfolio classification:** Historical product generation · Web/product prototype · Retained for evidence
+**Positioning:** AI-native systems integrator & technical prototyper · Edge AI · Embedded Linux · Android · Connected Hardware · Automation
