@@ -41,9 +41,13 @@ jobs:
           test -f out/404.html
           test -f out/sitemap.xml
           test -f out/robots.txt
+          test -f out/icon.svg
           grep -q 'START A BUILD' out/index.html
           grep -q 'PROJECT BRIEF' out/start/index.html
-          echo "Static portfolio routes, conversion path and search metadata verified."
+          grep -q '/mz1312/start/' out/work/sentient-core/index.html
+          grep -q 'https://thotsl4yer69.github.io/mz1312/' out/index.html
+          grep -q 'https://thotsl4yer69.github.io/mz1312/sitemap.xml' out/robots.txt
+          echo "Static portfolio routes, conversion path, base path and search metadata verified."
 
       - name: Upload deployable site bundle
         uses: actions/upload-artifact@v4
