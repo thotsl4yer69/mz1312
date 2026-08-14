@@ -22,25 +22,29 @@ jobs:
           p = Path('src/app/page.tsx')
           s = p.read_text()
 
-          old = '''          <a href="#work">WORK</a>
-          <a href="#lab">LAB</a>'''
-          new = '''          <a href="#work">WORK</a>
-          <a href="./capabilities/">PROOF MAP</a>
-          <a href="#lab">LAB</a>'''
-          if old not in s:
-              raise SystemExit('nav anchor not found')
-          s = s.replace(old, new, 1)
+          nav_anchor = '<a href="#work">WORK</a>'
+          if './capabilities/">PROOF MAP' not in s:
+              if nav_anchor not in s:
+                  raise SystemExit('nav anchor not found')
+              s = s.replace(nav_anchor, nav_anchor + '\n          <a href="./capabilities/">PROOF MAP</a>', 1)
 
-          old = '''<div className="footer-links"><a href="#top">TOP ↑</a><a href="./start/">START A BUILD →</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>'''
-          new = '''<div className="footer-links"><a href="#top">TOP ↑</a><a href="./capabilities/">PROOF MAP</a><a href="./start/">START A BUILD →</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>'''
-          if old not in s:
-              raise SystemExit('footer anchor not found')
-          p.write_text(s.replace(old, new, 1))
+          footer_anchor = '<a href="#top">TOP ↑</a>'
+          footer_link = '<a href="./capabilities/">PROOF MAP</a>'
+          footer_start = s.index('<div className="footer-links">')
+          footer_end = s.index('</div>', footer_start)
+          footer = s[footer_start:footer_end]
+          if footer_link not in footer:
+              if footer_anchor not in footer:
+                  raise SystemExit('footer anchor not found')
+              footer = footer.replace(footer_anchor, footer_anchor + footer_link, 1)
+              s = s[:footer_start] + footer + s[footer_end:]
+
+          p.write_text(s)
           PY
 
       - name: Verify links
         run: |
-          grep -q 'href="./capabilities/">PROOF MAP' src/app/page.tsx
+          test "$(grep -o 'href="./capabilities/">PROOF MAP' src/app/page.tsx | wc -l)" -ge 2
 
       - name: Commit navigation integration
         run: |
