@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://thotsl4yer69.github.io/mz1312";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Jack Mazzini — MAZLABZ Applied Technology Lab",
     template: "%s — MAZLABZ",
@@ -20,10 +23,15 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Jack Mazzini" }],
   creator: "Jack Mazzini",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Jack Mazzini — MAZLABZ Applied Technology Lab",
     description: "AI-native systems integration across software, edge compute and physical hardware.",
     type: "website",
+    url: "/",
+    siteName: "MAZLABZ Applied Technology Lab",
   },
   twitter: {
     card: "summary_large_image",
@@ -37,6 +45,36 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      name: "Jack Mazzini",
+      url: siteUrl,
+      sameAs: ["https://github.com/thotsl4yer69"],
+      jobTitle: "AI-Native Systems Integrator & Technical Prototyper",
+      knowsAbout: [
+        "Edge AI",
+        "Raspberry Pi",
+        "NVIDIA Jetson",
+        "Android development",
+        "Embedded Linux",
+        "MQTT",
+        "Hardware/software prototyping",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      name: "MAZLABZ Applied Technology Lab",
+      url: siteUrl,
+      description:
+        "Applied technology portfolio covering edge AI, embedded systems, mobile applications, automation and physical computing.",
+      author: { "@type": "Person", name: "Jack Mazzini" },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,7 +82,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
