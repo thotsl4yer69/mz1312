@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { SITE_ROOT } from './site';
 
 export const dynamic = 'force-static';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thotsl4yer69.github.io/mz1312';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: `${SITE_ROOT}sitemap.xml`,
   };
 }
