@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import GhostUnlock from "./GhostUnlock";
 import { SITE_ROOT } from "./site";
 
 export const metadata: Metadata = {
@@ -86,6 +87,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <GhostUnlock />
         {children}
       </body>
     </html>
