@@ -1,242 +1,561 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
-export default function Home() {
-  const [showBTCModal, setShowBTCModal] = useState(false);
+type ProjectId = 'sentient' | 'drifter' | 'myceliyum' | 'bench' | 'hexplayer' | 'akari';
 
-  const productTiers = [
-    {
-      name: "MZ-1312 Basic",
-      price: "$199",
-      description: "Entry-level streaming device with essential features",
-      features: ["4K HDR Support", "Wi-Fi 6", "Voice Remote", "Basic Apps"],
-      gradient: "from-cyan-500 to-blue-500"
-    },
-    {
-      name: "MZ-1312 Premium", 
-      price: "$399",
-      description: "Advanced streaming with premium features",
-      features: ["8K HDR Support", "Wi-Fi 6E", "Gaming Mode", "Premium Apps", "Enhanced Audio"],
-      gradient: "from-purple-500 to-pink-500",
-      popular: true
-    },
-    {
-      name: "MZ-1312 Elite",
-      price: "$699", 
-      description: "Ultimate streaming experience for professionals",
-      features: ["8K HDR Pro", "Wi-Fi 7", "Pro Gaming", "All Apps", "Studio Audio", "AI Enhancement"],
-      gradient: "from-green-500 to-teal-500"
-    }
-  ];
+type Project = {
+  id: ProjectId;
+  index: string;
+  name: string;
+  kicker: string;
+  status: string;
+  statusTone: 'green' | 'amber' | 'blue';
+  headline: string;
+  description: string;
+  proof: string[];
+  stack: string[];
+  repo?: string;
+  accent: string;
+};
+
+const projects: Project[] = [
+  {
+    id: 'sentient',
+    index: '01',
+    name: 'Sentient Core',
+    kicker: 'EDGE AI / LOCAL SYSTEMS',
+    status: 'DEPLOYED PROTOTYPE',
+    statusTone: 'green',
+    headline: 'A local AI system that actually lives on the edge.',
+    description:
+      'A Jetson-based assistant architecture joining local inference, memory, voice, MQTT, Redis, FastAPI services and a browser interface into one deployable system.',
+    proof: ['NVIDIA Jetson target', 'Local LLM + memory services', 'MQTT / Redis service spine', 'Linux systemd deployment'],
+    stack: ['Python', 'FastAPI', 'MQTT', 'Redis', 'Ollama', 'Jetson'],
+    repo: 'https://github.com/thotsl4yer69/sentient-core',
+    accent: 'cyan',
+  },
+  {
+    id: 'drifter',
+    index: '02',
+    name: 'DRIFTER',
+    kicker: 'VEHICLE INTELLIGENCE / PI',
+    status: 'HARDWARE-INTEGRATED',
+    statusTone: 'green',
+    headline: 'Turn a Raspberry Pi into a vehicle intelligence node.',
+    description:
+      'OBD-II and CAN telemetry, deterministic safety rules, session logging, diagnostics, voice and a growing edge-services stack designed around real vehicle data.',
+    proof: ['Raspberry Pi target', 'OBD-II / CAN ingest', 'MQTT telemetry bus', 'Vehicle-aware diagnostics'],
+    stack: ['Python', 'SocketCAN', 'OBD-II', 'MQTT', 'SQLite', 'Linux'],
+    repo: 'https://github.com/thotsl4yer69/drifter',
+    accent: 'orange',
+  },
+  {
+    id: 'myceliyum',
+    index: '03',
+    name: 'Myceliyum',
+    kicker: 'ANDROID / FIELD RESEARCH',
+    status: 'APPLICATION PROTOTYPE',
+    statusTone: 'blue',
+    headline: 'An offline-first field app built for muddy boots, not a pitch deck.',
+    description:
+      'A native Kotlin/Compose field-research app combining local observations, maps, environmental context and public species data while keeping the core logbook useful offline.',
+    proof: ['Native Kotlin / Compose', 'Room offline storage', 'OpenStreetMap field map', 'Location + public data APIs'],
+    stack: ['Kotlin', 'Compose', 'Room', 'Retrofit', 'OSM', 'Android'],
+    repo: 'https://github.com/thotsl4yer69/Myceliyum',
+    accent: 'moss',
+  },
+  {
+    id: 'bench',
+    index: '04',
+    name: 'BenchForge',
+    kicker: 'AI-NATIVE HARDWARE TOOLING',
+    status: 'PRIVATE ACTIVE BUILD',
+    statusTone: 'amber',
+    headline: 'Tell it what parts are on the bench. Make something worth building.',
+    description:
+      'An electronics invention workbench that turns a component inventory into project concepts, pin plans, power checks, netlists, firmware guidance and verification steps.',
+    proof: ['Component inventory model', 'Pin + power planning', 'Netlist validation', 'Build-guidance pipeline'],
+    stack: ['TypeScript', 'Web Serial', 'AI tooling', 'Electronics', 'Firmware', 'Validation'],
+    accent: 'violet',
+  },
+  {
+    id: 'hexplayer',
+    index: '05',
+    name: 'HexPlayer',
+    kicker: 'PHYSICAL MEDIA / NFC',
+    status: 'BENCH PROTOTYPE',
+    statusTone: 'blue',
+    headline: 'A physical music interface that behaves like modern vinyl.',
+    description:
+      'NFC-tagged album tiles trigger mapped playback from a Raspberry Pi. No phone interaction is required at the point of use: tap a tile, resolve its URI, play.',
+    proof: ['Raspberry Pi target', 'NFC / SPI interface', 'URI mapping', 'Physical interaction design'],
+    stack: ['Python', 'Raspberry Pi', 'NFC', 'SPI', 'Spotify', 'systemd'],
+    repo: 'https://github.com/thotsl4yer69/Hexplayer',
+    accent: 'pink',
+  },
+  {
+    id: 'akari',
+    index: '06',
+    name: 'Akari',
+    kicker: 'PRIVACY-FIRST ANDROID',
+    status: 'APPLICATION PROTOTYPE',
+    statusTone: 'blue',
+    headline: 'A private energy diary designed to stay useful without becoming a data exhaust pipe.',
+    description:
+      'A local-first Android app built around simple daily energy tracking, Room/DataStore persistence, optional read-only Health Connect and accessibility-minded QA.',
+    proof: ['No account required', 'Local-first storage', 'Emulator smoke testing', 'Accessibility QA'],
+    stack: ['Kotlin', 'Compose', 'Room', 'DataStore', 'Health Connect', 'CI'],
+    repo: 'https://github.com/thotsl4yer69/akari-android',
+    accent: 'yellow',
+  },
+];
+
+const labProjects = [
+  {
+    name: 'Eyepatch',
+    type: 'EDGE VISION',
+    copy: 'Local-only RDK X5 vision sentry: BPU-native inference, segmented capture, event timeline and service hardening.',
+    detail: 'RDK X5 · YOLO · FastAPI · SQLite',
+  },
+  {
+    name: 'MAZLABZ HomeHub',
+    type: 'INFRASTRUCTURE',
+    copy: 'Containerised home-lab integration joining Home Assistant, MQTT, reverse proxy, networking and local services.',
+    detail: 'Docker · HA · MQTT · Caddy',
+    repo: 'https://github.com/thotsl4yer69/mazlabz-homehub',
+  },
+  {
+    name: 'Mixdown',
+    type: 'MOBILE / RANKING',
+    copy: 'React Native media-feed experiment with native Android playback, SQLite telemetry and adaptive ranking ideas.',
+    detail: 'React Native · Kotlin · Media3 · Supabase',
+    repo: 'https://github.com/thotsl4yer69/mixdown',
+  },
+  {
+    name: 'THOTSL4YER69',
+    type: 'BROWSER GAME',
+    copy: 'Phaser/TypeScript game work covering combat loops, UI state, PWA packaging and automated browser QA.',
+    detail: 'Phaser · TypeScript · Vite · Playwright',
+    repo: 'https://github.com/thotsl4yer69/thegame',
+  },
+  {
+    name: 'MAZ AI Orchestrator',
+    type: 'AGENTS / ROUTING',
+    copy: 'Early multi-provider AI orchestration prototype exploring model routing, tools, streaming, memory and specialist agents.',
+    detail: 'Node · Agents · Tools · Streaming',
+    repo: 'https://github.com/thotsl4yer69/maz-ai-orchestrator',
+  },
+  {
+    name: 'Ghost Fusion',
+    type: 'SENSOR FUSION',
+    copy: 'Private defensive sensor-fusion research with explicit freshness rules, deterministic simulation and fail-safe UNKNOWN states.',
+    detail: 'Python · MQTT · State fusion · Testing',
+  },
+];
+
+const timeline = [
+  ['JUN 2025', 'AI + WEB', 'APIs, Gemini/TTS experiments, Node and deployable interfaces.'],
+  ['JUL 2025', 'FULL STACK + ANDROID', 'React/FastAPI prototypes, Kotlin/Compose, BLE and product-facing software.'],
+  ['AUG 2025', 'INFRASTRUCTURE', 'Docker, Home Assistant, MQTT, reverse proxies, tunnels and homelab orchestration.'],
+  ['LATE 2025', 'PHYSICAL COMPUTING', 'Raspberry Pi, sensors, NFC/RFID, SDR/RF exploration, cameras and edge accelerators.'],
+  ['2026', 'EDGE SYSTEMS', 'Jetson, vehicle telemetry, native Android, distributed services, CI and hardware-integrated builds.'],
+  ['NOW', 'PRODUCTISATION', 'Less “another experiment”, more proof, repeatability, hardening and useful public demonstrations.'],
+];
+
+function StatusPill({ project }: { project: Project }) {
+  const tones = {
+    green: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-200',
+    amber: 'border-amber-400/30 bg-amber-400/10 text-amber-200',
+    blue: 'border-sky-400/30 bg-sky-400/10 text-sky-200',
+  };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="border-b border-gray-800 p-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
-              <span className="text-xl font-bold">MZ</span>
+    <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-semibold tracking-[0.16em] ${tones[project.statusTone]}`}>
+      <span className="h-1.5 w-1.5 rounded-full bg-current shadow-[0_0_12px_currentColor]" />
+      {project.status}
+    </span>
+  );
+}
+
+function SentientVisual() {
+  const nodes = [
+    ['CONVERSATION', 'ONLINE', '01'],
+    ['MEMORY', 'ONLINE', '02'],
+    ['PERCEPTION', 'ONLINE', '03'],
+    ['VOICE', 'HW TEST', '04'],
+    ['AVATAR', 'ONLINE', '05'],
+    ['MQTT SPINE', 'ONLINE', '06'],
+  ];
+  return (
+    <div className="demo-shell demo-cyan">
+      <div className="demo-topline"><span>NODE // JETSON-EDGE</span><span>REPRESENTATIVE SYSTEM VIEW</span></div>
+      <div className="grid gap-3 md:grid-cols-[1.05fr_.95fr]">
+        <div className="space-y-2">
+          {nodes.map(([name, state, id]) => (
+            <div key={name} className="node-row">
+              <span className="node-id">{id}</span>
+              <span className="flex-1 font-medium text-slate-200">{name}</span>
+              <span className={state === 'ONLINE' ? 'text-emerald-300' : 'text-amber-300'}>{state}</span>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-cyan-400 neon-glow">MAZLABZ.AI</h1>
-              <p className="text-sm text-gray-400">Premium Streaming Technology</p>
-            </div>
-          </div>
-          <nav className="hidden md:flex space-x-6">
-            <a href="#products" className="text-cyan-400 hover:text-cyan-300">Products</a>
-            <a href="#about" className="text-cyan-400 hover:text-cyan-300">About</a>
-            <a href="#podcast" className="text-cyan-400 hover:text-cyan-300">Podcast</a>
-          </nav>
+          ))}
         </div>
+        <div className="terminal-mini">
+          <p><b>$</b> systemctl --type=service</p>
+          <p><span>✓</span> sentient-memory.service</p>
+          <p><span>✓</span> sentient-perception.service</p>
+          <p><span>✓</span> sentient-conversation.service</p>
+          <p className="text-slate-500">mqtt://localhost:1883</p>
+          <p className="mt-4 text-cyan-200">LOCAL INFERENCE READY_</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DrifterVisual() {
+  const gauges = [
+    ['RPM', '2,180', '54%'],
+    ['COOLANT', '91°C', '72%'],
+    ['BATTERY', '14.2V', '86%'],
+  ];
+  return (
+    <div className="demo-shell demo-orange">
+      <div className="demo-topline"><span>DRIVE SESSION // DEMO TELEMETRY</span><span>CAN / OBD-II</span></div>
+      <div className="grid gap-4 lg:grid-cols-[.9fr_1.1fr]">
+        <div className="grid grid-cols-3 gap-2">
+          {gauges.map(([label, value, width]) => (
+            <div key={label} className="gauge-card">
+              <span>{label}</span><strong>{value}</strong>
+              <div className="meter"><i style={{ width }} /></div>
+            </div>
+          ))}
+        </div>
+        <div className="can-stream">
+          <p><span>7E8</span> 04 41 0C 22 10 00 00 00</p>
+          <p><span>7E8</span> 03 41 05 5B 00 00 00 00</p>
+          <p><span>7E8</span> 04 41 42 37 78 00 00 00</p>
+          <p className="text-amber-200">SAFETY ENGINE // NOMINAL</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MyceliyumVisual() {
+  return (
+    <div className="demo-shell demo-moss">
+      <div className="demo-topline"><span>FIELD LOG // CENTRAL VICTORIA</span><span>OFFLINE-FIRST</span></div>
+      <div className="field-grid">
+        <div className="field-map">
+          <span className="map-road road-a" /><span className="map-road road-b" />
+          <span className="map-pin pin-a">01</span><span className="map-pin pin-b">02</span><span className="map-pin pin-c">03</span>
+          <div className="map-label">LOCAL OBSERVATIONS</div>
+        </div>
+        <div className="field-card">
+          <p className="eyebrow">FRUITING WINDOW</p>
+          <strong>High potential</strong>
+          <p>Recent moisture + cool overnight conditions improve the field-search window.</p>
+          <div className="field-metrics"><span>12°C NIGHT</span><span>78% RH</span><span>LOG SAVED</span></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BenchVisual() {
+  const stages = ['INVENTORY', 'CONCEPT', 'POWER', 'PINS', 'NETLIST', 'FIRMWARE'];
+  return (
+    <div className="demo-shell demo-violet">
+      <div className="demo-topline"><span>BENCHFORGE // BUILD PIPELINE</span><span>PRIVATE R&D</span></div>
+      <div className="pipeline">
+        {stages.map((stage, index) => (
+          <div key={stage} className="pipeline-stage">
+            <span>{String(index + 1).padStart(2, '0')}</span><strong>{stage}</strong>{index < stages.length - 1 && <i>→</i>}
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 grid gap-2 sm:grid-cols-3">
+        <div className="spec-chip"><span>MCU</span><b>ESP32-S3</b></div>
+        <div className="spec-chip"><span>POWER</span><b>5V / 3.3V checked</b></div>
+        <div className="spec-chip"><span>STATUS</span><b>netlist valid</b></div>
+      </div>
+    </div>
+  );
+}
+
+function HexVisual() {
+  return (
+    <div className="demo-shell demo-pink">
+      <div className="demo-topline"><span>HEXPLAYER // PHYSICAL INTERFACE</span><span>NFC → URI → PLAY</span></div>
+      <div className="hex-stage">
+        <div className="hex-tile"><span>04</span><b>ALBUM TILE</b></div>
+        <div className="signal-line"><span /><span /><span /></div>
+        <div className="player-unit"><span>PN532</span><b>TAG DETECTED</b><small>spotify:album:••••••</small></div>
+      </div>
+    </div>
+  );
+}
+
+function AkariVisual() {
+  const bars = ['36%', '48%', '70%', '58%', '82%', '54%', '66%'];
+  return (
+    <div className="demo-shell demo-yellow">
+      <div className="demo-topline"><span>AKARI // LOCAL ENERGY DIARY</span><span>PRIVATE BY DEFAULT</span></div>
+      <div className="akari-grid">
+        <div>
+          <p className="eyebrow">TODAY</p>
+          <div className="energy-score">6.4<span>/10</span></div>
+          <p className="text-sm text-slate-400">Stable morning · moderate capacity</p>
+        </div>
+        <div className="energy-chart">
+          {bars.map((height, i) => <i key={i} style={{ height }}><span>{['M','T','W','T','F','S','S'][i]}</span></i>)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectVisual({ id }: { id: ProjectId }) {
+  if (id === 'sentient') return <SentientVisual />;
+  if (id === 'drifter') return <DrifterVisual />;
+  if (id === 'myceliyum') return <MyceliyumVisual />;
+  if (id === 'bench') return <BenchVisual />;
+  if (id === 'hexplayer') return <HexVisual />;
+  return <AkariVisual />;
+}
+
+export default function Home() {
+  const [activeId, setActiveId] = useState<ProjectId>('sentient');
+  const [showAllLab, setShowAllLab] = useState(false);
+
+  const active = useMemo(() => projects.find((project) => project.id === activeId) ?? projects[0], [activeId]);
+  const visibleLab = showAllLab ? labProjects : labProjects.slice(0, 3);
+
+  return (
+    <main className="min-h-screen overflow-hidden bg-[#070908] text-slate-100 selection:bg-lime-300 selection:text-black">
+      <div className="fixed inset-0 -z-10 bg-grid" />
+      <div className="fixed inset-0 -z-10 bg-noise opacity-30" />
+
+      <header className="site-nav">
+        <a href="#top" className="brand-lockup" aria-label="MAZLABZ home">
+          <span className="brand-mark">MZ</span>
+          <span><b>MAZLABZ</b><small>APPLIED TECHNOLOGY LAB</small></span>
+        </a>
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
+          <a href="#work">WORK</a>
+          <a href="#lab">LAB</a>
+          <a href="#method">METHOD</a>
+          <a href="#services">SERVICES</a>
+        </nav>
+        <a className="nav-cta" href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            The Future of Streaming
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Experience next-generation streaming technology with our MZ-1312 series. 
-            Engineered for perfection, designed for the future.
+      <section id="top" className="hero-section section-wrap">
+        <div className="hero-copy">
+          <div className="availability"><span /> INDEPENDENT R&D // VICTORIA, AU</div>
+          <h1>I MAKE STRANGE IDEAS <em>SURVIVE CONTACT WITH HARDWARE.</em></h1>
+          <p className="hero-lede">
+            I build systems at the messy intersection of <b>AI, software and physical hardware</b> — edge-compute nodes,
+            Raspberry Pi systems, native Android apps, connected devices and automation.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 px-8 py-3 rounded-lg text-black font-semibold hover:opacity-90 transition-all transform hover:scale-105">
-              Explore Products
-            </button>
-            <a 
-              href="https://open.spotify.com/show/your-podcast-id" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="border border-cyan-500 px-8 py-3 rounded-lg text-cyan-400 hover:bg-cyan-500 hover:text-black transition-all transform hover:scale-105 neon-border"
+          <div className="hero-actions">
+            <a href="#work" className="primary-button">VIEW THE BUILDS <span>↓</span></a>
+            <a href="#services" className="ghost-button">BUILD SOMETHING WITH ME</a>
+          </div>
+          <div className="hero-facts">
+            <div><span>FOCUS</span><b>SYSTEMS INTEGRATION</b></div>
+            <div><span>MODE</span><b>AI-NATIVE ENGINEERING</b></div>
+            <div><span>OUTPUT</span><b>DEMONSTRABLE PROTOTYPES</b></div>
+          </div>
+        </div>
+
+        <div className="hero-console-wrap">
+          <div className="hero-console">
+            <div className="console-head"><span className="lights"><i /><i /><i /></span><span>MZ_LAB://CURRENT_BUILD</span><span>12:00 AEST</span></div>
+            <div className="console-body">
+              <div className="console-watermark">MZ</div>
+              <p><span className="prompt">jack@mazlabz:~$</span> ./what-do-you-build</p>
+              <p className="console-answer">systems that cross boundaries.</p>
+              <p className="muted">→ local AI on Jetson</p>
+              <p className="muted">→ vehicle telemetry on Raspberry Pi</p>
+              <p className="muted">→ native Android field software</p>
+              <p className="muted">→ NFC, sensors, automation, weird interfaces</p>
+              <p className="mt-5"><span className="prompt">status:</span> <span className="text-emerald-300">building_</span></p>
+              <div className="console-nodes">
+                {['JETSON', 'PI', 'ANDROID', 'MQTT', 'NFC', 'AI'].map((node, i) => (
+                  <span key={node} style={{ animationDelay: `${i * 180}ms` }}><i />{node}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p className="caption">NOT A LIVE TERMINAL // REPRESENTATIVE LAB INTERFACE</p>
+        </div>
+      </section>
+
+      <section className="signal-strip" aria-label="Technical focus">
+        <div className="signal-track">
+          {['EDGE AI', 'RASPBERRY PI', 'NVIDIA JETSON', 'ANDROID / KOTLIN', 'MQTT', 'FASTAPI', 'SENSORS', 'NFC / RFID', 'AUTOMATION', 'AI AGENTS', 'LINUX', 'SYSTEMS INTEGRATION'].map((item) => (
+            <span key={item}>{item}<i>◆</i></span>
+          ))}
+        </div>
+      </section>
+
+      <section id="work" className="section-wrap py-24 md:py-32">
+        <div className="section-heading">
+          <div><span className="eyebrow">SELECTED WORK // 2025—NOW</span><h2>THE BUILDS THAT BEST EXPLAIN THE WORK.</h2></div>
+          <p>Six projects. Different domains. Same underlying job: make hardware, software and AI behave like one system.</p>
+        </div>
+
+        <div className="project-selector" role="tablist" aria-label="Flagship projects">
+          {projects.map((project) => (
+            <button
+              key={project.id}
+              onClick={() => setActiveId(project.id)}
+              className={activeId === project.id ? 'active' : ''}
+              role="tab"
+              aria-selected={activeId === project.id}
             >
-              Listen to Podcast
-            </a>
+              <span>{project.index}</span><b>{project.name}</b><small>{project.kicker}</small>
+            </button>
+          ))}
+        </div>
+
+        <article className={`feature-project accent-${active.accent}`}>
+          <div className="feature-copy">
+            <div className="flex flex-wrap items-center gap-3"><StatusPill project={active} /><span className="eyebrow">{active.kicker}</span></div>
+            <h3>{active.headline}</h3>
+            <p>{active.description}</p>
+            <div className="proof-grid">
+              {active.proof.map((item) => <div key={item}><span>✓</span>{item}</div>)}
+            </div>
+            <div className="stack-row">{active.stack.map((item) => <span key={item}>{item}</span>)}</div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {active.repo ? <a href={active.repo} target="_blank" rel="noreferrer" className="project-link">OPEN REPOSITORY ↗</a> : <span className="private-label">PRIVATE R&D // PUBLIC CASE STUDY IN PREP</span>}
+            </div>
+          </div>
+          <div className="feature-demo">
+            <div className="demo-label"><span>INTERACTIVE CASE-STUDY VIEW</span><span>NOT LIVE DATA</span></div>
+            <ProjectVisual id={active.id} />
+          </div>
+        </article>
+
+        <div className="project-card-grid">
+          {projects.map((project) => (
+            <button key={project.id} className="project-card" onClick={() => { setActiveId(project.id); document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }); }}>
+              <div className="project-card-top"><span>{project.index}</span><span>{project.status}</span></div>
+              <h4>{project.name}</h4>
+              <p>{project.description}</p>
+              <div className="mini-stack">{project.stack.slice(0, 4).map((item) => <span key={item}>{item}</span>)}</div>
+              <b className="card-arrow">EXPLORE BUILD ↗</b>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="manifesto-section">
+        <div className="section-wrap manifesto-grid">
+          <span className="manifesto-number">1312</span>
+          <div>
+            <span className="eyebrow">THE THROUGH-LINE</span>
+            <blockquote>“Most portfolios stop at the mockup. Mine tends to end in a terminal, an APK, a wiring loom—or all three.”</blockquote>
+            <p>The value is not being the world’s deepest specialist in every layer. It is getting unfamiliar layers to work together, finding what breaks, and pushing the result far enough that somebody can actually use or test it.</p>
           </div>
         </div>
       </section>
 
-      {/* Product Tiers Section */}
-      <section id="products" className="py-20 px-6 bg-gray-900/50">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-4xl font-bold text-center mb-12 text-cyan-400 neon-glow">
-            Choose Your Stream
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {productTiers.map((product, index) => (
-              <div 
-                key={index}
-                className={`relative p-8 rounded-xl border border-gray-700 hover:border-gray-500 transition-all transform hover:scale-105 ${
-                  product.popular ? 'ring-2 ring-purple-500 shadow-lg shadow-purple-500/20' : ''
-                }`}
-              >
-                {product.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <div className="text-center mb-6">
-                  <div className={`w-20 h-20 mx-auto mb-4 rounded-xl bg-gradient-to-r ${product.gradient} flex items-center justify-center`}>
-                    <span className="text-2xl font-bold text-black">MZ</span>
-                  </div>
-                  <h4 className="text-2xl font-bold mb-2">{product.name}</h4>
-                  <p className="text-3xl font-bold text-cyan-400 mb-4">{product.price}</p>
-                  <p className="text-gray-400">{product.description}</p>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {product.features.map((feature, i) => (
-                    <li key={i} className="flex items-center">
-                      <span className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="space-y-3">
-                  <button 
-                    onClick={() => setShowBTCModal(true)}
-                    className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 px-6 py-3 rounded-lg text-black font-semibold hover:opacity-90 transition-all transform hover:scale-105"
-                  >
-                    Pay with BTC
-                  </button>
-                  <button className="w-full border border-gray-600 px-6 py-3 rounded-lg text-gray-300 hover:bg-gray-800 transition-all">
-                    Pay with Card (Coming Soon)
-                  </button>
-                </div>
-              </div>
+      <section id="lab" className="section-wrap py-24 md:py-32">
+        <div className="section-heading">
+          <div><span className="eyebrow">ENGINEERING LAB</span><h2>THE SIDE QUESTS ARE PART OF THE POINT.</h2></div>
+          <p>Edge vision, home infrastructure, game systems, model routing and sensor fusion: not all flagships, all useful evidence.</p>
+        </div>
+        <div className="lab-grid">
+          {visibleLab.map((item, index) => (
+            <article className="lab-card" key={item.name}>
+              <div className="lab-index">LAB/{String(index + 1).padStart(2, '0')}</div>
+              <span className="eyebrow">{item.type}</span>
+              <h3>{item.name}</h3>
+              <p>{item.copy}</p>
+              <small>{item.detail}</small>
+              {item.repo && <a href={item.repo} target="_blank" rel="noreferrer">SOURCE ↗</a>}
+            </article>
+          ))}
+        </div>
+        <button className="lab-toggle" onClick={() => setShowAllLab((value) => !value)}>{showAllLab ? 'SHOW LESS' : 'OPEN MORE LAB NOTES'} <span>{showAllLab ? '↑' : '↓'}</span></button>
+      </section>
+
+      <section id="method" className="method-section">
+        <div className="section-wrap py-24 md:py-32">
+          <div className="section-heading light">
+            <div><span className="eyebrow">HOW I WORK</span><h2>AI-NATIVE. EVIDENCE-DRIVEN. HANDS STILL DIRTY.</h2></div>
+            <p>AI coding agents accelerate implementation, research, refactors and tests. Architecture, hardware choices, integration, debugging and what counts as “working” stay human responsibilities.</p>
+          </div>
+          <div className="method-grid">
+            {[
+              ['01', 'DEFINE THE SYSTEM', 'Turn the vague idea into interfaces, constraints, data flows and proof criteria.'],
+              ['02', 'BUILD ACROSS LAYERS', 'Use the right mix of code, devices, APIs, sensors and existing infrastructure.'],
+              ['03', 'MAKE IT FAIL', 'Test the ugly paths: missing hardware, stale state, bad credentials, disconnected services, invalid data.'],
+              ['04', 'PROVE WHAT IS REAL', 'Separate concept, software prototype, bench validation and deployed hardware instead of flattening them into hype.'],
+            ].map(([n, title, copy]) => (
+              <div className="method-card" key={n}><span>{n}</span><h3>{title}</h3><p>{copy}</p></div>
+            ))}
+          </div>
+
+          <div className="capability-map">
+            <div className="cap-core"><span>MZ</span><b>SYSTEMS<br />INTEGRATION</b></div>
+            {[
+              ['AI', 'LOCAL INFERENCE · AGENTS · VISION'],
+              ['EDGE', 'JETSON · PI · HAILO · RDK'],
+              ['APP', 'KOTLIN · REACT · PWA'],
+              ['BUS', 'MQTT · CAN · BLE · NFC'],
+              ['OPS', 'LINUX · SYSTEMD · DOCKER · CI'],
+              ['FIELD', 'SENSORS · VEHICLES · PHYSICAL UI'],
+            ].map(([title, copy], index) => (
+              <div className={`cap-node cap-${index + 1}`} key={title}><span>{title}</span><small>{copy}</small></div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-4xl font-bold mb-8 text-cyan-400 neon-glow">About MAZLABZ.AI</h3>
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            We are at the forefront of streaming technology innovation. Our &ldquo;Neon Pigeon&rdquo; philosophy 
-            combines sleek aesthetics with cutting-edge performance, delivering experiences that 
-            transcend traditional entertainment boundaries.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
-            <div className="p-6 border border-gray-700 rounded-xl">
-              <h4 className="text-xl font-bold mb-4 text-purple-400">Innovation</h4>
-              <p className="text-gray-400">
-                Pushing the boundaries of what&apos;s possible in streaming technology.
-              </p>
-            </div>
-            <div className="p-6 border border-gray-700 rounded-xl">
-              <h4 className="text-xl font-bold mb-4 text-cyan-400">Excellence</h4>
-              <p className="text-gray-400">
-                Every device is crafted with precision and attention to detail.
-              </p>
-            </div>
+      <section className="section-wrap py-24 md:py-32">
+        <div className="section-heading">
+          <div><span className="eyebrow">BUILD LOG</span><h2>FROM WEB APPS TO EDGE SYSTEMS.</h2></div>
+          <p>The portfolio makes more sense as a trajectory than a list of repositories.</p>
+        </div>
+        <div className="timeline">
+          {timeline.map(([date, title, copy], index) => (
+            <div className="timeline-row" key={date}><span className="timeline-dot">{String(index + 1).padStart(2, '0')}</span><time>{date}</time><h3>{title}</h3><p>{copy}</p></div>
+          ))}
+        </div>
+      </section>
+
+      <section id="services" className="services-section">
+        <div className="section-wrap py-24 md:py-32">
+          <div className="services-intro">
+            <span className="eyebrow">AVAILABLE FOR SELECT BUILDS</span>
+            <h2>BRING ME THE IDEA THAT DOESN’T FIT IN ONE JOB DESCRIPTION.</h2>
+            <p>I’m most useful when the project crosses boundaries: a physical thing that needs software, an AI idea that needs to run locally, a Raspberry Pi that needs to become an appliance, or a founder who needs a convincing proof-of-concept instead of another slide deck.</p>
+          </div>
+          <div className="service-grid">
+            {[
+              ['PROTOTYPE SPRINT', 'Idea → architecture → proof-of-concept → testable demo.'],
+              ['EDGE AI NODE', 'Local inference, Jetson/Pi integration, services and device interfaces.'],
+              ['PI / AUTOMATION SYSTEM', 'Purpose-built local appliances, dashboards, MQTT and hardware interfaces.'],
+              ['FIELD / MOBILE APP', 'Native Android prototypes for physical workflows and offline-first data.'],
+            ].map(([title, copy]) => <div className="service-card" key={title}><span>↳</span><h3>{title}</h3><p>{copy}</p></div>)}
+          </div>
+          <div className="contact-rail">
+            <div><span className="status-light" /> CURRENTLY BUILDING // OPEN TO THE RIGHT PROBLEM</div>
+            <a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">START WITH THE WORK ↗</a>
           </div>
         </div>
       </section>
 
-      {/* Podcast Section */}
-      <section id="podcast" className="py-20 px-6 bg-gray-900/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-4xl font-bold mb-8 text-cyan-400 neon-glow">MAZLABZ Podcast</h3>
-          <p className="text-xl text-gray-300 mb-8">
-            Dive deep into the world of streaming technology, innovation, and digital culture.
-          </p>
-          <div className="bg-gradient-to-r from-purple-900/50 to-cyan-900/50 p-8 rounded-xl border border-gray-700">
-            <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl flex items-center justify-center">
-              <span className="text-4xl">🎙️</span>
-            </div>
-            <h4 className="text-2xl font-bold mb-4">Latest Episodes Available</h4>
-            <a 
-              href="https://open.spotify.com/show/your-podcast-id" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-green-500 px-8 py-3 rounded-lg text-black font-semibold hover:bg-green-400 transition-all transform hover:scale-105"
-            >
-              <span className="mr-2">🎵</span>
-              Listen on Spotify
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-800 py-12 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex justify-center items-center mb-8">
-            <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
-              <span className="text-sm font-bold">MZ</span>
-            </div>
-            <span className="text-xl font-bold text-cyan-400">MAZLABZ.AI</span>
-          </div>
-          <p className="text-gray-400 mb-4">© 2024 MAZLABZ.AI. All rights reserved.</p>
-          <p className="text-sm text-gray-500">
-            Premium streaming technology for the digital age.
-          </p>
-        </div>
+      <footer className="site-footer section-wrap">
+        <div className="brand-lockup"><span className="brand-mark">MZ</span><span><b>MAZLABZ</b><small>INDEPENDENT APPLIED TECHNOLOGY LAB</small></span></div>
+        <p>Jack Mazzini · Victoria, Australia · Building across AI, software and physical hardware.</p>
+        <div className="footer-links"><a href="#top">TOP ↑</a><a href="https://github.com/thotsl4yer69" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
       </footer>
-
-      {/* BTC Payment Modal */}
-      {showBTCModal && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
-          <div className="bg-gray-900 p-8 rounded-xl border border-gray-700 max-w-md w-full">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold mb-4 text-orange-400">Bitcoin Payment</h3>
-              <p className="text-gray-300 mb-6">
-                Send payment to the address below or scan the QR code
-              </p>
-              <div className="bg-white p-4 rounded-lg mb-4">
-                <div className="w-32 h-32 bg-black mx-auto flex items-center justify-center text-white text-xs">
-                  QR CODE
-                </div>
-              </div>
-              <div className="bg-gray-800 p-4 rounded-lg mb-6">
-                <p className="text-sm text-gray-400 mb-2">Bitcoin Address:</p>
-                <p className="font-mono text-sm text-orange-400 break-all">
-                  bc1qexampleaddress123456789abcdef
-                </p>
-              </div>
-              <p className="text-sm text-gray-500 mb-6">
-                Payment will be confirmed within 1-3 confirmations
-              </p>
-            </div>
-            <div className="flex space-x-4">
-              <button 
-                onClick={() => setShowBTCModal(false)}
-                className="flex-1 border border-gray-600 px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-800"
-              >
-                Cancel
-              </button>
-              <button className="flex-1 bg-orange-500 px-4 py-2 rounded-lg text-black font-semibold hover:bg-orange-400">
-                Copy Address
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+    </main>
   );
 }
