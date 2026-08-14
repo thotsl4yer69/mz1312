@@ -5,6 +5,7 @@ const evidence = [
     evidence: 'Jetson target · local inference · MQTT/Redis service spine · systemd deployment',
     presentation: 'Representative service-console view',
     tone: 'text-cyan-200',
+    statusUrl: 'https://github.com/thotsl4yer69/sentient-core/blob/main/PROJECT_STATUS.md',
   },
   {
     project: 'DRIFTER',
@@ -12,6 +13,7 @@ const evidence = [
     evidence: 'Raspberry Pi target · OBD-II/CAN ingest · vehicle profiles · diagnostics + logging',
     presentation: 'Illustrative telemetry using the real data model',
     tone: 'text-orange-200',
+    statusUrl: 'https://github.com/thotsl4yer69/drifter/blob/main/PROJECT_STATUS.md',
   },
   {
     project: 'MYCELIYUM',
@@ -19,6 +21,7 @@ const evidence = [
     evidence: 'Native Kotlin/Compose · Room · OpenStreetMap · location + public environmental/species APIs',
     presentation: 'Real published project artwork + documented app stack',
     tone: 'text-lime-200',
+    statusUrl: 'https://github.com/thotsl4yer69/Myceliyum/blob/main/PROJECT_STATUS.md',
   },
   {
     project: 'BENCHFORGE',
@@ -33,6 +36,7 @@ const evidence = [
     evidence: 'Raspberry Pi · NFC/SPI · tag-to-URI mapping · physical playback interaction',
     presentation: 'Representative physical interaction flow',
     tone: 'text-pink-200',
+    statusUrl: 'https://github.com/thotsl4yer69/Hexplayer/blob/main/PROJECT_STATUS.md',
   },
   {
     project: 'AKARI',
@@ -40,6 +44,7 @@ const evidence = [
     evidence: 'Kotlin/Compose · Room/DataStore · emulator smoke tests · accessibility QA',
     presentation: 'Actual screenshots committed in the public repository',
     tone: 'text-yellow-200',
+    statusUrl: 'https://github.com/thotsl4yer69/akari-android/blob/main/PROJECT_STATUS.md',
   },
 ];
 
@@ -65,7 +70,13 @@ export default function EvidenceLedger() {
             className="grid gap-4 border-b border-white/10 bg-[#090c0a]/70 px-5 py-6 transition hover:bg-[#0e130f] md:grid-cols-[54px_1.05fr_.85fr_1.45fr_1fr] md:items-center md:px-6"
           >
             <span className="font-mono text-[9px] text-slate-600">{String(index + 1).padStart(2, '0')}</span>
-            <h3 className="text-sm font-black tracking-[.04em] text-slate-100">{item.project}</h3>
+            {item.statusUrl ? (
+              <a href={item.statusUrl} target="_blank" rel="noreferrer" className="text-sm font-black tracking-[.04em] text-slate-100 transition hover:text-lime-200">
+                {item.project} <span className="font-mono text-[8px] text-slate-600">↗ STATUS</span>
+              </a>
+            ) : (
+              <h3 className="text-sm font-black tracking-[.04em] text-slate-100">{item.project}</h3>
+            )}
             <span className={`font-mono text-[8px] tracking-[.09em] ${item.tone}`}>{item.maturity}</span>
             <p className="text-[11px] leading-5 text-slate-400">{item.evidence}</p>
             <p className="border-l border-white/10 pl-4 font-mono text-[8px] leading-4 text-slate-500">{item.presentation}</p>
