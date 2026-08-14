@@ -1,0 +1,60 @@
+name: One-shot tab accessibility patch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/accessibility-tabs.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Patch flagship selector semantics
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          page = Path('src/app/page.tsx')
+          s = page.read_text()
+          old = '              role="tab"\n              aria-selected={activeId === project.id}\n            >'
+          new = '              role="tab"\n              id={`project-tab-${project.id}`}\n              aria-controls={`project-panel-${project.id}`}\n              aria-selected={activeId === project.id}\n            >'
+          if old not in s:
+              raise SystemExit('tab anchor not found')
+          s = s.replace(old, new, 1)
+          old = '        <article className={`feature-project accent-${active.accent}`}>\n'
+          new = '        <article\n          className={`feature-project accent-${active.accent}`}\n          role="tabpanel"\n          id={`project-panel-${active.id}`}\n          aria-labelledby={`project-tab-${active.id}`}\n          aria-live="polite"\n        >\n'
+          if old not in s:
+              raise SystemExit('tabpanel anchor not found')
+          page.write_text(s.replace(old, new, 1))
+          PY
+
+      - name: Add visible keyboard focus
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          css = Path('src/app/globals.css')
+          s = css.read_text()
+          marker = '/* Keyboard focus */'
+          addition = "\n\n/* Keyboard focus */\n:where(a, button, input, textarea, select):focus-visible {\n  outline: 2px solid var(--acid);\n  outline-offset: 3px;\n}\n"
+          if marker not in s:
+              css.write_text(s.rstrip() + addition)
+          PY
+
+      - name: Verify patch
+        run: |
+          grep -q 'role="tabpanel"' src/app/page.tsx
+          grep -q 'aria-controls' src/app/page.tsx
+          grep -q 'Keyboard focus' src/app/globals.css
+
+      - name: Commit patch
+        run: |
+          git config user.name "MAZLABZ portfolio bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/app/page.tsx src/app/globals.css
+          git commit -m "feat: improve flagship selector accessibility"
+          git push
