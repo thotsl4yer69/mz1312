@@ -68,6 +68,7 @@ const projects: Project[] = [
     proof: ['Native Kotlin / Compose', 'Room offline storage', 'OpenStreetMap field map', 'Location + public data APIs'],
     stack: ['Kotlin', 'Compose', 'Room', 'Retrofit', 'OSM', 'Android'],
     repo: 'https://github.com/thotsl4yer69/Myceliyum',
+    caseStudy: './work/myceliyum/',
     accent: 'moss',
   },
   {
@@ -112,6 +113,7 @@ const projects: Project[] = [
     proof: ['No account required', 'Local-first storage', 'Emulator smoke testing', 'Accessibility QA'],
     stack: ['Kotlin', 'Compose', 'Room', 'DataStore', 'Health Connect', 'CI'],
     repo: 'https://github.com/thotsl4yer69/akari-android',
+    caseStudy: './work/akari/',
     accent: 'yellow',
   },
 ];
