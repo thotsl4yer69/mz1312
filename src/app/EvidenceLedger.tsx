@@ -48,6 +48,21 @@ const evidence = [
   },
 ];
 
+const toolchainPreview = [
+  'BLENDER',
+  '3D PRINTING',
+  'ULTIMAKER CURA',
+  'LASERGRBL',
+  'GRBL / G-CODE',
+  'RTL-SDR V4',
+  'SATDUMP',
+  'SDR++',
+  'JETPACK / CUDA',
+  'DOCKER',
+  'HOME ASSISTANT',
+  'GITHUB ACTIONS',
+];
+
 export default function EvidenceLedger() {
   return (
     <section className="section-wrap py-24 md:py-32" aria-labelledby="evidence-heading">
@@ -63,7 +78,7 @@ export default function EvidenceLedger() {
             The presentation can be cinematic. The maturity labels cannot. This ledger keeps the distinction between a real implementation, a hardware validation state and an illustrative browser view explicit.
           </p>
           <a href="./capabilities/" className="mt-5 inline-flex border border-lime-300/30 bg-lime-300/[.04] px-4 py-3 font-mono text-[9px] font-bold tracking-[.12em] text-lime-200 transition hover:border-lime-200/60 hover:bg-lime-300/[.08]">
-            OPEN CAPABILITIES / PROOF MAP →
+            OPEN PROOF MAP + FULL TOOLCHAIN →
           </a>
         </div>
       </div>
@@ -87,6 +102,21 @@ export default function EvidenceLedger() {
             <p className="border-l border-white/10 pl-4 font-mono text-[8px] leading-4 text-slate-500">{item.presentation}</p>
           </article>
         ))}
+      </div>
+
+      <div className="mt-5 border border-white/10 bg-[#080b09] p-5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <span className="font-mono text-[8px] font-bold tracking-[.13em] text-lime-200">BEYOND SOFTWARE // WORKSHOP + RF + FABRICATION</span>
+            <p className="mt-2 max-w-3xl text-xs leading-5 text-slate-500">The build stack extends into 3D modelling and printing, laser toolpaths, SDR/satellite work, edge deployment and physical bench validation.</p>
+          </div>
+          <a href="./capabilities/" className="font-mono text-[9px] font-bold tracking-[.1em] text-lime-200 hover:text-lime-100">VIEW EVERYTHING →</a>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {toolchainPreview.map((tool) => (
+            <span key={tool} className="border border-white/10 px-2 py-1 font-mono text-[8px] tracking-[.08em] text-slate-500">{tool}</span>
+          ))}
+        </div>
       </div>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border border-white/10 bg-[#0b0e0c] px-5 py-4 font-mono text-[8px] tracking-[.08em] text-slate-500">
