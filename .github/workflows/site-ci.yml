@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NEXT_PUBLIC_SITE_URL: https://mazlabz.us.kg
-  NEXT_PUBLIC_BASE_PATH: ""
+  NEXT_PUBLIC_SITE_URL: https://thotsl4yer69.github.io/mz1312
+  NEXT_PUBLIC_BASE_PATH: /mz1312
 
 permissions:
   contents: read
@@ -38,7 +38,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify production origin
+      - name: Verify Pages origin
         run: |
           test -f out/index.html
           test -f out/capabilities/index.html
@@ -46,7 +46,7 @@ jobs:
           grep -q 'Blender' out/capabilities/index.html
           grep -q 'LaserGRBL' out/capabilities/index.html
           grep -q 'SatDump' out/capabilities/index.html
-          grep -q 'https://mazlabz.us.kg/' out/index.html
-          grep -q 'https://mazlabz.us.kg/sitemap.xml' out/robots.txt
-          ! grep -q '"/mz1312/_next/' out/index.html
-          echo "Custom-domain production build and expanded toolchain verified."
+          grep -q 'https://thotsl4yer69.github.io/mz1312/' out/index.html
+          grep -q 'https://thotsl4yer69.github.io/mz1312/sitemap.xml' out/robots.txt
+          grep -q '/mz1312/_next/' out/index.html
+          echo "GitHub Pages project build and expanded toolchain verified."
