@@ -41,7 +41,12 @@ jobs:
       - name: Verify production origin
         run: |
           test -f out/index.html
+          test -f out/capabilities/index.html
+          grep -q 'TOOLCHAIN LEDGER' out/capabilities/index.html
+          grep -q 'Blender' out/capabilities/index.html
+          grep -q 'LaserGRBL' out/capabilities/index.html
+          grep -q 'SatDump' out/capabilities/index.html
           grep -q 'https://mazlabz.us.kg/' out/index.html
           grep -q 'https://mazlabz.us.kg/sitemap.xml' out/robots.txt
           ! grep -q '"/mz1312/_next/' out/index.html
-          echo "Custom-domain production build verified."
+          echo "Custom-domain production build and expanded toolchain verified."
