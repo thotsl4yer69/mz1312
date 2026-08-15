@@ -18,6 +18,7 @@ const KONAMI_SEQUENCE = [
 const MOBILE_TAP_TARGET = '.brand-lockup';
 const MOBILE_TAPS_REQUIRED = 5;
 const MOBILE_TAP_WINDOW_MS = 2600;
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function GhostUnlock() {
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function GhostUnlock() {
       konami = [];
       tapCount = 0;
       firstTapAt = 0;
-      window.location.assign('/ghost/');
+      window.location.assign(`${BASE_PATH}/ghost/`);
     }
 
     function onKeyDown(event: KeyboardEvent) {
