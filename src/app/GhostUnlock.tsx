@@ -3,6 +3,18 @@
 import { useEffect } from 'react';
 
 const ACCESS_SEQUENCE = 'MZ1312';
+const KONAMI_SEQUENCE = [
+  'ArrowUp',
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight',
+  'ArrowLeft',
+  'ArrowRight',
+  'KeyB',
+  'KeyA',
+];
 const MOBILE_TAP_TARGET = '.brand-lockup';
 const MOBILE_TAPS_REQUIRED = 5;
 const MOBILE_TAP_WINDOW_MS = 2600;
@@ -10,11 +22,13 @@ const MOBILE_TAP_WINDOW_MS = 2600;
 export default function GhostUnlock() {
   useEffect(() => {
     let buffer = '';
+    let konami: string[] = [];
     let tapCount = 0;
     let firstTapAt = 0;
 
     function openGhostShell() {
       buffer = '';
+      konami = [];
       tapCount = 0;
       firstTapAt = 0;
       window.location.assign('/ghost/');
@@ -30,6 +44,12 @@ export default function GhostUnlock() {
         target?.tagName === 'SELECT' ||
         target?.isContentEditable
       ) {
+        return;
+      }
+
+      konami = [...konami, event.code].slice(-KONAMI_SEQUENCE.length);
+      if (konami.length === KONAMI_SEQUENCE.length && konami.every((code, index) => code === KONAMI_SEQUENCE[index])) {
+        openGhostShell();
         return;
       }
 
