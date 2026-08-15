@@ -7,7 +7,7 @@ on:
 
 concurrency:
   group: github-pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   NEXT_PUBLIC_SITE_URL: https://thotsl4yer69.github.io/mz1312
