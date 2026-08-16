@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { sitePageUrl } from './site';
 
 const ACCESS_SEQUENCE = 'MZ1312';
 const KONAMI_SEQUENCE = [
@@ -18,7 +19,6 @@ const KONAMI_SEQUENCE = [
 const MOBILE_TAP_TARGET = '.brand-lockup';
 const MOBILE_TAPS_REQUIRED = 5;
 const MOBILE_TAP_WINDOW_MS = 2600;
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function GhostUnlock() {
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function GhostUnlock() {
       konami = [];
       tapCount = 0;
       firstTapAt = 0;
-      window.location.assign(`${BASE_PATH}/ghost/`);
+      window.location.assign(sitePageUrl('ghost'));
     }
 
     function onKeyDown(event: KeyboardEvent) {
@@ -57,9 +57,7 @@ export default function GhostUnlock() {
       if (event.key.length !== 1) return;
       buffer = `${buffer}${event.key.toUpperCase()}`.slice(-ACCESS_SEQUENCE.length);
 
-      if (buffer === ACCESS_SEQUENCE) {
-        openGhostShell();
-      }
+      if (buffer === ACCESS_SEQUENCE) openGhostShell();
     }
 
     function onClick(event: MouseEvent) {
