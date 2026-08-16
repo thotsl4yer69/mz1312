@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NEXT_PUBLIC_SITE_URL: https://thotsl4yer69.github.io/mz1312
-  NEXT_PUBLIC_BASE_PATH: /mz1312
+  NEXT_PUBLIC_SITE_URL: https://mazlabz.us.kg
+  NEXT_PUBLIC_BASE_PATH: ''
 
 permissions:
   contents: read
@@ -47,7 +47,11 @@ jobs:
           test -f out/start/index.html
           test -f out/capabilities/index.html
           test -f out/ghost/index.html
+          test -f out/work/home-intelligence/index.html
           test -f out/work/sentient-core/index.html
+          test -f out/work/murmur/index.html
+          test -f out/work/fabrication/index.html
+          test -f out/work/thegame/index.html
           test -f out/work/drifter/index.html
           test -f out/work/myceliyum/index.html
           test -f out/work/benchforge/index.html
@@ -57,6 +61,7 @@ jobs:
           test -f out/sitemap.xml
           test -f out/robots.txt
           test -f out/icon.svg
+          test -f out/CNAME
           grep -q 'START A BUILD' out/index.html
           grep -q 'PROJECT BRIEF' out/start/index.html
           grep -q 'SYSTEMS INTEGRATION' out/capabilities/index.html
@@ -69,11 +74,10 @@ jobs:
           grep -q 'MZ1312 GHOST SHELL' out/ghost/index.html
           grep -q 'noindex' out/ghost/index.html
           ! grep -q '/ghost/' out/sitemap.xml
-          grep -q 'https://thotsl4yer69.github.io/mz1312/' out/index.html
-          grep -q 'https://thotsl4yer69.github.io/mz1312/capabilities/' out/sitemap.xml
-          grep -q 'https://thotsl4yer69.github.io/mz1312/sitemap.xml' out/robots.txt
-          grep -q '/mz1312/_next/' out/index.html
-          echo "Working GitHub Pages build, toolchain ledger and hidden ghost shell verified."
+          grep -q 'https://mazlabz.us.kg/' out/index.html
+          grep -q 'https://mazlabz.us.kg/capabilities/' out/sitemap.xml
+          grep -q 'https://mazlabz.us.kg/sitemap.xml' out/robots.txt
+          echo "Production portfolio build verified: flagship systems, proof map, hidden shell and custom domain."
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
@@ -87,6 +91,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/download-artifact@v7
+        with:
+          name: github-pages
+          path: _site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
