@@ -92,11 +92,5 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/download-artifact@v7
-        with:
-          name: github-pages
-          path: _site
-
-      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
