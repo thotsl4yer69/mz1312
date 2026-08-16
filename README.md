@@ -27,6 +27,12 @@ The `/start/` route does **not** post form data to a server. It builds a structu
 
 The `/capabilities/` route is deliberately evidence-first. It groups work into commercially legible capabilities — systems integration, edge AI, native Android, embedded/IoT, Linux infrastructure, automotive data, AI agents/tooling and technical product design — and links each capability back to projects that demonstrate it. Capability levels are descriptive working-range labels, not formal accreditation.
 
+## Hidden legacy interface
+
+`/ghost/` is an intentional hidden route preserving the original MZ1312 terminal aesthetic as an easter egg rather than a second public homepage. It is excluded from the sitemap and marked `noindex` / `nofollow`.
+
+Unlocks include typing `MZ1312`, the Konami sequence, or tapping the brand lockup five times on a touch device. The shell contains real portfolio navigation commands such as `help`, `projects`, `open <project>`, `capabilities`, `start`, `github` and `exit`, plus an undocumented legacy `cortana` easter egg.
+
 ## Flagship case studies
 
 The home page currently centres six builds:
@@ -46,7 +52,7 @@ The website uses stylised interactive representations of systems to make the wor
 
 Where telemetry, terminals, maps or device interfaces are illustrative, the UI explicitly labels them as **representative / not live data**. Real application captures and public repository assets are labelled as such.
 
-BenchForge and HexPlayer now include small browser interactions rather than static diagrams: BenchForge cycles representative component-constrained build concepts, and HexPlayer advances through the physical interaction state from NFC tile detection to playback handoff. These remain illustrative demos of the product logic, not live hardware sessions.
+BenchForge and HexPlayer include small browser interactions rather than static diagrams: BenchForge cycles representative component-constrained build concepts, and HexPlayer advances through the physical interaction state from NFC tile detection to playback handoff. These remain illustrative demos of the product logic, not live hardware sessions.
 
 Public flagship entries in the Evidence Ledger link directly to their current `PROJECT_STATUS.md` where available.
 
@@ -79,30 +85,26 @@ npm run lint
 npm run build
 ```
 
-The build is configured as a static export and produces `out/`. The repository includes:
+The build is configured as a static export and produces `out/`.
+
+Permanent workflows:
 
 - `.github/workflows/site-ci.yml` — read-only lint/build verification.
-- `.github/workflows/deploy-pages.yml` — read-only static bundle build, route/base-path assertions and artifact upload.
+- `.github/workflows/deploy-pages.yml` — static bundle build, route/base-path/evidence assertions, artifact upload and GitHub Pages deployment.
 
-Both permanent workflows use Node 22.
+Both permanent workflows use Node 22. Temporary write-capable patch workflows are not retained.
 
 ## Deployment
 
-The default canonical fallback is:
+Production target:
 
 ```text
-https://thotsl4yer69.github.io/mz1312
+https://mazlabz.us.kg
 ```
 
-For another host or a custom domain, set:
+GitHub Pages is the hosting layer. The build is configured for the custom-domain root while retaining automatic support for the historical GitHub Pages `/mz1312` base path when `NEXT_PUBLIC_SITE_URL` points at that Pages URL.
 
-```bash
-NEXT_PUBLIC_SITE_URL=https://your-domain.example
-```
-
-before the production build so canonical metadata, `robots.txt` and `sitemap.xml` point at the real public origin.
-
-GitHub Pages still needs to be enabled at repository/account settings level before the default Pages URL will serve the static bundle.
+Set `NEXT_PUBLIC_SITE_URL` to the actual public origin when deploying elsewhere so canonical metadata, `robots.txt` and `sitemap.xml` remain correct.
 
 ## Content principles
 
