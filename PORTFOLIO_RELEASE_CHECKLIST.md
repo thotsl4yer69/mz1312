@@ -10,7 +10,10 @@ Use this before treating a portfolio change as publishable.
 - [ ] `out/index.html` exists.
 - [ ] `out/_next/` exists.
 - [ ] `/start/` is present in the static output.
-- [ ] All six flagship case-study routes are present in the static output.
+- [ ] `/capabilities/` is present in the static output.
+- [ ] `/ghost/` is present in the static output.
+- [ ] All flagship case-study routes are present in the static output.
+- [ ] No stale `/mz1312/_next/` asset paths are emitted for the custom-domain build.
 
 ## Conversion path
 
@@ -36,13 +39,17 @@ Use this before treating a portfolio change as publishable.
 - [ ] Decorative animation respects `prefers-reduced-motion`.
 - [ ] Custom 404 route builds and links back to the lab and project brief.
 - [ ] Mobile layout remains usable at narrow viewport widths.
+- [ ] Hidden-shell unlock does not trigger while typing into form controls.
+- [ ] Hidden-shell unlock uses the correct base path on historical GitHub Pages hosting.
 
 ## Search / metadata
 
 - [ ] Page title and description still match current positioning.
-- [ ] `sitemap.xml` includes home, `/start/` and flagship case studies.
+- [ ] `sitemap.xml` includes home, `/start/`, `/capabilities/` and flagship case studies.
+- [ ] `/ghost/` is absent from `sitemap.xml`.
+- [ ] `/ghost/` carries `noindex` / `nofollow` metadata.
 - [ ] `robots.txt` references the sitemap.
-- [ ] `NEXT_PUBLIC_SITE_URL` is set to the canonical production URL when deploying somewhere other than the GitHub Pages default.
+- [ ] `NEXT_PUBLIC_SITE_URL` is set to `https://mazlabz.us.kg` for production.
 - [ ] Structured data names Jack Mazzini / MAZLABZ without inventing employers, clients or credentials.
 
 ## Dependency / CI hygiene
@@ -54,7 +61,11 @@ Use this before treating a portfolio change as publishable.
 
 ## Publishing
 
-- [ ] GitHub Pages or the chosen host is enabled and serving the latest static artifact.
+- [ ] GitHub Pages is enabled and serving the latest static artifact.
+- [ ] GitHub Pages **Custom domain** is set to `mazlabz.us.kg`.
+- [ ] DNS resolves the apex domain to GitHub Pages.
+- [ ] HTTPS is enforced on the custom domain.
 - [ ] Repository description no longer says `MZ-1312 Streaming`.
 - [ ] Canonical URL is reflected in metadata and sitemap configuration.
 - [ ] Desktop and mobile visual QA has been performed on the deployed site.
+- [ ] Deep routes and the hidden shell have been checked on the deployed origin.
