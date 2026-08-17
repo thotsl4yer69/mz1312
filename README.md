@@ -1,4 +1,4 @@
-# MAZLABZ — Jack Mazzini / Applied Technology Portfolio
+# MAZLABZ — Jack M / Applied Technology Portfolio
 
 > **Status: Active portfolio site**  
 > Canonical public presentation layer for Jack Mazzini / MAZLABZ technical work across edge AI, embedded Linux, native Android, connected hardware and AI-assisted systems integration.
