@@ -1,92 +1,66 @@
-import type { Metadata, Viewport } from "next";
-import "./globals.css";
-import GhostUnlock from "./GhostUnlock";
-import { SITE_ROOT } from "./site";
+import type { Metadata, Viewport } from 'next';
+import './globals.css';
+import GhostUnlock from './GhostUnlock';
+import { SITE_ROOT } from './site';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ROOT),
   title: {
-    default: "Jack Mazzini — MAZLABZ Applied Technology Lab",
-    template: "%s — MAZLABZ",
+    default: 'NULLVECTOR LABS — Edge Intelligence & Physical AI',
+    template: '%s — NULLVECTOR LABS',
   },
-  description:
-    "Independent applied-technology portfolio spanning edge AI, Raspberry Pi, NVIDIA Jetson, native Android, connected hardware and AI-native systems integration.",
-  keywords: [
-    "edge AI",
-    "systems integration",
-    "Raspberry Pi",
-    "NVIDIA Jetson",
-    "Android Kotlin",
-    "technical prototyping",
-    "embedded Linux",
-    "MAZLABZ",
-  ],
-  authors: [{ name: "Jack Mazzini" }],
-  creator: "Jack Mazzini",
-  alternates: {
-    canonical: SITE_ROOT,
-  },
+  description: 'Independent applied-technology laboratory building edge AI, intelligent hardware, embedded systems and privacy-first physical computing.',
+  keywords: ['edge AI', 'physical AI', 'embedded systems', 'NVIDIA Jetson', 'Raspberry Pi', 'AI agents', 'computer vision', 'sensor fusion', 'AWS'],
+  authors: [{ name: 'Jack Mazzini' }],
+  creator: 'Jack Mazzini',
+  alternates: { canonical: SITE_ROOT },
   openGraph: {
-    title: "Jack Mazzini — MAZLABZ Applied Technology Lab",
-    description: "AI-native systems integration across software, edge compute and physical hardware.",
-    type: "website",
+    title: 'NULLVECTOR LABS — Edge Intelligence & Physical AI',
+    description: 'Edge intelligence, physical computing and AI systems engineered from prototype to deployment.',
+    type: 'website',
     url: SITE_ROOT,
-    siteName: "MAZLABZ Applied Technology Lab",
+    siteName: 'NULLVECTOR LABS',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Jack Mazzini — MAZLABZ",
-    description: "Edge AI · Embedded Linux · Android · Connected Hardware · Automation",
+    card: 'summary_large_image',
+    title: 'NULLVECTOR LABS',
+    description: 'Edge AI · Physical AI · Embedded Systems · Intelligent Hardware',
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: "#070908",
-  colorScheme: "dark",
-};
+export const viewport: Viewport = { themeColor: '#050608', colorScheme: 'dark' };
 
 const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "Person",
-      name: "Jack Mazzini",
+      '@type': 'Person',
+      name: 'Jack Mazzini',
       url: SITE_ROOT,
-      sameAs: ["https://github.com/thotsl4yer69"],
-      jobTitle: "AI-Native Systems Integrator & Technical Prototyper",
-      knowsAbout: [
-        "Edge AI",
-        "Raspberry Pi",
-        "NVIDIA Jetson",
-        "Android development",
-        "Embedded Linux",
-        "MQTT",
-        "Hardware/software prototyping",
-      ],
+      sameAs: ['https://github.com/thotsl4yer69'],
+      jobTitle: 'Independent AI Systems Builder',
+      knowsAbout: ['Edge AI', 'Physical AI', 'Embedded Linux', 'NVIDIA Jetson', 'Raspberry Pi', 'Android', 'Computer Vision', 'AI Agents'],
     },
     {
-      "@type": "WebSite",
-      name: "MAZLABZ Applied Technology Lab",
+      '@type': 'Organization',
+      name: 'NULLVECTOR LABS',
       url: SITE_ROOT,
-      description:
-        "Applied technology portfolio covering edge AI, embedded systems, mobile applications, automation and physical computing.",
-      author: { "@type": "Person", name: "Jack Mazzini" },
+      description: 'Independent applied-technology laboratory focused on edge intelligence and physical AI.',
+    },
+    {
+      '@type': 'WebSite',
+      name: 'NULLVECTOR LABS',
+      url: SITE_ROOT,
+      description: 'Edge intelligence and physical AI research portfolio.',
     },
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <GhostUnlock />
         {children}
       </body>
