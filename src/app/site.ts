@@ -1,4 +1,4 @@
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mazlabz.us.kg';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://main.d1example.amplifyapp.com';
 
 export const SITE_ROOT = SITE_URL.endsWith('/') ? SITE_URL : `${SITE_URL}/`;
 
