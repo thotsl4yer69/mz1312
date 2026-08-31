@@ -1,4 +1,4 @@
-name: Deploy MAZLABZ portfolio
+name: Deploy Jack Mazzini personal site
 
 on:
   push:
@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NEXT_PUBLIC_SITE_URL: https://mazlabz.us.kg
+  NEXT_PUBLIC_SITE_URL: https://jackmazzini.com
   NEXT_PUBLIC_BASE_PATH: ''
 
 permissions:
@@ -40,44 +40,25 @@ jobs:
       - name: Build static portfolio
         run: npm run build
 
-      - name: Verify Pages site surface
+      - name: Verify personal site surface
         run: |
           test -f out/index.html
           test -d out/_next
           test -f out/start/index.html
           test -f out/capabilities/index.html
           test -f out/ghost/index.html
-          test -f out/work/home-intelligence/index.html
-          test -f out/work/sentient-core/index.html
-          test -f out/work/murmur/index.html
-          test -f out/work/fabrication/index.html
-          test -f out/work/thegame/index.html
-          test -f out/work/drifter/index.html
-          test -f out/work/myceliyum/index.html
-          test -f out/work/benchforge/index.html
-          test -f out/work/hexplayer/index.html
-          test -f out/work/akari/index.html
           test -f out/404.html
           test -f out/sitemap.xml
           test -f out/robots.txt
           test -f out/icon.svg
           test -f out/CNAME
-          grep -q 'START A BUILD' out/index.html
-          grep -q 'PROJECT BRIEF' out/start/index.html
-          grep -q 'SYSTEMS INTEGRATION' out/capabilities/index.html
-          grep -q 'TOOLCHAIN LEDGER' out/capabilities/index.html
-          grep -q 'Blender' out/capabilities/index.html
-          grep -q 'LaserGRBL' out/capabilities/index.html
-          grep -q 'SatDump' out/capabilities/index.html
-          grep -q 'RTL-SDR Blog V4' out/capabilities/index.html
-          grep -q 'UltiMaker Cura' out/capabilities/index.html
-          grep -q 'MZ1312 GHOST SHELL' out/ghost/index.html
-          grep -q 'noindex' out/ghost/index.html
-          ! grep -q '/ghost/' out/sitemap.xml
-          grep -q 'https://mazlabz.us.kg/' out/index.html
-          grep -q 'https://mazlabz.us.kg/capabilities/' out/sitemap.xml
-          grep -q 'https://mazlabz.us.kg/sitemap.xml' out/robots.txt
-          echo "Production portfolio build verified: flagship systems, proof map, hidden shell and custom domain."
+          grep -q 'Jack Mazzini' out/index.html
+          grep -q 'SELECTED WORK' out/index.html
+          grep -q 'https://jackmazzini.com/' out/index.html
+          grep -q 'https://jackmazzini.com/capabilities/' out/sitemap.xml
+          grep -q 'https://jackmazzini.com/sitemap.xml' out/robots.txt
+          ! grep -q 'NULLVECTOR LABS' out/index.html
+          echo "Production personal site build verified."
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4

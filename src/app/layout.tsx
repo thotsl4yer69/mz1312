@@ -6,29 +6,29 @@ import { SITE_ROOT } from './site';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ROOT),
   title: {
-    default: 'NULLVECTOR LABS — Edge Intelligence & Physical AI',
-    template: '%s — NULLVECTOR LABS',
+    default: 'Jack Mazzini — Builder, Entrepreneur, Technologist',
+    template: '%s — Jack Mazzini',
   },
-  description: 'Independent applied-technology laboratory building edge AI, intelligent hardware, embedded systems and privacy-first physical computing.',
-  keywords: ['edge AI', 'physical AI', 'embedded systems', 'NVIDIA Jetson', 'Raspberry Pi', 'AI agents', 'computer vision', 'sensor fusion', 'AWS'],
+  description: 'Jack Mazzini is an independent entrepreneur and technical builder working across AI, edge computing, embedded systems, automation, Android and connected hardware.',
+  keywords: ['Jack Mazzini', 'MAZLABZ', 'AI', 'edge AI', 'embedded systems', 'Jetson', 'Raspberry Pi', 'Android', 'automation', 'technical prototyping'],
   authors: [{ name: 'Jack Mazzini' }],
   creator: 'Jack Mazzini',
   alternates: { canonical: SITE_ROOT },
   openGraph: {
-    title: 'NULLVECTOR LABS — Edge Intelligence & Physical AI',
-    description: 'Edge intelligence, physical computing and AI systems engineered from prototype to deployment.',
+    title: 'Jack Mazzini — Builder, Entrepreneur, Technologist',
+    description: 'A living portfolio of systems, products, experiments and technical work.',
     type: 'website',
     url: SITE_ROOT,
-    siteName: 'NULLVECTOR LABS',
+    siteName: 'Jack Mazzini',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NULLVECTOR LABS',
-    description: 'Edge AI · Physical AI · Embedded Systems · Intelligent Hardware',
+    title: 'Jack Mazzini',
+    description: 'Entrepreneur · Builder · Technologist · MAZLABZ',
   },
 };
 
-export const viewport: Viewport = { themeColor: '#050608', colorScheme: 'dark' };
+export const viewport: Viewport = { themeColor: '#07090d', colorScheme: 'dark' };
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -38,20 +38,20 @@ const structuredData = {
       name: 'Jack Mazzini',
       url: SITE_ROOT,
       sameAs: ['https://github.com/thotsl4yer69'],
-      jobTitle: 'Independent AI Systems Builder',
-      knowsAbout: ['Edge AI', 'Physical AI', 'Embedded Linux', 'NVIDIA Jetson', 'Raspberry Pi', 'Android', 'Computer Vision', 'AI Agents'],
+      jobTitle: 'Entrepreneur and Technical Builder',
+      knowsAbout: ['Artificial Intelligence', 'Edge AI', 'Embedded Systems', 'Automation', 'Android', 'Linux', 'Connected Hardware', 'Systems Integration'],
     },
     {
       '@type': 'Organization',
-      name: 'NULLVECTOR LABS',
+      name: 'MAZLABZ',
       url: SITE_ROOT,
-      description: 'Independent applied-technology laboratory focused on edge intelligence and physical AI.',
+      description: 'Independent technology and product development work by Jack Mazzini.',
     },
     {
       '@type': 'WebSite',
-      name: 'NULLVECTOR LABS',
+      name: 'Jack Mazzini',
       url: SITE_ROOT,
-      description: 'Edge intelligence and physical AI research portfolio.',
+      description: 'Personal portfolio, project archive and laboratory notebook.',
     },
   ],
 };

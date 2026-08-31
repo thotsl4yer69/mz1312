@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NEXT_PUBLIC_SITE_URL: https://thotsl4yer69.github.io/mz1312
-  NEXT_PUBLIC_BASE_PATH: /mz1312
+  NEXT_PUBLIC_SITE_URL: https://jackmazzini.com
+  NEXT_PUBLIC_BASE_PATH: ''
 
 permissions:
   contents: read
@@ -38,15 +38,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify Pages origin
+      - name: Verify personal site
         run: |
           test -f out/index.html
           test -f out/capabilities/index.html
-          grep -q 'TOOLCHAIN LEDGER' out/capabilities/index.html
-          grep -q 'Blender' out/capabilities/index.html
-          grep -q 'LaserGRBL' out/capabilities/index.html
-          grep -q 'SatDump' out/capabilities/index.html
-          grep -q 'https://thotsl4yer69.github.io/mz1312/' out/index.html
-          grep -q 'https://thotsl4yer69.github.io/mz1312/sitemap.xml' out/robots.txt
-          grep -q '/mz1312/_next/' out/index.html
-          echo "GitHub Pages project build and expanded toolchain verified."
+          grep -q 'Jack Mazzini' out/index.html
+          grep -q 'SELECTED WORK' out/index.html
+          grep -q 'https://jackmazzini.com/' out/index.html
+          grep -q 'https://jackmazzini.com/sitemap.xml' out/robots.txt
+          ! grep -q 'NULLVECTOR LABS' out/index.html
+          echo "Jack Mazzini personal portfolio build verified."
