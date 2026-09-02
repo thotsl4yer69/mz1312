@@ -1,0 +1,991 @@
+ Secure and fast GitHub Pages with CloudFlare | Cloudflare Blog 
+ Skip to content 
+ All Categories AI 
+ Developers 
+ Radar 
+ Product News 
+ Security 
+ Policy & Legal 
+ Zero Trust 
+ Speed & Reliability 
+ Life at Cloudflare 
+ Partners 
+ Switch Site Language
+ English 
+ Deutsch 
+ Español 
+ Español (Latinoamérica) 
+ Français 
+ Italiano 
+ 日本語 
+ 한국어 
+ 繁體中文 
+ 简体中文 
+ Português 
+ Русский 
+ Bahasa Indonesia 
+ ภาษาไทย 
+ Tiếng Việt 
+ Polski 
+ العربية 
+ עברית 
+ Svenska 
+ Nederlands 
+ Türkçe 
+ Login Dashboard Contact Sales 
+ Blog GitHub HTTP2 Security +1 Show 1 more tags 
+ 4 Tags Show 4 tags 
+ Selected Tags
+ GitHub HTTP2 Security SSL 
+ All tags
+ Matching tags
+ No tags found
+ 1.1.1.1 
+ 2FA 
+ Abuse 
+ Access 
+ Access Control Lists (ACLs) 
+ Accessibility 
+ Account Takeover 
+ Acquisitions 
+ Addressing 
+ Advanced Certificate Manager 
+ Advanced DDoS 
+ Advertising 
+ Aegis 
+ AEO 
+ Africa 
+ Afroflare 
+ Agent Cloud 
+ Agent Development Lifecycle 
+ Agent Readiness 
+ Agents 
+ Agents Week 
+ Agents Week 2026 
+ AI 
+ AI Bots 
+ AI Gateway 
+ AI Search 
+ AI WAF 
+ AI Week 
+ AI-SPM 
+ Alertmanager 
+ Always Online 
+ AMD 
+ AMP 
+ Analytics 
+ Anonymous 
+ Anti Malware 
+ Anycast 
+ API 
+ API Gateway 
+ API Security 
+ API Shield 
+ APJC 
+ Apple 
+ Application Security 
+ Application Services 
+ Area 1 Security 
+ Argo Smart Routing 
+ ASCII 
+ Asia 
+ Athenian Project 
+ Atlassian 
+ Attacks 
+ Audit Logs 
+ Austin 
+ Australia 
+ Authentication 
+ Authy 
+ Auto Rag 
+ Automatic HTTPS 
+ Automatic Platform Optimization 
+ Automation 
+ AutoMinify 
+ Awards 
+ AWS 
+ Baidu 
+ Bandwidth Alliance 
+ Bandwidth Costs 
+ Best Practices 
+ Beta 
+ Better Internet 
+ BGP 
+ Billing 
+ Birthday Week 
+ Black Friday 
+ Blackbird 
+ Bot Fight Mode 
+ Bot Management 
+ Botnet 
+ Bots 
+ BPF 
+ Brand 
+ Brand Protection 
+ Brazil 
+ Browser Insights 
+ Browser Rendering 
+ Browser Run 
+ Bug Bounty 
+ Bugs 
+ BYOIP 
+ Cache 
+ Cache Purge 
+ Cache Reserve 
+ Cache Rules 
+ California 
+ Canada 
+ Cap'n Proto 
+ CAPTCHA 
+ Careers 
+ CASB 
+ Categories 
+ CDN 
+ CDNJS 
+ Certificate Authority 
+ Certificate Pinning 
+ Certificate Transparency 
+ Certification 
+ CFSSL 
+ Challenge Page 
+ ChatGPT 
+ China 
+ China Network 
+ Christmas 
+ Chrome 
+ CIO Week 
+ CISA 
+ Claire 
+ CLI 
+ ClickHouse 
+ Clientless 
+ Clientless Web Isolation 
+ Cloud Connector 
+ Cloud Email Security 
+ Cloudflare Access 
+ Cloudflare Apps 
+ Cloudflare Area 1 
+ Cloudflare Calls 
+ Cloudflare Email Service 
+ Cloudflare for Campaigns 
+ Cloudflare for SaaS 
+ Cloudflare for Startups 
+ Cloudflare Gateway 
+ Cloudflare History 
+ Cloudflare Images 
+ Cloudflare Media Platform 
+ Cloudflare Meetups 
+ Cloudflare Network 
+ Cloudflare One 
+ Cloudflare One Client 
+ Cloudflare One User Risk Score 
+ Cloudflare One Week 
+ Cloudflare OS 
+ Cloudflare Pages 
+ Cloudflare Polish 
+ Cloudflare Queues 
+ Cloudflare Realtime 
+ Cloudflare Stream 
+ Cloudflare Tunnel 
+ Cloudflare TV 
+ Cloudflare Workers 
+ Cloudflare Workers (PT) 
+ Cloudflare Workers KV 
+ Cloudflare Workers KV (ES) 
+ Cloudflare Zero Trust 
+ Cloudforce One 
+ Cloudy 
+ Code Orange 
+ Coinbase 
+ Colombia 
+ Community 
+ Compliance 
+ Compression 
+ Config Rules 
+ Configuration Management 
+ Congestion Control 
+ Connectivity 
+ Connectivity Cloud 
+ Consumer Services 
+ Containers 
+ Content Independence Day 
+ Content Scanning 
+ Context 
+ Core 
+ COVID-19 
+ Crawler Hints 
+ CrowdStrike 
+ Crypto Week 
+ Cryptography 
+ CSAM Reporting 
+ Customer Success 
+ Customer Zero 
+ Customers 
+ CVE 
+ CVE-2023-50387 
+ Cyber Readiness 
+ Cybersecurity 
+ D1 
+ Dashboard 
+ Data 
+ Data Catalog 
+ Data Center 
+ Data Localization 
+ Data Localization Suite 
+ Data Loss 
+ Data Loss Prevention 
+ Data Platform 
+ Data Privacy Day 
+ Data Protection 
+ Data Sovereignty 
+ Data Transfer Bucket 
+ Database 
+ DDoS 
+ DDoS Alerts 
+ DDoS Reports 
+ Debugging 
+ Deep Dive 
+ Descaler 
+ Design 
+ Deskope 
+ Developer Documentation 
+ Developer Platform 
+ Developer Spotlight 
+ Developer Week 
+ Developers 
+ Developers Storage 
+ Device Security 
+ DevOps 
+ DEX 
+ Digital Experience Monitoring 
+ Digital Forensics 
+ Disrupt 
+ Distributed 
+ Distributed Systems 
+ Distributed Web 
+ Diversity 
+ DLP 
+ DMARC 
+ DNS 
+ DNS Filtering 
+ DNS Flood 
+ DNS Security 
+ DNSSEC 
+ Dogfooding 
+ DoH 
+ Domain Rankings 
+ Domain Scoped Roles 
+ dosd 
+ Drupal 
+ Due Process 
+ Durable Execution 
+ Durable Objects 
+ Early Hints 
+ Earth Day 
+ eBPF 
+ EC2 
+ eCommerce 
+ Edge 
+ Edge Computing 
+ Edge Database 
+ Edge Rules 
+ Education 
+ Egress 
+ Elastic 
+ Election Security 
+ Elections 
+ Elliptic Curves 
+ Email 
+ Email Routing 
+ Email Security 
+ Email Workers 
+ EmDash 
+ Emissions 
+ Employee Resource Groups 
+ Encrypted SNI 
+ Encryption 
+ Engineering 
+ Enterprise 
+ Entropy 
+ EPYC 
+ Ethereum 
+ Europe 
+ European Union 
+ Events 
+ Exploit 
+ Facebook 
+ Fancy Bear 
+ Fast Fonts 
+ FCC 
+ Feature Flags 
+ FedRAMP 
+ FedRAMP High 
+ FedRAMP Moderate 
+ Firefox 
+ Firewall 
+ Firmware 
+ Florida 
+ Football 
+ Formal Methods 
+ Forrester 
+ Fortran 
+ Foundation DNS 
+ Founders' Letter 
+ France 
+ Fraud 
+ Free 
+ Freedom of Speech 
+ Front End 
+ Full Stack 
+ Full Stack Week 
+ Fun 
+ GA Week 
+ Gartner 
+ Gatebot 
+ GDPR 
+ Gen X 
+ General Availability 
+ Generative AI 
+ Geo Key Manager 
+ Germany 
+ GitHub 
+ Go 
+ Google 
+ Google Analytics 
+ Google Cloud 
+ Google Workspace 
+ Government Innovation 
+ Grace Hopper 
+ Grafana 
+ GraphQL 
+ Green 
+ Grinch 
+ Growth 
+ gRPC 
+ Guest Post 
+ Hackathon 
+ Halloween 
+ Hardware 
+ HashiCorp 
+ Hertzbleed 
+ Heuristics 
+ History 
+ Holidays 
+ Holocaust 
+ Hong Kong 
+ Hosting Con 
+ Hostnames 
+ HTTP2 
+ HTTP3 
+ HTTPS 
+ Human Rights 
+ Hurricane 
+ Hybrid Cloud 
+ Hyperdrive 
+ I'm Under Attack Mode 
+ IBM 
+ ICANN 
+ iCloud Private Relay 
+ Identity 
+ IETF 
+ IETF Standards 
+ IL4 
+ Image Optimization 
+ Image Recognition 
+ Image Resizing 
+ Image Storage 
+ Impact 
+ Impact Week 
+ Incident Report 
+ Incident Response 
+ India 
+ Indicators of Compromise 
+ Indonesian 
+ Inference 
+ Infrastructure 
+ Infrastructure as Code 
+ Insights 
+ Intel 
+ Interconnection 
+ Internal DNS 
+ Internet Performance 
+ Internet Quality 
+ Internet Regulation 
+ Internet Shutdown 
+ Internet Summit 
+ Internet Traffic 
+ Internet Trends 
+ Internship Experience 
+ Intrusion Detection 
+ Investors 
+ IoCs 
+ iOS 
+ IoT 
+ IPFS 
+ IPsec 
+ IPv4 
+ IPv6 
+ IRAP 
+ Israel 
+ Italy 
+ IWD 
+ JAMstack 
+ Japan 
+ JavaScript 
+ Jengo 
+ Jengo Policy 
+ Joomla 
+ Judeoflare 
+ Kafka 
+ Kernel 
+ Key Value 
+ Keyless SSL 
+ KeyTrap 
+ Killnet 
+ Korea 
+ Kubernetes 
+ LangChain 
+ Latency 
+ Latin America 
+ Latinflare 
+ LavaRand 
+ Lazarus group 
+ Leaked Credential Checks 
+ Legal 
+ Legal Patents Sable 
+ LGBTQIA+ 
+ Life at Cloudflare 
+ Linux 
+ Lisbon 
+ Live Streaming 
+ Llama 
+ LLM 
+ Load Balancing 
+ Localization 
+ Log Push 
+ Log4J 
+ Log4Shell 
+ Logging 
+ Logs 
+ LUA 
+ Machine Learning 
+ Magecart 
+ Magic Firewall 
+ Magic Network Monitoring 
+ Magic Transit 
+ Magic WAN 
+ Magic WAN Connector 
+ Malicious JavaScript 
+ Malware 
+ Managed Components 
+ Managed Rules 
+ March of Cloudflare 
+ MASQUE 
+ MCP 
+ Meerkat 
+ MeetUp 
+ Meris 
+ Message Protocol 
+ Mexico 
+ Micro-frontends 
+ Microsoft 
+ Microsoft 365 
+ Microsoft Azure 
+ Middle East 
+ Migration Hub 
+ Milestones 
+ Miniflare 
+ Mirage 
+ Mirai 
+ Mitel 
+ Mitigation 
+ Mixed Content Errors 
+ MLops 
+ Mobile 
+ Mobile SDK 
+ Model Context Protocol 
+ Moldova 
+ Monitoring 
+ Multi-Cloud 
+ Multi-User 
+ MySQL 
+ NaaS 
+ Net Neutrality 
+ Network 
+ Network Interconnect 
+ Network Performance Update 
+ Network Protection 
+ Network Services 
+ Networking 
+ New Year 
+ NGINX 
+ Ninjas 
+ NIST 
+ Node.js 
+ North America 
+ Notebooks 
+ Notifications 
+ NSEC3 
+ OAuth 
+ Observability 
+ Oceania 
+ OCSP 
+ Offices 
+ Okta 
+ Olympics 
+ Onboarding 
+ Open API 
+ Open Source 
+ OpenAI 
+ OpenBMC 
+ OpenDNS 
+ OpenSSL 
+ OpenTelemetry 
+ Optimization 
+ Origin Rules 
+ Outage 
+ Oxy 
+ Pacific Northwest 
+ Page Rules 
+ Page Shield 
+ Parallels 
+ Partners 
+ Partnership 
+ Password-reuse 
+ Passwords 
+ Passwords (PT) 
+ Patents 
+ Pay Per Crawl 
+ PAYGO 
+ Payments 
+ PCI Certified 
+ Peering 
+ Performance 
+ Performance Optimization 
+ Phishing 
+ php 
+ Phython 
+ Pingora 
+ Pipelines 
+ PlanetScale 
+ Plans 
+ Platform Engineering 
+ Platform Week 
+ Plesk 
+ Policy & Legal 
+ Politics 
+ Portugal 
+ Post Mortem 
+ Post-Quantum 
+ Postgres 
+ Precursor 
+ Prepared Statements 
+ Prisma 
+ Privacy 
+ Privacy Pass 
+ Privacy Week 
+ Private IP 
+ Private Network 
+ Product Design 
+ Product News 
+ Programming 
+ Programming (PT) 
+ Project Fair Shot 
+ Project Galileo 
+ Project Honey Pot 
+ Project Pangea 
+ Project Safekeeping 
+ Project Turpentine 
+ Prometheus 
+ Protocols 
+ Proudflare 
+ Proxying 
+ Public Sector 
+ Python 
+ Python Workers 
+ Quantization 
+ Queues 
+ QUIC 
+ QUICHE 
+ Quicksilver 
+ R2 
+ R2 Super Slurper 
+ Radar 
+ Radar Alerts 
+ Radar API 
+ Radar Maps 
+ Railgun 
+ Randomness 
+ Ransom Attacks 
+ Rapid Reset 
+ Raspberry Pi 
+ Rate Limiting 
+ RC4 
+ RDDoS 
+ React 
+ Reading List 
+ Real-time 
+ Recruiting 
+ Regional Services 
+ Registrar 
+ Reliability 
+ Remote Browser Isolation 
+ Remote Desktop Protocol 
+ Remote Work 
+ Replication 
+ Research 
+ Resolver 
+ Restreaming 
+ Retreat 
+ Reverse Engineering 
+ REvil 
+ Risk Management 
+ Road to Zero Trust 
+ Rocket Loader 
+ RocksDB 
+ Routing 
+ Routing Security 
+ RPC 
+ RPKI 
+ RRDNS 
+ RSA 
+ Russia 
+ Rust 
+ Rust Workers 
+ SaaS 
+ SAAS Security 
+ Sable 
+ Salt 
+ Sampling 
+ Sandbox 
+ SASE 
+ Save The Web 
+ SDK 
+ Search Engine 
+ Secrets Store 
+ Secure Web Gateway 
+ Security 
+ Security Analytics 
+ Security Center 
+ Security Posture 
+ Security Posture Management 
+ Security Service Edge 
+ Security Week 
+ security.txt 
+ SEO 
+ Server Push 
+ Serverless 
+ Serverless (PT) 
+ Serverless AI 
+ Serverless Week 
+ Servers 
+ SIEM 
+ Signed Exchanges (SXG) 
+ SIM 
+ Singapore 
+ Single Sign On (SSO) 
+ Smart Placement 
+ Smart Shield 
+ Snippets 
+ SOC as a Service 
+ South Africa 
+ South America 
+ Spain 
+ spdy 
+ Spectrum 
+ Speed 
+ Speed & Reliability 
+ Speed Brain 
+ Speed Week 
+ Spoofing 
+ Sports 
+ SQL 
+ SRE 
+ SSE 
+ SSH 
+ SSL 
+ Standards 
+ Startup Enterprise Plan 
+ Statistics 
+ StopTheHacker 
+ Storage 
+ Sumo Logic 
+ Super Bowl 
+ Supercloud 
+ Supply Chain Attacks 
+ Support 
+ Sustainability 
+ SWAG 
+ SWG 
+ Swift 
+ Switzerland 
+ SXSW 
+ SYN 
+ SYN Flood 
+ Syria 
+ TCP 
+ Team 
+ Teams Dashboard 
+ Tech Talks 
+ TechCrunch 
+ Technical Writing 
+ Terraform 
+ Testimonials 
+ Testing 
+ Texas 
+ Thanksgiving 
+ The Serverlist Newsletter 
+ Threat Data 
+ Threat Feeds 
+ Threat Intelligence 
+ Threat Operations 
+ Threat Report 
+ Threats 
+ Tiered Cache 
+ TikTok 
+ TLS 
+ TLS 1.3 
+ Tools 
+ Tor 
+ Tracing 
+ Traffic 
+ Transform Rules 
+ Transparency 
+ Trends 
+ Trust & Safety 
+ TTFB 
+ TTL 
+ TURN 
+ TURN Server 
+ Turnstile 
+ TypeScript 
+ UDP 
+ Ukraine 
+ United Kingdom 
+ Universal SSL 
+ URL Scanner 
+ USA 
+ User Research 
+ VDI 
+ Vectorize 
+ Vetflare 
+ Video 
+ Visibility 
+ Vite 
+ VoIP 
+ VPC 
+ VPN 
+ Vulnerabilities 
+ WAF 
+ WAF Attack Score 
+ WAF Rules 
+ Waiting Room 
+ WARP 
+ WARP Connector 
+ WASM 
+ Web Application Firewall 
+ Web Asset Discovery 
+ Web3 
+ WebAssembly 
+ Webinars 
+ WebMCP 
+ WebP 
+ WebRTC 
+ WebSockets 
+ Wildebeest 
+ Womenflare 
+ WordPress 
+ Workers AI 
+ Workers Launchpad 
+ Workers Logs 
+ Workers Observability 
+ Workers Sites 
+ Workers Unbound 
+ Workers VPC 
+ Workflows 
+ World IPv6 Day 
+ Wrangler 
+ x402 
+ Year in Review 
+ Z3 
+ Zaraz 
+ Zero Day Threats 
+ Zero Trust 
+ Zero Trust Week 
+ Zone Versioning 
+ SSL 
+ GitHub HTTP2 Security SSL 
+ June 14, 2016 Secure and fast GitHub Pages with CloudFlare
+ Junade Ali 
+ 7 minute read 
+ COPY URL 
+ GitHub offers a web hosting service whereby you can serve a static website from a GitHub repository. This platform, GitHub Pages, can be used with CloudFlare whilst using a custom domain name.
+ In this tutorial, I will show you how to use CloudFlare and GitHub together. By taking advantage of CloudFlare’s global network, you can utilise our CDN service to improve your site's performance and security.
+ Whilst GitHub Pages doesn't ordinarily support SSL on custom domains, CloudFlare's Universal SSL allows your users to access your site over SSL, thus opening up the performance advantages of HTTP/2.
+ GitHub Pages is designed to host sites that only serve static HTML. The ability to only host static content isn’t as big of a restriction as you might think.
+ Static site generators avoid repetitive update tasks of updating “latest posts” feeds, pagination or sitemaps; whilst generating static HTML that can be uploaded to any web hosting service without a scripting engine. Unlike ancient desktop tools like FrontPage and Dreamweaver which lacked a content model, modern static site generators have the design decisively separate from content.
+ Typically, CMS-based sites must query a database for content, then render the HTML to be served to the end user; all this to serve the same content for request after request. Even with caching this combination is hardly elegant for sites where only the administrator changes the content.
+ With static sites the web server merely needs to serve static HTML to an end user. This has profound performance benefits; static sites walk whilst dynamic sites crawl. Above this, the ability to track all site changes in a Git repository adds better control when it comes to collaborative editing.
+ With static sites there is no CMS, no database; just HTML. No need to worry about patching PHP or plugins with insecure database queries .
+ Clearly static sites can’t do everything, namely anything that’s dynamic; though you can utilise JavaScript APIs to add some dynamic functionality if that's a route you want to pursue.
+ Step 0: Preparing your site
+ Chicago: National Prtg. & Engr. Co. 
+ For this tutorial, I will be using Jekyll as a static static site generator. Jekyll works by taking a bunch of markdown files and outputting the HTML necessary for a static blog.
+ There is a great list of generators on a site called StaticGen , including a static site generator written in Go called Hugo . I’m using Jekyll here due to the integration with GitHub Pages .
+ If you want to host a JavaScript app or a simple static site, just skip this step.
+ Assuming you have a Ruby version greater than 2.0.0, then you can just install Jekyll by running:
+ gem install jekyll 
+ For this example I’m going to be creating a blog about about plants using Jekyll. To create the blog simply run:
+ jekyll new plants 
+ which will output something like:
+ New jekyll site installed in /Users/junade/plants. 
+ From here I can cd into the plants directory and serve the blog on my local computer as follows:
+ cd plants 
+ jekyll serve 
+ A web server will spin up and you’ll find some useful information in your terminal prompt. You should be able to access the site from localhost at port 4000 in your browser: http://127.0.0.1:4000 
+ Whilst this server is running you can update your site; you will find some useful variables to edit in _config.yml . To add a new post or edit the existing demo, simply add a new markdown file in the _posts directory.
+ Whilst ordinarily you would need to generate your site’s HTML using jekyll build then upload it to the web server of your choice, GitHub allows for raw Jekyll projects to be uploaded to its service; it will handle the building and serving of the HTML itself from the Jekyll project.
+ There is a Ruby Gem for Jekyll sites that ensures they are rendered the same way locally as they do when they are hosted on GitHub Pages if you’re interested.
+ Step 1: Setting up our repository
+ Create a GitHub repository which contains the files of the site we want to serve (such as our Jekyll source or our HTML). As my GitHub username is IcyApril, I can create a repository called icyapril.github.io . Be sure that the repository name is all lowercase.
+ In this repository, whatever is in the main branch ends up published on icyapril.github.io .
+ If you haven’t already, let’s initiate a repository where our site files are:
+ git init 
+ git add -A 
+ git commit -m “Initial commit.” 
+ We can now push files to our host by adding the origin as GitHub; make sure the URL of the origin is customised to be your own repository:
+ git remote add origin git@github.com:IcyApril/icyapril.github.io.git 
+ git push -u origin master 
+ You should now see your site when you visit [username].github.io .
+ Step 2: Setting up our DNS
+ I’ll assume you have registered a domain and added it to your CloudFlare account .In order to for GitHub to accept traffic from this domain, we need to create a CNAME file in our repository which contains the hostname to accept traffic for.
+ The following rules apply:
+ If the CNAME file contains example.com, then www.example.com will redirect to example.com.
+ If the CNAME file contains www.example.com , then example.com will redirect to www.example.com .
+ In the Git repository we created in the previous section, let’s add a CNAME file to that repository and commit our changes:
+ echo "www.ju.je" > CNAME 
+ git add -A 
+ git commit -m “Added CNAME file.” 
+ git push origin master 
+ We can add the records to point our DNS records to our GitHub Pages account (we can use a CNAME at the root thanks to CNAME Flattening :
+ You can find the most up-to-date IP Addresses from the GitHub Pages documentation.
+ Step 3: Time for SSL
+ Unfortunately GitHub Pages doesn’t yet support SSL on GitHub Pages for custom domains which would ordinarily rule out using HTTP/2. Whilst the HTTP/2 specification ( RFC 7540 ) allows for HTTP/2 over plain-text HTTP/2, all popular browsers require HTTP/2 to run on top of Transport Layer Security; meaning HTTP/2 only being able to run over HTTPS is the de-facto standard.
+ Fortunately, CloudFlare’s Universal SSL option allows us provide a signed SSL certificate to site visitors. This allows us to gain the performance benefits of HTTP/2 and potentially improve search engine rankings .
+ In the Crypto tab of your CloudFlare site you should ensure your SSL mode is set to Full but not Full (Strict) :
+ We can now add a Page Rule to enforce HTTPS, as you add other Page Rules make sure this is the primary Page Rule:
+ We can also create a Page Rule to ensure that non-www is redirected to www securely when using HTTPS:
+ Enabling HTTP Strict Transport Security (HSTS) will help ensure that your visitors have to communicate to your site over HTTPS, by telling browsers that they should always communicate over encrypted HTTPS. Be careful if you choose to set this though, it may render your site inaccessible if you wish to choose to ever turn HTTPS off.
+ Step 4: Cache all the things
+ CloudFlare has a “Cache Everything” option in Page Rules. For static sites, it allows your HTML to be cached and served directly from CloudFlare's CDN.
+ When deploying your site you can use the Purge Cache option in the Cache tab on CloudFlare to remove the cached version of the static pages. If you’re using a Continuous Integration system to deploy your site, you can use our API to clear the cache programmatically.
+ Shortcomings
+ WillMcC on WikiMedia 
+ Firstly a word on security. If you are deploying a JavaScript app which communicates with remote APIs, be sure not to use this for sensitive data submissions. As GitHub themselves put it : “GitHub Pages sites shouldn't be used for sensitive transactions like sending passwords or credit card numbers.” Also bear in mind your website source files are publicly accessible in a Git repository, so be extra careful about what you put there.
+ There are some things we can’t do; GitHub Pages doesn’t let us set custom headers, which unfortunately means we can’t do HTTP/2 Server Push right now.
+ Conclusion
+ GitHub Pages, CloudFlare and a static site generator combine to create fast, secure, free hosting for static sites.
+ On this page
+ Discuss Online
+ Related tags
+ GitHub HTTP2 Security SSL 
+ Follow on Social Media
+ Cloudflare 
+ Junade Ali 
+ Subscribe to receive notifications of new posts
+ Email address 
+ We’ll never share your email address.
+ Subscribe 
+ Thanks for subscribing! Check your inbox to confirm.
+ Getting Started
+ Plans 
+ Contact sales 
+ Partners 
+ Find a partner 
+ Startups 
+ Under attack? 
+ Domain name search 
+ Public interest
+ Project Galileo 
+ Athenian Project 
+ Cloudflare for Campaigns 
+ Project Fairshot 
+ Impact/ESG 
+ Resources
+ App innovation report 
+ Cloudflare Radar 
+ Case studies 
+ Status 
+ Support 
+ Events 
+ Blog 
+ Solutions
+ SSE and SASE platform 
+ Cloudflare AI Cloud 
+ AI Security 
+ Frontend Development Platform 
+ Multi-Tenant Platform Development 
+ Web Security Platform 
+ Company
+ About 
+ Careers 
+ Investors 
+ Press 
+ Press kit 
+ Global network 
+ Compliance
+ Compliance resources 
+ Trust 
+ GDPR 
+ Responsible AI 
+ Transparency report 
+ Report abuse 
+ Developers
+ Documentation 
+ Learning center 
+ Community 
+ Start building 
+ Login 
+ © 2026 Cloudflare, Inc. 
+ | Your privacy choices Report security issues | Privacy Policy | Terms of use | GDPR | Trademark 
+ Search is temporarily unavailable. 
+ Products 
+ Solutions 
+ Resources 
+ Pricing 
+ Login opens in a new tab Dashboard opens in a new tab Contact Sales opens in a new tab Start Building opens in a new tab 
+ opens in a new tab opens in a new tab opens in a new tab 
+ All Categories AI 
+ Developers 
+ Radar 
+ Product News 
+ Security 
+ Policy & Legal 
+ Zero Trust 
+ Speed & Reliability 
+ Life at Cloudflare 
+ Partners 
+ English Switch Site Language
+ English 
+ Deutsch 
+ Español 
+ Español (Latinoamérica) 
+ Français 
+ Italiano 
+ 日本語 
+ 한국어 
+ 繁體中文 
+ 简体中文 
+ Português 
+ Русский 
+ Bahasa Indonesia 
+ ภาษาไทย 
+ Tiếng Việt 
+ Polski 
+ العربية 
+ עברית 
+ Svenska 
+ Nederlands 
+ Türkçe 
+ Light Dark 
+ 

@@ -1,0 +1,80 @@
+ Creating a custom 404 page for your GitHub Pages site - GitHub Docs Skip to main content 
+ GitHub Docs Version: Free, Pro, & Team 
+ Search or ask Copilot Search or ask Copilot 
+ Select language: current language is English 
+ Search or ask Copilot Search or ask Copilot 
+ Open menu 
+ Collapse sidebar Expand sidebar 
+ Scroll breadcrumbs left Home 
+ GitHub Pages 
+ Get started 
+ Create custom 404 page 
+ Scroll breadcrumbs right 
+ GitHub Pages 
+ Quickstart 
+ Get started 
+ What is GitHub Pages? 
+ Create a GitHub Pages site 
+ GitHub Pages limits 
+ Use custom workflows 
+ Configure publishing source 
+ Delete a GitHub Pages site 
+ Unpublish Pages site 
+ Create custom 404 page 
+ Secure site with HTTPS 
+ Use submodules with Pages 
+ Troubleshoot 404 errors 
+ Set up site with Jekyll 
+ GitHub Pages & Jekyll 
+ Create site with Jekyll 
+ Test site locally with Jekyll 
+ Add content to Pages site 
+ Set Markdown processor 
+ Add theme to Pages site 
+ Jekyll build errors for Pages 
+ Troubleshoot Jekyll errors 
+ Configure a custom domain 
+ Custom domains in GitHub Pages 
+ Manage a custom domain 
+ Verify a custom domain 
+ Troubleshoot a custom domain 
+ Creating a custom 404 page for your GitHub Pages site
+ You can display a custom 404 error page when people try to access nonexistent pages on your site.
+ Who can use this feature?
+ GitHub Pages is available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. See GitHub's plans .
+ Copy as Markdown 
+ On GitHub, navigate to your site's repository.
+ Navigate to the publishing source for your site. For more information, see Configuring a publishing source for your GitHub Pages site .
+ Above the list of files, select the Add file dropdown menu, then click Create new file .
+ Alternatively, you can click in the file tree view on the left.
+ In the file name field, type 404.html or 404.md .
+ If you named your file 404.md , add the following YAML front matter to the beginning of the file:
+ --- 
+ permalink: /404.html 
+ ---
+ Below the YAML front matter, if present, add the content you want to display on your 404 page.
+ Click Commit changes... 
+ In the "Commit message" field, type a short, meaningful commit message that describes the change you made to the file. You can attribute the commit to more than one author in the commit message. For more information, see Creating a commit with multiple authors or on behalf of an organization .
+ If you have more than one email address associated with your account on GitHub, click the email address drop-down menu and select the email address to use as the Git author email address. Only verified email addresses appear in this drop-down menu. If you enabled email address privacy, then a no-reply will be the default commit author email address. For more information about the exact form the no-reply email address can take, see Setting your commit email address .
+ Below the commit message fields, decide whether to add your commit to the current branch or to a new branch. If your current branch is the default branch, you should choose to create a new branch for your commit and then create a pull request. For more information, see Creating a pull request .
+ Click Commit changes or Propose changes .
+ Further reading 
+ Front matter in the Jekyll documentation
+ Help and support
+ Did you find what you needed?
+ Yes No 
+ Privacy policy Help us make these docs great!
+ All GitHub docs are open source. See something that's wrong or unclear? Submit a pull request.
+ Make a contribution Learn how to contribute 
+ Still need help?
+ Ask the GitHub community 
+ Contact support 
+ Legal
+ © 2026 GitHub, Inc.
+ Terms 
+ Privacy 
+ Status 
+ Pricing 
+ Expert services 
+ Blog 
+ 

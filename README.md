@@ -99,7 +99,7 @@ Both permanent workflows use Node 22. Temporary write-capable patch workflows ar
 Production target:
 
 ```text
-https://mazlabz.us.kg
+https://jackmazzini.com
 ```
 
 GitHub Pages is the hosting layer. The build is configured for the custom-domain root while retaining automatic support for the historical GitHub Pages `/mz1312` base path when `NEXT_PUBLIC_SITE_URL` points at that Pages URL.

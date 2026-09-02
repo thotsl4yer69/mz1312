@@ -1,0 +1,256 @@
+ Encryption modes · Cloudflare SSL/TLS docs Skip to content Documentation Index
+Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
+Use this file to discover all available pages before exploring further. 
+ Docs Directory API SDKs Changelog 
+ Search Ctrl K 
+ Log in Dashboard 
+ SSL/TLS 
+ / 
+ Overview 
+ Concepts 
+ Get started 
+ Edge certificates Overview 
+ Universal SSL Overview 
+ Enable Universal SSL certificates 
+ Disable Universal SSL certificates 
+ Alerts 
+ Limitations 
+ Troubleshooting 
+ Advanced certificates Overview 
+ Manage advanced certificates 
+ API commands 
+ Custom certificates Overview 
+ Manage custom certificates 
+ Renewal and expiration 
+ Bundle methodologies 
+ Remove key file password 
+ Troubleshooting 
+ Enforce HTTPS connections 
+ Domain control validation (DCV) Overview 
+ Methods Overview 
+ Delegated 
+ TXT 
+ HTTP 
+ Validation backoff schedule 
+ Domain control validation flow 
+ Troubleshooting 
+ Geo Key Manager Beta Overview 
+ Setup 
+ Supported options 
+ Add CAA records 
+ Staging environment Beta 
+ Backup certificates 
+ ECH Protocol Beta 
+ Additional options Cipher suites About 
+ Customize cipher suites Overview 
+ Use the dashboard 
+ Use the API 
+ Security levels 
+ Compliance standards 
+ Supported cipher suites 
+ Troubleshooting 
+ Certificate Transparency Monitoring 
+ HTTP Strict Transport Security (HSTS) 
+ Certificate Signing Requests (CSRs) 
+ TLS 1.3 
+ Minimum TLS Version 
+ Automatic HTTPS Rewrites 
+ Total TLS Overview 
+ Enable 
+ Error messages 
+ Always Use HTTPS 
+ Opportunistic Encryption 
+ Origin server Encryption modes Overview 
+ Off (no encryption) 
+ Flexible 
+ Full 
+ Full (strict) 
+ Strict (SSL-Only Origin Pull) 
+ Automatic key exchange to origins 
+ SSL/TLS Recommender Deprecated 
+ Cloudflare origin CA Setup 
+ Troubleshooting 
+ Authenticated Origin Pulls (mTLS) Overview 
+ About 
+ AWS integration 
+ Setup Global 
+ Zone-level 
+ Per-hostname 
+ Manage certificates 
+ Rollback 
+ Custom Origin Trust Store 
+ Cipher suites 
+ Client certificates (mTLS) Overview 
+ Create a client certificate 
+ Enable mTLS 
+ Bring your own CA (BYOCA) 
+ Forward certificate to server 
+ Label client certificates 
+ Revoke a client certificate 
+ Configure your mobile app or IoT device 
+ Client certificate variables 
+ Troubleshooting 
+ mTLS for Zero Trust ↗ 
+ Cloudflare for SaaS ↗ 
+ Keyless SSL Overview 
+ Get started Cloudflare Tunnel 
+ Public DNS 
+ Run with Docker 
+ Hardware security modules Overview 
+ Configuration 
+ AWS cloud HSM 
+ Azure Dedicated HSM 
+ Azure Managed HSM 
+ Entrust nShield Connect 
+ Fortanix DSM 
+ Google Cloud HSM 
+ IBM Cloud HSM 
+ SoftHSMv2 
+ Upgrade your key server 
+ Reference High availability 
+ Scaling and benchmarking 
+ Key server metrics 
+ Keyless delegation 
+ Glossary 
+ Troubleshooting 
+ Post-quantum About PQC 
+ PQC support 
+ PQC in Cloudflare products 
+ PQC to your origin 
+ PQC and Cloudflare One 
+ Reference TLS protocols 
+ Certificate and hostname priority 
+ Certificate authorities 
+ Browser compatibility 
+ Migration guides Entrust distrust 
+ DigiCert G1 distrust 
+ Rotate ACM certificate packs 
+ Certificate pinning 
+ Certificate statuses 
+ Validity periods and renewal 
+ Cloudflare and CVE-2019-1559 
+ PCI compliance and vulnerabilities mitigation 
+ Troubleshooting Full resources list 
+ General SSL errors 
+ ERR_SSL_VERSION_OR_CIPHER_MISMATCH 
+ ERR_SSL_PROTOCOL_ERROR 
+ ERR_TOO_MANY_REDIRECTS 
+ Mixed content errors 
+ FAQ 
+ Changelog 
+ Agent resources Agent setup ↗ 
+ Cloudflare Skills ↗ 
+ Code Mode MCP Server ↗ 
+ Domain-specific MCP Servers ↗ MCP 
+ SSL/TLS llms.txt ↗ 
+ SSL/TLS llms-full.txt ↗ 
+ Cloudflare Docs llms.txt ↗ 
+ Cloudflare Docs llms-full.txt ↗ 
+ Home 
+ / SSL/TLS 
+ / Origin server 
+ / Encryption modes 
+ Encryption modes
+ Last updated Apr 16, 2026 | Copy as Markdown | View as Markdown | Agent setup 
+ Overview Available encryption modes  Automatic SSL/TLS (default)  Custom SSL/TLS Update your encryption mode 
+ Your zone's SSL/TLS Encryption Mode controls how Cloudflare manages two connections: one between your visitors and Cloudflare, and the other between Cloudflare and your origin server.
+ flowchart LR
+ accTitle: SSL/TLS Encryption mode
+ A[Visitor] <--Connection 1--> B((Cloudflare))<--Connection 2--> C[(Origin server)]
+ If possible, Cloudflare strongly recommends using Full or Full (strict) modes to prevent malicious connections to your origin.
+ For more details on how encryption modes fit into the bigger picture of Cloudflare SSL/TLS protection, refer to Concepts .
+ Available encryption modes
+ Automatic SSL/TLS relies on the probes developed for the SSL/TLS Recommender to determine what encryption mode is the most secure and safest for a website to be set to. If there is a more secure option for your website (based on your origin certification or capabilities), Automatic SSL/TLS will find it and apply it for your domain. The other option, Custom SSL/TLS , will work exactly like the setting the encryption mode does today.
+ Note
+ We are gradually rolling out the new Automated SSL/TLS feature .
+ If your zone has not been migrated yet, you will only have Custom SSL/TLS options in your dashboard.
+ To understand how the various encryption modes affect your cache, refer to the section on Impact of SSL setting on cache behavior .
+ Automatic SSL/TLS (default)
+ Automatic SSL/TLS leverages advanced methods developed by the SSL/TLS Recommender to select the most secure encryption mode for your website. The Recommender crawls your site using the Cloudflare-SSLDetector user agent, recognized as a trusted bot by Cloudflare, and bypasses robots.txt rules (except those that specifically target it) to ensure accuracy. It downloads content from your origin server over both HTTP and HTTPS, then applies a content similarity algorithm to assess consistency. By understanding your current SSL/TLS encryption mode and evaluating your origin's certification and capabilities, the Recommender can automatically adjust settings to maintain the highest security for your domain.
+ Note
+ Automatic SSL/TLS will not change your setting to a less secure encryption mode. For example, if your origin certificate expires, the encryption mode will not change from Full (strict) to Full . You must ensure the validity of your origin SSL/TLS configuration at all times.
+ Automatic upgrades are applied gradually. Automatic SSL/TLS begins to upgrade the domain by starting with just 1% of its traffic. If no issues are found, the new SSL/TLS encryption mode is applied to traffic in 10% increments until 100% of traffic uses the recommended mode. If origin connectivity fails during this process, Cloudflare aborts the upgrade, immediately rolls traffic back to the previous mode, and logs the failure. Once 100% of traffic has been successfully upgraded with no TLS-related errors, the domain's SSL/TLS setting is permanently updated.
+ Flexible → Full/Strict transitions are handled with extra caution since the origin scheme change (HTTP → HTTPS) alters cache keys. In this case, the ramp-up may proceed more slowly to allow cache warm-up before resuming standard increments.
+ Additional details
+ Scan frequency : Automatic scans currently occur approximately once per month, though they may happen more frequently in some cases (for example, configuration changes or upgrades). Scans stop when:
+ The site is already using the most secure mode (for example, Full (strict) ), or
+ You switch from auto mode to Custom SSL/TLS .
+ Error checking before upgrades : To prevent disruptions, Cloudflare checks for 5XX errors (like 502 or 503 ) and evaluates whether the HTTP and HTTPS content is consistent before upgrading a zone's encryption mode.
+ Upgrade notifications : Cloudflare sends weekly digest emails listing which zones have been upgraded. These emails are currently sent to Super Admins only.
+ Opt out single zone
+ If you want to opt a zone out via the API, you can make this API call on or before the grace period expiration date.
+ Required API token permissions
+ At least one of the following token permissions is required: Zone Settings Write 
+ Edit zone setting bash curl "https://api.cloudflare.com/client/v4/zones/ $ZONE_ID /settings/ssl_automatic_mode" \ 
+ --request PATCH \ 
+ --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN " \ 
+ --json '{ 
+ "value": "custom" 
+ }' 
+ Opt out multiple zones
+ If you wanted to opt out multiple zones:
+ Create an API token with the following permissions:
+ Zone - Zone - Read 
+ Zone - Zone Settings - Read 
+ Zone - Zone Settings - Edit 
+ Make a GET request to get a list of zones (you can filter this list by account.id ).
+ curl 'https://api.cloudflare.com/client/v4/zones? account.id=<ACCOUNT_ID> ' \ 
+ --header 'Authorization: Bearer <CF_API_TOKEN>' \ 
+ --header 'Content-Type: application/json' 
+ Create a list of zone IDs you want to opt-out with each zone ID on a separate line (newline separate), stored in a file such as zones.txt .
+ Create a bash script for opt-out-multiple-zones.sh and add the following. Add zones.txt to the same directory or update the path accordingly.
+ opt-out-multiple-zones.sh bash for zoneID in $( cat zone.txt ); do 
+ printf "Opting out ${ zoneID }:\n" 
+ curl --request PATCH \ 
+ --url https://api.cloudflare.com/client/v4/zones/ $zoneID /settings/ssl_automatic_mode \ 
+ --header 'Authorization: Bearer <CF_API_TOKEN>' \ 
+ --header 'Content-Type: application/json' \ 
+ --data '{"value":"custom"}' 
+ printf "\n\n" 
+ done 
+ Open your command line and run:
+ bash opt-out-multiple-zones.sh 
+ Custom SSL/TLS
+ To use Custom SSL/TLS, select the custom option (if you prefer to manually set the encryption mode instead of using Automatic SSL/TLS ):
+ Off (no encryption) : No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
+ Flexible : Traffic from visitors to Cloudflare can be encrypted via HTTPS, but traffic from Cloudflare to the origin server is not. This mode is common for origins that do not support TLS, though upgrading the origin configuration is recommended whenever possible.
+ Full : Cloudflare matches the visitor request protocol when connecting to the origin. If the visitor uses HTTP, Cloudflare connects to the origin via HTTP; if HTTPS, Cloudflare uses HTTPS without validating the origin’s certificate. This mode is common for origins that use self-signed or otherwise invalid certificates.
+ Full (strict) : Similar to Full Mode, but with added validation of the origin server’s certificate, which can be issued by a public CA like Let’s Encrypt or by Cloudflare Origin CA.
+ Strict (SSL-Only Origin Pull) : Regardless of whether the visitor-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
+ Update your encryption mode
+ To change your encryption mode in the dashboard:
+ In the Cloudflare dashboard, go to the SSL/TLS Overview page.
+ Go to Overview &#8599; 
+ Choose an encryption mode.
+ To adjust your encryption mode with the API, send a PATCH request with ssl as the setting name in the URI path, and the value parameter set to your desired setting ( off , flexible , full , strict , or origin_pull ).
+ Note
+ To use this feature on specific hostnames - instead of across your entire zone - use a configuration rule .
+ Previous Opportunistic Encryption Next Off (no encryption) Was this helpful?
+ Yes No 
+ Edit page Report issue 
+ On this page
+ Overview 
+ Available encryption modes 
+ Automatic SSL/TLS (default) 
+ Custom SSL/TLS 
+ Update your encryption mode 
+ Edit page Report issue 
+ Getting started 
+ Plans Contact sales Partners Find a partner Startups Under attack? Domain name search 
+ Company 
+ About Careers Investors Press Press kit Global network 
+ Public interest 
+ Project Galileo Athenian Project Cloudflare for Campaigns Project Fairshot Impact/ESG 
+ Compliance 
+ Compliance resources Trust Hub Data Protection Responsible AI Transparency report Report abuse 
+ Resources 
+ App innovation report Cloudflare Radar Case studies Status Support Events Blog 
+ Developers 
+ Documentation Learning center Community 
+ Solutions 
+ SSE and SASE platform Cloudflare AI Cloud AI Security Frontend Development Platform Multi-Tenant Platform Development Web Security Platform 
+ Start Building Log In 
+ © 2026 Cloudflare, Inc. Privacy policy | Report security issues | Terms of use | Trademark 
+ | Your privacy choices 
+ Docs 
+ 

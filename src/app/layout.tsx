@@ -20,11 +20,13 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_ROOT,
     siteName: 'Jack Mazzini',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Jack Mazzini — Builder, Entrepreneur, Technologist' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Jack Mazzini',
     description: 'Entrepreneur · Builder · Technologist · MAZLABZ',
+    images: ['/og-image.png'],
   },
 };
 

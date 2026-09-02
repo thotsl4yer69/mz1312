@@ -1,0 +1,283 @@
+
+ Is there any way to configure Cloudflare such that GH Pages certificate renewal will succeed? · community · Discussion #23632 · GitHub 
+ Skip to content 
+ Navigation Menu
+ Sign in Appearance settings
+ community 
+ Platform AI CODE CREATION GitHub Copilot Write better code with AI 
+ GitHub Copilot app Direct agents from issue to merge 
+ MCP Registry Integrate external tools 
+ DEVELOPER WORKFLOWS Actions Automate any workflow 
+ Codespaces Instant dev environments 
+ Issues Plan and track work 
+ Code Review Manage code changes 
+ Code Quality Enforce quality at merge 
+ APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities 
+ Code security Secure your code as you build 
+ Secret protection Stop leaks before they start 
+ EXPLORE Why GitHub 
+ Documentation 
+ Blog 
+ Changelog 
+ Marketplace 
+ View all features 
+ Solutions BY COMPANY SIZE Enterprises 
+ Small and medium teams 
+ Startups 
+ Nonprofits 
+ BY USE CASE App Modernization 
+ DevSecOps 
+ DevOps 
+ CI/CD 
+ View all use cases 
+ BY INDUSTRY Healthcare 
+ Financial services 
+ Manufacturing 
+ Government 
+ View all industries 
+ View all solutions 
+ Resources EXPLORE BY TOPIC AI 
+ Software Development 
+ DevOps 
+ Security 
+ View all topics 
+ EXPLORE BY TYPE Customer stories 
+ Events & webinars 
+ Ebooks & reports 
+ Business insights 
+ GitHub Skills 
+ SUPPORT & SERVICES Documentation 
+ Customer support 
+ Community forum 
+ Trust center 
+ Partners 
+ View all resources 
+ Open Source COMMUNITY GitHub Sponsors Fund open source developers 
+ PROGRAMS Security Lab 
+ Maintainer Community 
+ GitHub Stars 
+ Archive Program 
+ REPOSITORIES Topics 
+ Trending 
+ Collections 
+ Enterprise ENTERPRISE SOLUTIONS Enterprise platform AI-powered developer platform 
+ AVAILABLE ADD-ONS GitHub Advanced Security Enterprise-grade security features 
+ Copilot for Business Enterprise-grade AI features 
+ Premium Support Enterprise-grade 24/7 support 
+ Pricing 
+ Search / 
+ Sign in 
+ Sign up Appearance settings
+ You signed in with another tab or window. Reload to refresh your session. 
+ You signed out in another tab or window. Reload to refresh your session. 
+ You switched accounts on another tab or window. Reload to refresh your session. 
+ Dismiss alert 
+ {{ message }}
+ GitHub Community
+ Overview
+ Repositories
+ Discussions
+ Packages
+ People
+ More 
+ Overview 
+ Repositories 
+ Discussions 
+ Packages 
+ People 
+ Is there any way to configure Cloudflare such that GH Pages certificate renewal will succeed?
+ #23632 
+ Answered
+ by 
+ tcbyrd 
+ lukewestby
+ asked this question in
+ Other Feature Feedback, Questions, & Ideas 
+ Is there any way to configure Cloudflare such that GH Pages certificate renewal will succeed?
+ #23632 
+ lukewestby
+ Oct 6, 2020 
+ &middot; 
+ 2 comments
+ &middot; 
+ 2 replies
+ Answered
+ by 
+ tcbyrd 
+ Return to top 
+ Discussion options 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ {{title}}
+ Something went wrong.
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Quote reply 
+ lukewestby 
+ Oct 6, 2020 
+ Here is my situation:
+ I have a GH pages site github.com/myorg/mysite with a custom domain foo.example.com 
+ The DNS for that site is configured in Cloudflare as a CNAME record from foo.example.com to myorg.github.io 
+ This CNAME record is behind Cloudflare’s proxy so that we can do some things with caching
+ The first time we set up the custom domain, we left the Cloudflare proxy off until GitHub had finished provisioning a TLS cert
+ Once GitHub generated a cert we then turned on the Cloudflare proxy and enabled Full (Strict) encryption
+ This worked fine for 3 months, but then GitHub attempted to renew its own cert. This failed because something Cloudflare is doing between the internet and GitHub’s server is causing renewal to fail.
+ I’m not sure whether GitHub expects the CNAME record to resolve without Cloudflare’s proxy in place, or if there are certain Let’s Encrypt-related endpoints we can exempt from our page rules etc. that would allow renewal to work.
+ Has anyone had success dealing with this issue?
+ 3 
+ You must be logged in to vote 
+ All reactions 
+ Answered by
+ tcbyrd
+ Oct 7, 2020 
+ I’m not sure whether GitHub expects the CNAME record to resolve without Cloudflare’s proxy in place, or if there are certain Let’s Encrypt-related endpoints we can exempt from our page rules etc. that would allow renewal to work.
+ The former. With the proxy feature turned on, effectively you need to handle TLS certificates at Cloudflare, since the IP that comes back in the DNS query belongs to Cloudflare, not GitHub. This means GitHub can’t successfully obtain a certificate. Cloudflare is able to automatically obtain a certificate for you as well and it works basically the same way, but keep in mind that the GitHub UI will not reflect that it’s on HTTPS since Cloudflare is the one enforc…
+ View full answer 
+ Replies: 
+ 2 comments
+ &middot; 
+ 2 replies
+ Oldest 
+ Newest 
+ Top 
+ Comment options 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ {{title}}
+ Something went wrong.
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Quote reply 
+ tcbyrd 
+ Oct 7, 2020 
+ I’m not sure whether GitHub expects the CNAME record to resolve without Cloudflare’s proxy in place, or if there are certain Let’s Encrypt-related endpoints we can exempt from our page rules etc. that would allow renewal to work.
+ The former. With the proxy feature turned on, effectively you need to handle TLS certificates at Cloudflare, since the IP that comes back in the DNS query belongs to Cloudflare, not GitHub. This means GitHub can’t successfully obtain a certificate. Cloudflare is able to automatically obtain a certificate for you as well and it works basically the same way, but keep in mind that the GitHub UI will not reflect that it’s on HTTPS since Cloudflare is the one enforcing those settings. If you disable Cloudflare’s proxy setting and have it do just DNS resolution, GitHub will be able to obtain and enforce the certificate, but you’ll lose some of the features of Cloudflare that require it to be setup as a proxy.
+ Marked as answer
+ 2 
+ You must be logged in to vote 
+ All reactions 
+ 2 replies
+ Comment options 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ {{title}}
+ Something went wrong.
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Quote reply 
+ MakotoE 
+ Feb 10, 2024 
+ I assume that if Cloudflare handles the certificate, the proxy-to-origin connection must be unsecured, right? This would be undesireable and I would rather turn off the proxy.
+ All reactions 
+ Comment options 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ {{title}}
+ Something went wrong.
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Quote reply 
+ tcbyrd 
+ Feb 14, 2024 
+ If you treat the origin as https://<username>.github.io it can still be https from cloudflare to us. The certificate for that is a wildcard cert we manage for all of *.github.io and doesn't need to be provisioned dynamically. As far as I know this is possible with Cloudflare, although I think it would require more setup than just toggling the orange cloud. You effectively need to tell cloudflare "for my domain, proxy the origin request to https://<username>.github.io ".
+ All reactions 
+ Comment options 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ {{title}}
+ Something went wrong.
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Quote reply 
+ Jip-Hop 
+ Nov 19, 2020 
+ I’m expecting exactly the same situation. I have a working SSL certificate from GitHub Pages behind Cloudflare now, but I don’t think it will be able to renew itself when it expires. I was hoping there’d be a page rule to configure which would allow renewal. I’ve disabled “Always Use HTTPS” and in combination with page rules it’s possible to renew Let’s Encrypt certificates behind Cloudflare:
+ Page rule 1
+ *debeer.it/.well-known*
+SSL: Off
+ Page rule 2
+ *debeer.it/*
+Always Use HTTPS
+ However this doesn’t work with GitHub Pages. Have you found a way to actually renew the GitHub Pages certificate? I would prefer not to disable the Cloudflare proxy… How about just using “SSL Full” instead of “SSL Full (strict)”? I expect it would continue to work, even after the certificate expires.
+ 1 
+ You must be logged in to vote 
+ All reactions 
+ 0 replies
+ --> 
+ Sign up for free 
+ to join this conversation on GitHub .
+ Already have an account?
+ Sign in to comment 
+ Category
+ 💭 
+ Other Feature Feedback, Questions, & Ideas
+ Labels
+ None yet
+ 4 participants
+ Heading 
+ Bold 
+ Italic 
+ Quote 
+ Code 
+ Link 
+ Numbered list 
+ Unordered list 
+ Task list 
+ Attach files 
+ Mention 
+ Reference 
+ Menu 
+ Heading
+ Bold
+ Italic
+ Quote
+ Code
+ Link
+ Numbered list
+ Unordered list
+ Task list
+ Attach files
+ Mention
+ Reference
+ Select a reply
+ Loading 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Create a new saved reply 
+ 👍 
+ 1 
+ reacted with thumbs up emoji 
+ 👎 
+ 1 
+ reacted with thumbs down emoji 
+ 😄 
+ 1 
+ reacted with laugh emoji 
+ 🎉 
+ 1 
+ reacted with hooray emoji 
+ 😕 
+ 1 
+ reacted with confused emoji 
+ ❤️ 
+ 1 
+ reacted with heart emoji 
+ 🚀 
+ 1 
+ reacted with rocket emoji 
+ 👀 
+ 1 
+ reacted with eyes emoji 
+ Footer
+ &copy; 2026 GitHub, Inc.
+ Footer navigation
+ Terms 
+ Privacy 
+ Security 
+ Status 
+ Community 
+ Docs 
+ Contact 
+ Manage cookies
+ Do not share my personal information
+ You can’t perform that action at this time.
