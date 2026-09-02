@@ -44,7 +44,7 @@ export default function Home() {
 
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#07090d]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <Link href="/" className="font-mono text-xs font-bold tracking-[0.28em]">JACK MAZZINI<span className="text-cyan-300"> //</span></Link>
+          <Link href="/" className="font-mono text-xs font-bold tracking-[0.28em]">JACK MAZZINI<span className="text-cyan-300">{" //"}</span></Link>
           <div className="hidden items-center gap-7 font-mono text-[9px] tracking-[0.18em] text-slate-500 md:flex">
             <a href="#work" className="hover:text-slate-100">WORK</a><a href="#lab" className="hover:text-slate-100">LAB</a><a href="#capabilities" className="hover:text-slate-100">CAPABILITIES</a><a href="#about" className="hover:text-slate-100">ABOUT</a><a href="#contact" className="hover:text-slate-100">CONTACT</a>
           </div>
