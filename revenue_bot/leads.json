@@ -1,0 +1,382 @@
+[
+  {
+    "url": "https://github.com/solorion-dev/quantum/issues/343",
+    "title": "Branch cleanup: 3 provably merged branches + 3 repos with a worker branch as default",
+    "repo": "solorion-dev/quantum",
+    "service": "Control Room",
+    "topic": "Home Assistant",
+    "amount_unverified": null,
+    "updated_at": "2026-11-02T12:46:16Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/illbnm/homelab-stack/issues/9",
+    "title": "[BOUNTY $300] SSO — Authentik 统一身份认证",
+    "repo": "illbnm/homelab-stack",
+    "service": "The Media Shelf",
+    "topic": "Jellyfin",
+    "amount_unverified": 300,
+    "updated_at": "2026-11-02T11:44:01Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/Scottcjn/rustchain-bounties/issues/11",
+    "title": "[BOUNTY] Vintage Hardware Revival",
+    "repo": "Scottcjn/rustchain-bounties",
+    "service": "The Media Shelf",
+    "topic": "Raspberry Pi",
+    "amount_unverified": null,
+    "updated_at": "2026-11-02T09:11:10Z",
+    "score": 6
+  },
+  {
+    "url": "https://github.com/illbnm/homelab-stack/issues/14",
+    "title": "[BOUNTY $200] Testing — 自动化测试套件",
+    "repo": "illbnm/homelab-stack",
+    "service": "The Media Shelf",
+    "topic": "Jellyfin",
+    "amount_unverified": 200,
+    "updated_at": "2026-11-02T08:36:11Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/openscad/openscad/issues/1081",
+    "title": "rotate_extrude doesn't handle 2D polygons touching the Y axis in one point",
+    "repo": "openscad/openscad",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-11-02T03:22:38Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/tscircuit/docs/issues/886",
+    "title": "Migrate schematic-only ESP32 module circuit example bounty from archived docs-old#47",
+    "repo": "tscircuit/docs",
+    "service": "Wire by Wire",
+    "topic": "ESP32",
+    "amount_unverified": 50,
+    "updated_at": "2026-11-01T12:27:16Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/illbnm/homelab-stack/issues/8",
+    "title": "[BOUNTY $250] Robustness — 国内网络适配 + 环境鲁棒性",
+    "repo": "illbnm/homelab-stack",
+    "service": "Control Room",
+    "topic": "Home Assistant",
+    "amount_unverified": 250,
+    "updated_at": "2026-11-01T12:13:08Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/illbnm/homelab-stack/issues/13",
+    "title": "[BOUNTY $80] Notifications — 统一通知中心 (Gotify + Apprise)",
+    "repo": "illbnm/homelab-stack",
+    "service": "Control Room",
+    "topic": "Home Assistant",
+    "amount_unverified": 80,
+    "updated_at": "2026-11-01T11:44:05Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/Rohank143/BountyScout/issues/52",
+    "title": "🎯 Bounty Alert: 4 New Opportunityies found",
+    "repo": "Rohank143/BountyScout",
+    "service": "Wire by Wire",
+    "topic": "ESP32",
+    "amount_unverified": 50,
+    "updated_at": "2026-11-01T05:15:43Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/freedom-winds/BountyScout/issues/1359",
+    "title": "🎯 Bounty Alert: 7 New Opportunityies found",
+    "repo": "freedom-winds/BountyScout",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-10-31T13:17:45Z",
+    "score": 6
+  },
+  {
+    "url": "https://github.com/openscad/openscad/issues/1080",
+    "title": "Feature request: Connectors for objects (connect or attach points)",
+    "repo": "openscad/openscad",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-10-31T13:17:30Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/illbnm/homelab-stack/issues/7",
+    "title": "[BOUNTY $130] Home Automation — Home Assistant + Node-RED + Zigbee2MQTT",
+    "repo": "illbnm/homelab-stack",
+    "service": "Control Room",
+    "topic": "Home Assistant",
+    "amount_unverified": 130,
+    "updated_at": "2026-10-31T12:40:41Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/BruceFeIix/picker/issues/2778",
+    "title": "[每日信息流] 2026-10-30",
+    "repo": "BruceFeIix/picker",
+    "service": "Wire by Wire",
+    "topic": "ESP32",
+    "amount_unverified": 750,
+    "updated_at": "2026-10-30T07:52:42Z",
+    "score": 7
+  },
+  {
+    "url": "https://github.com/openscad/openscad/issues/945",
+    "title": "STL import: zero area triangles",
+    "repo": "openscad/openscad",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-10-30T03:20:06Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/openscad/openscad/issues/490",
+    "title": "(3) STL rendering issue with #1102 and #1169 error",
+    "repo": "openscad/openscad",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-10-29T03:20:11Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/freedom-winds/BountyScout/issues/1339",
+    "title": "🎯 Bounty Alert: 12 New Opportunityies found",
+    "repo": "freedom-winds/BountyScout",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": 250,
+    "updated_at": "2026-10-28T11:14:00Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/illbnm/homelab-stack/issues/2",
+    "title": "[BOUNTY $160] Media Stack — Jellyfin + Sonarr + Radarr + qBittorrent",
+    "repo": "illbnm/homelab-stack",
+    "service": "The Media Shelf",
+    "topic": "Jellyfin",
+    "amount_unverified": 160,
+    "updated_at": "2026-10-28T11:13:22Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/openscad/openscad/issues/479",
+    "title": "fix windows openscad.com parsing when multiple quotes used",
+    "repo": "openscad/openscad",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-10-28T03:20:23Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/Clawland-AI/microclaw/issues/13",
+    "title": "bounty: MicroClaw ESP32-C3 port",
+    "repo": "Clawland-AI/microclaw",
+    "service": "Wire by Wire",
+    "topic": "ESP32",
+    "amount_unverified": 350,
+    "updated_at": "2026-10-27T12:27:34Z",
+    "score": 9
+  },
+  {
+    "url": "https://github.com/f3d-app/f3d/issues/1808",
+    "title": "Add support for 3dconnexion input devices (SpaceMouse)",
+    "repo": "f3d-app/f3d",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-10-26T13:33:04Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/SecureBananaLabs/bug-bounty/issues/13522",
+    "title": "fix(api): sanitize uploaded original filenames in upload metadata response (ref #5859, #743)",
+    "repo": "SecureBananaLabs/bug-bounty",
+    "service": "Tap Twice",
+    "topic": "NFC",
+    "amount_unverified": null,
+    "updated_at": "2026-10-25T19:33:44Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/illbnm/homelab-stack/issues/504",
+    "title": "[BOUNTY $300] SSO Stack — 统一身份认证",
+    "repo": "illbnm/homelab-stack",
+    "service": "The Media Shelf",
+    "topic": "Jellyfin",
+    "amount_unverified": 300,
+    "updated_at": "2026-10-24T09:37:11Z",
+    "score": 7
+  },
+  {
+    "url": "https://github.com/donetick/donetick/issues/885",
+    "title": "Feat: Gamification & Categorized XP System",
+    "repo": "donetick/donetick",
+    "service": "Control Room",
+    "topic": "Home Assistant",
+    "amount_unverified": 100,
+    "updated_at": "2026-10-22T08:31:20Z",
+    "score": 5
+  },
+  {
+    "url": "https://github.com/solorion-dev/quantum/issues/205",
+    "title": "HA: Quantum Credits economy snapshot sensors",
+    "repo": "solorion-dev/quantum",
+    "service": "Control Room",
+    "topic": "Home Assistant",
+    "amount_unverified": null,
+    "updated_at": "2026-10-21T09:58:32Z",
+    "score": 2
+  },
+  {
+    "url": "https://github.com/Nudge-Pay/nudge-app/issues/44",
+    "title": "[Bounty: $75] Add a CI check for app.json and app.config.ts plugin and permission consistency",
+    "repo": "Nudge-Pay/nudge-app",
+    "service": "Tap Twice",
+    "topic": "NFC",
+    "amount_unverified": 75,
+    "updated_at": "2026-10-19T11:54:06Z",
+    "score": 7
+  },
+  {
+    "url": "https://github.com/ruohong2018/ruohong2018.github.io/issues/1347",
+    "title": "[每日信息流] 2026-10-17",
+    "repo": "ruohong2018/ruohong2018.github.io",
+    "service": "Wire by Wire",
+    "topic": "ESP32",
+    "amount_unverified": 29,
+    "updated_at": "2026-10-17T06:29:45Z",
+    "score": 5
+  },
+  {
+    "url": "https://github.com/BruceFeIix/picker/issues/2752",
+    "title": "[每日信息流] 2026-10-17",
+    "repo": "BruceFeIix/picker",
+    "service": "Wire by Wire",
+    "topic": "ESP32",
+    "amount_unverified": null,
+    "updated_at": "2026-10-17T06:22:48Z",
+    "score": 2
+  },
+  {
+    "url": "https://github.com/96loveslife/big_model_radar/issues/504",
+    "title": "🌐 AI 官方内容追踪报告 2026-09-17",
+    "repo": "96loveslife/big_model_radar",
+    "service": "Wire by Wire",
+    "topic": "Electronics",
+    "amount_unverified": null,
+    "updated_at": "2026-10-17T03:54:25Z",
+    "score": 2
+  },
+  {
+    "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1579",
+    "title": "🎯 Bounty Alert: 12 New Opportunityies found",
+    "repo": "dev-kp-eloper/BountyScout",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": 500,
+    "updated_at": "2026-10-12T07:06:21Z",
+    "score": 7
+  },
+  {
+    "url": "https://github.com/dev-kp-eloper/BountyScout/issues/1575",
+    "title": "🎯 Bounty Alert: 12 New Opportunityies found",
+    "repo": "dev-kp-eloper/BountyScout",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": 50,
+    "updated_at": "2026-10-11T20:07:00Z",
+    "score": 7
+  },
+  {
+    "url": "https://github.com/Scottcjn/rustchain-bounties/issues/12445",
+    "title": "[BOUNTY: 5-8 RTC] CN-Language Market Framing for RustChain (闲置硬件 / e-waste angle)",
+    "repo": "Scottcjn/rustchain-bounties",
+    "service": "Wire by Wire",
+    "topic": "Electronics",
+    "amount_unverified": null,
+    "updated_at": "2026-10-08T15:07:09Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/Scottcjn/rustchain-dialup/issues/1",
+    "title": "📞 Bounty board — build the dial-up island (humans + agents)",
+    "repo": "Scottcjn/rustchain-dialup",
+    "service": "The Media Shelf",
+    "topic": "Raspberry Pi",
+    "amount_unverified": null,
+    "updated_at": "2026-10-08T01:21:56Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/thanhtantran/agents-radar/issues/325",
+    "title": "🦞 Bản tin hàng ngày hệ sinh thái OpenClaw 2026-08-12",
+    "repo": "thanhtantran/agents-radar",
+    "service": "The Media Shelf",
+    "topic": "Raspberry Pi",
+    "amount_unverified": null,
+    "updated_at": "2026-10-07T20:04:02Z",
+    "score": 2
+  },
+  {
+    "url": "https://github.com/Scottcjn/rustchain-bounties/issues/728",
+    "title": "[BOUNTY: 1 RTC] Answer Questions in GitHub Discussions (Up to 7 RTC)",
+    "repo": "Scottcjn/rustchain-bounties",
+    "service": "The Media Shelf",
+    "topic": "Raspberry Pi",
+    "amount_unverified": null,
+    "updated_at": "2026-10-04T13:22:54Z",
+    "score": 4
+  },
+  {
+    "url": "https://github.com/96loveslife/big_model_radar/issues/420",
+    "title": "🌐 AI 官方内容追踪报告 2026-09-01",
+    "repo": "96loveslife/big_model_radar",
+    "service": "Wire by Wire",
+    "topic": "Electronics",
+    "amount_unverified": null,
+    "updated_at": "2026-10-01T05:20:08Z",
+    "score": 2
+  },
+  {
+    "url": "https://github.com/openscad/openscad/issues/1352",
+    "title": "xray view",
+    "repo": "openscad/openscad",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-09-29T03:34:31Z",
+    "score": 2
+  },
+  {
+    "url": "https://github.com/freedom-winds/BountyScout/issues/1149",
+    "title": "🎯 Bounty Alert: 12 New Opportunityies found",
+    "repo": "freedom-winds/BountyScout",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": 50,
+    "updated_at": "2026-09-28T03:42:32Z",
+    "score": 7
+  },
+  {
+    "url": "https://github.com/openscad/openscad/issues/815",
+    "title": "Native bend modifier - is it possible to implement in OpenSCAD?",
+    "repo": "openscad/openscad",
+    "service": "Case in Point",
+    "topic": "OpenSCAD",
+    "amount_unverified": null,
+    "updated_at": "2026-09-28T03:32:30Z",
+    "score": 2
+  }
+]
