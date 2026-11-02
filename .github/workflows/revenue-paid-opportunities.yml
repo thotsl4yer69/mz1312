@@ -28,7 +28,7 @@ jobs:
 
       - name: Search current open paid technical requests
         env:
-          GH_TOKEN: \${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: python3 revenue_bot/find_paid_work.py
 
       - name: Save only genuinely new leads
