@@ -25,7 +25,7 @@ TOPICS=[
  ("Jellyfin","Jellyfin","The Media Shelf"),
  ("Electronics","electronics","Wire by Wire")]
 FUNDED=re.compile(r"\b(bounty|budget|paid\s+(?:gig|task|work|project|contract)|reward|compensation|commission|hiring|looking\s+to\s+hire|will\s+pay|can\s+pay|funded|\$\s?\d{2,})\b",re.I)
-SKIP=re.compile(r"(self[- ]?promo|test[- ]?bounty|honeypot|spam farm|this is not a bounty|not paid|no budget)",re.I)
+SKIP=re.compile(r"(self[- ]?promo|test[- ]?bounty|honeypot|spam farm|this is not a bounty|not paid|no budget|BountyScout|Bounty Alert|bounty-bot|daily feed|migration from archived)",re.I)
 
 def search(query):
     url="https://api.github.com/search/issues?"+urllib.parse.urlencode({"q":query,"sort":"updated","order":"desc","per_page":20})
@@ -33,6 +33,24 @@ def search(query):
     if os.getenv("GH_TOKEN"): headers["Authorization"]="Bearer "+os.environ["GH_TOKEN"]
     with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=18) as r:
         return json.load(r).get("items",[])
+
+def no_competing_fix(item):
+    if item.get("comments",0)>6: return False
+    if not item.get("comments"): return True
+    repo_url=(item.get("repository_url") or "")
+    url=repo_url+"/issues/"+str(item["number"])+"/comments?per_page=30"
+    headers={"User-Agent":"one-off-office-lead-finder","Accept":"application/vnd.github+json"}
+    if os.getenv("GH_TOKEN"): headers["Authorization"]="Bearer "+os.environ["GH_TOKEN"]
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=12) as response:
+            comments=json.load(response)
+        for comment in comments:
+            text=comment.get("body") or ""
+            if re.search(r"(submitted.*(?:PR|pull request|fix)|(?:PR\s*#|/pull/)\d+|already complete|already solved|claimed the bounty)",text,re.I):
+                return False
+        return True
+    except (urllib.error.URLError,TimeoutError,ValueError):
+        return False
 
 def scan():
     found={}
@@ -49,11 +67,17 @@ def scan():
             body=(item.get("body") or "")[:3500]
             text=title+" "+body
             if not FUNDED.search(text) or SKIP.search(text): continue
-            if not ("bounty" in title.lower() or re.search(r"\b(bounty|will pay|budget|funded)\b",body,re.I)): continue
+            if "bounty" not in title.lower(): continue
+            if item.get("comments",0)>6: continue
+            created=dt.datetime.fromisoformat(item["created_at"].replace("Z","+00:00"))
+            if (NOW-created).days>100: continue
+            if re.search(r"\b(i would like to work on|i am claiming|work is already done|already submitted)\b",body,re.I): continue
             repo=(item.get("repository_url") or "").split("/repos/")[-1]
             if repo.startswith(("alfrexo95/bounty-bot","relayhop/sn-monetization-runtime","limitlessprojects/Go-Hybrid")): continue
             match=re.search(r"(?:AUD|USD|US\$|A\$|\$)\s?([1-9]\d{1,5})(?!\d)",text,re.I)
             amount=int(match.group(1)) if match else None
+            if amount is None or amount<50: continue
+            if not no_competing_fix(item): continue
             age=max(0,(NOW-dt.datetime.fromisoformat(item["updated_at"].replace("Z","+00:00"))).days)
             score=2+(3 if amount else 0)+(2 if age<=7 else 0)+(2 if "bounty" in title.lower() else 0)
             found[item["html_url"]]={"url":item["html_url"],"title":title[:180],"repo":repo,"service":offer,"topic":topic,"amount_unverified":amount,"updated_at":item["updated_at"],"score":score}
@@ -65,10 +89,9 @@ def main():
     except (OSError,ValueError): previous=[]
     old={x["url"]:x for x in previous}
     incoming,errors=scan()
-    merged={**old,**incoming}
-    merged=dict(sorted(merged.items(),key=lambda kv:kv[1]["updated_at"],reverse=True)[:160])
+    merged=dict(sorted(incoming.items(),key=lambda kv:kv[1]["updated_at"],reverse=True)[:160])
     new_count=len(set(merged)-set(old))
-    if new_count or not BOARD.exists():
+    if set(merged)!=set(old) or not BOARD.exists():
         rows=list(merged.values())
         STATE.write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         lines=[
