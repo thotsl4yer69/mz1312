@@ -1,0 +1,54 @@
+name: Investigation Desk Android APK
+on:
+  push:
+    branches: [main, 'feature/**']
+    paths:
+      - 'apps/investigation-desk/**'
+      - '.github/workflows/investigation-desk-android.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+      - name: Install Android SDK platform
+        run: yes | sdkmanager --licenses >/dev/null; sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Validate embedded JavaScript
+        run: |
+          node - <<'NODE'
+          const fs = require('fs'), vm = require('vm');
+          const html = fs.readFileSync('apps/investigation-desk/app/src/main/assets/index.html','utf8');
+          const match = html.match(/<script>([\s\S]*?)<\/script>/);
+          if(!match) throw Error('WebView script missing');
+          new vm.Script(match[1]);
+          const tracks = JSON.parse(fs.readFileSync('apps/investigation-desk/app/src/main/assets/catalog.json','utf8'));
+          if(tracks.length !== 80 || new Set(tracks.map(t=>t.id)).size !== 80) throw Error('Catalog incomplete');
+          for(const t of tracks.filter(x=>x.type !== 'original')) {
+            if(!fs.existsSync('apps/investigation-desk/app/src/main/assets/repairs/'+t.id+'.txt')) throw Error('Missing spoken companion '+t.id);
+          }
+          console.log('JavaScript, catalog, and all spoken repair scripts verified');
+          NODE
+      - name: Build installable APK
+        run: gradle -p apps/investigation-desk --no-daemon :app:assembleDebug
+      - name: Verify APK
+        run: |
+          test -s apps/investigation-desk/app/build/outputs/apk/debug/app-debug.apk
+          sha256sum apps/investigation-desk/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: InvestigationDesk-Android-APK
+          path: apps/investigation-desk/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
