@@ -92,7 +92,13 @@ public class PlayerService extends Service {
                 tts.setLanguage(new Locale("en","AU"));
                 tts.setSpeechRate(speed);
                 tts.setOnUtteranceProgressListener(new UtteranceProgressListener(){
-                    @Override public void onStart(String id){}
+                    @Override public void onStart(String id){
+                        try{
+                            if(id!=null && id.startsWith("deskspeech-"+speechGeneration+"-")){
+                                speechIndex=Integer.parseInt(id.substring(id.lastIndexOf('-')+1));
+                            }
+                        }catch(Exception ignored){}
+                    }
                     @Override public void onError(String id){ }
                     @Override public void onDone(String id){
                         if(id==null)return;
@@ -136,6 +142,7 @@ public class PlayerService extends Service {
     private int trackIndex(String id){for(int i=0;i<tracks.size();i++)if(tracks.get(i).id.equals(id))return i;return -1;}
     private File audioFile(String id){return new File(new File(getFilesDir(),"audio"),id+".m4a");}
     private void savePosition(){
+        if(currentId.isEmpty())return;
         try{
             int pos=player!=null?player.getCurrentPosition():0;
             preferences.edit().putString("id",currentId).putInt("position",pos).putFloat("speed",speed).apply();
@@ -237,9 +244,9 @@ public class PlayerService extends Service {
         if(!ttsReady){error="Preparing phone speech engine…";ui.postDelayed(()->{if(speechMode && playing){if(ttsReady)beginSpeech();else{playing=false;error="Phone speech engine is not ready.";}}},1200);return;}
         int gen=speechGeneration;
         tts.setSpeechRate(speed);
-        for(int i=0;i<speechChunks.size();i++){
+        for(int i=speechIndex;i<speechChunks.size();i++){
             String utterance="deskspeech-"+gen+"-"+i;
-            tts.speak(speechChunks.get(i),i==0?TextToSpeech.QUEUE_FLUSH:TextToSpeech.QUEUE_ADD,null,utterance);
+            tts.speak(speechChunks.get(i),i==speechIndex?TextToSpeech.QUEUE_FLUSH:TextToSpeech.QUEUE_ADD,null,utterance);
         }
         error="";updateSession();updateNotification();
     }
