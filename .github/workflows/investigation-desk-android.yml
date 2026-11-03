@@ -25,6 +25,21 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: Validate embedded JavaScript
+        run: |
+          node - <<'NODE'
+          const fs = require('fs'), vm = require('vm');
+          const html = fs.readFileSync('apps/investigation-desk/app/src/main/assets/index.html','utf8');
+          const match = html.match(/<script>([\s\S]*?)<\/script>/);
+          if(!match) throw Error('WebView script missing');
+          new vm.Script(match[1]);
+          const tracks = JSON.parse(fs.readFileSync('apps/investigation-desk/app/src/main/assets/catalog.json','utf8'));
+          if(tracks.length !== 80 || new Set(tracks.map(t=>t.id)).size !== 80) throw Error('Catalog incomplete');
+          for(const t of tracks.filter(x=>x.type !== 'original')) {
+            if(!fs.existsSync('apps/investigation-desk/app/src/main/assets/repairs/'+t.id+'.txt')) throw Error('Missing spoken companion '+t.id);
+          }
+          console.log('JavaScript, catalog, and all spoken repair scripts verified');
+          NODE
       - name: Build installable APK
         run: gradle -p apps/investigation-desk --no-daemon :app:assembleDebug
       - name: Verify APK
