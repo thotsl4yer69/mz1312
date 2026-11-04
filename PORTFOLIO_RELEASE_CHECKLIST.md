@@ -49,8 +49,8 @@ Use this before treating a portfolio change as publishable.
 - [ ] `/ghost/` is absent from `sitemap.xml`.
 - [ ] `/ghost/` carries `noindex` / `nofollow` metadata.
 - [ ] `robots.txt` references the sitemap.
-- [ ] `NEXT_PUBLIC_SITE_URL` is set to `https://jackmazzini.com` for production.
-- [ ] Structured data names Jack Mazzini / MAZLABZ without inventing employers, clients or credentials.
+- [ ] `NEXT_PUBLIC_SITE_URL` is set to `https://jackStudio.com` for production.
+- [ ] Structured data names Independent Studio / MAZLABZ without inventing employers, clients or credentials.
 
 ## Dependency / CI hygiene
 
@@ -62,7 +62,7 @@ Use this before treating a portfolio change as publishable.
 ## Publishing
 
 - [ ] GitHub Pages is enabled and serving the latest static artifact.
-- [ ] GitHub Pages **Custom domain** is set to `jackmazzini.com`.
+- [ ] GitHub Pages **Custom domain** is set to `jackStudio.com`.
 - [ ] DNS resolves the apex domain to GitHub Pages.
 - [ ] HTTPS is enforced on the custom domain.
 - [ ] Repository description no longer says `MZ-1312 Streaming`.
