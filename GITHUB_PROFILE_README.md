@@ -1,4 +1,4 @@
-# TS69 Studio
+# MAZLABZ
 
 ### AI-Native Systems Integrator & Technical Prototyper
 
