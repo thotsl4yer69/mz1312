@@ -165,7 +165,7 @@ export default function HomeIntelligencePage() {
         </div>
       </section>
 
-      <footer className="site-footer section-wrap"><div className="brand-lockup"><span className="brand-mark">MZ</span><span><b>MAZLABZ</b><small>INDEPENDENT APPLIED TECHNOLOGY LAB</small></span></div><p>Jack Mazzini · Victoria, Australia · Home Intelligence / Edge AI / Physical Systems.</p><div className="footer-links"><a href="../../">HOME</a><a href="../../capabilities/">PROOF MAP</a><a href="../../start/">START A BUILD →</a></div></footer>
+      <footer className="site-footer section-wrap"><div className="brand-lockup"><span className="brand-mark">MZ</span><span><b>MAZLABZ</b><small>INDEPENDENT APPLIED TECHNOLOGY LAB</small></span></div><p>MAZLABZ · Home Intelligence / Edge AI / Physical Systems.</p><div className="footer-links"><a href="../../">HOME</a><a href="../../capabilities/">PROOF MAP</a><a href="../../start/">START A BUILD →</a></div></footer>
     </main>
   );
 }
