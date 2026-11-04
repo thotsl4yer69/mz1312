@@ -38,13 +38,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify personal site
+      - name: Verify studio site
         run: |
           test -f out/index.html
           test -f out/capabilities/index.html
-          grep -q 'Jack Mazzini' out/index.html
+          grep -q 'MAZLABZ' out/index.html
           grep -q 'SELECTED WORK' out/index.html
           grep -q 'https://jackmazzini.com/' out/index.html
           grep -q 'https://jackmazzini.com/sitemap.xml' out/robots.txt
           ! grep -q 'NULLVECTOR LABS' out/index.html
-          echo "Jack Mazzini personal portfolio build verified."
+          echo "MAZLABZ studio portfolio build verified."
