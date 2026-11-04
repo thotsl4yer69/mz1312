@@ -81,7 +81,7 @@ GitHub will render `thotsl4yer69/README.md` on the profile page.
 
 Recommended profile headline:
 
-> **Jack Mazzini — AI-Native Systems Integrator & Technical Prototyper**
+> **Independent Studio — AI-Native Systems Integrator & Technical Prototyper**
 
 Recommended subhead:
 
@@ -175,7 +175,7 @@ Current GitHub login is intentionally distinctive, but a technical portfolio sho
 Recommended display name:
 
 ```text
-Jack Mazzini
+Independent Studio
 ```
 
 Recommended bio:
