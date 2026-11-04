@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jackmazzini.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://thotsl4yer69.github.io/mz1312";
 const explicitBasePath = process.env.NEXT_PUBLIC_BASE_PATH;
 
 let inferredBasePath = "";
