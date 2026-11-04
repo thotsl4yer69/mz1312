@@ -1,4 +1,4 @@
-name: Deploy Jack Mazzini personal site
+name: Deploy MAZLABZ studio site
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
       - name: Build static portfolio
         run: npm run build
 
-      - name: Verify personal site surface
+      - name: Verify studio site surface
         run: |
           test -f out/index.html
           test -d out/_next
@@ -52,13 +52,13 @@ jobs:
           test -f out/robots.txt
           test -f out/icon.svg
           test -f out/CNAME
-          grep -q 'Jack Mazzini' out/index.html
+          grep -q 'MAZLABZ' out/index.html
           grep -q 'SELECTED WORK' out/index.html
           grep -q 'https://jackmazzini.com/' out/index.html
           grep -q 'https://jackmazzini.com/capabilities/' out/sitemap.xml
           grep -q 'https://jackmazzini.com/sitemap.xml' out/robots.txt
           ! grep -q 'NULLVECTOR LABS' out/index.html
-          echo "Production personal site build verified."
+          echo "Production studio site build verified."
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
