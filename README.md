@@ -1,7 +1,7 @@
 # MAZLABZ — Independent Studio / Applied Technology Portfolio
 
 > **Status: Active portfolio site**  
-> Canonical public presentation layer for TS69 Studio / MAZLABZ technical work across edge AI, embedded Linux, native Android, connected hardware and AI-assisted systems integration.
+> Canonical public presentation layer for MAZLABZ technical work across edge AI, embedded Linux, native Android, connected hardware and AI-assisted systems integration.
 
 The repository began as an MZ1312 / Pigeonhole storefront experiment. It has now been deliberately repurposed as the public portfolio rather than preserving an obsolete commerce concept as the main website.
 
