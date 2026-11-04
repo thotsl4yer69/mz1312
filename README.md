@@ -1,4 +1,4 @@
-# MAZLABZ — Jack M / Applied Technology Portfolio
+# MAZLABZ — Independent Studio / Applied Technology Portfolio
 
 > **Status: Active portfolio site**  
 > Canonical public presentation layer for TS69 Studio / MAZLABZ technical work across edge AI, embedded Linux, native Android, connected hardware and AI-assisted systems integration.
