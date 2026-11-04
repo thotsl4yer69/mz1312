@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NEXT_PUBLIC_SITE_URL: https://jackmazzini.com
+
   NEXT_PUBLIC_BASE_PATH: ''
 
 permissions:
@@ -23,6 +23,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+
+      - name: Resolve canonical URL from configured domain
+        run: echo "NEXT_PUBLIC_SITE_URL=https://$(cat public/CNAME)" >> "$GITHUB_ENV"
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
@@ -44,7 +47,7 @@ jobs:
           test -f out/capabilities/index.html
           grep -q 'MAZLABZ' out/index.html
           grep -q 'SELECTED WORK' out/index.html
-          grep -q 'https://jackmazzini.com/' out/index.html
-          grep -q 'https://jackmazzini.com/sitemap.xml' out/robots.txt
+          grep -Fq "https://$(cat public/CNAME)/" out/index.html
+          grep -Fq "https://$(cat public/CNAME)/sitemap.xml" out/robots.txt
           ! grep -q 'NULLVECTOR LABS' out/index.html
           echo "MAZLABZ studio portfolio build verified."
