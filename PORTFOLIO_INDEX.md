@@ -1,4 +1,4 @@
-# Jack Mazzini / MAZLABZ — Technical Portfolio Index
+# Independent Studio / MAZLABZ — Technical Portfolio Index
 
 > Canonical map of the GitHub account. This file distinguishes authored products, active prototypes, historical experiments, research forks and archived shells so the account can be read as an engineering portfolio rather than a raw lab notebook.
 
