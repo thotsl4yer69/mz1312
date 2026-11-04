@@ -1,6 +1,6 @@
 # GitHub Cleanup — 2026-08-13
 
-This is the permanent audit record for the MAZLABZ / Jack Mazzini GitHub cleanup performed on 13 August 2026.
+This is the permanent audit record for the MAZLABZ / Independent Studio GitHub cleanup performed on 13 August 2026.
 
 The objective was not to make every repository look equally important. It was to turn a raw independent R&D workspace into a legible technical portfolio while preserving project history, technical evidence and provenance.
 
@@ -186,6 +186,6 @@ The desired result is not “Jack has dozens of unrelated repositories.”
 
 It is:
 
-> **Jack Mazzini runs an independent applied-technology lab and repeatedly turns unusual ideas into demonstrable systems spanning AI, software and physical hardware. His strongest capability is systems integration.**
+> **Independent Studio runs an independent applied-technology lab and repeatedly turns unusual ideas into demonstrable systems spanning AI, software and physical hardware. His strongest capability is systems integration.**
 
 That is the standard future repository cleanup and portfolio work should preserve.
