@@ -1,4 +1,4 @@
-# Jack Mazzini
+# TS69 Studio
 
 ### AI-Native Systems Integrator & Technical Prototyper
 
