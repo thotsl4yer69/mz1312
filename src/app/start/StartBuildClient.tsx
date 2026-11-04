@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-const CONTACT_EMAIL = 'justmyeverything@proton.me';
+const CONTACT_EMAIL = 'mazlabz.ai@gmail.com';
 
 const budgetOptions = [
   'UNDER A$1K — VERY TIGHT / EXPLORATORY',
