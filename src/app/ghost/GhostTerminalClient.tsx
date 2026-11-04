@@ -123,7 +123,7 @@ export default function GhostTerminalClient() {
       push(
         'output',
         [
-          'JACK MAZZINI // MAZLABZ',
+          'MAZLABZ // MAZLABZ',
           'AI-native systems integrator & technical prototyper.',
           'Edge AI. Embedded Linux. Android. Connected hardware. Automation.',
           'Working principle: make strange ideas survive contact with hardware.',
